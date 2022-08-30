@@ -1,0 +1,85 @@
+@hostname = localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+
+@communityId = COMMUNITY-2l
+# @menuId = BOARD-o2
+@menuId = 443f1f8d-1f62-4857-9644-7ac251feb4ef
+
+@name = name
+@discussionTopic = discussionTopic
+@title = title
+
+### 커뮤니티: 메뉴: 생성
+POST http://{{host}}/{{communityId}}/menus/flow/discussion
+audienceId: r57s-r@ne1-m2-c2
+cineroomUsid: SKCC
+cineroomRoles: User
+dramaRoles: User
+Content-Type: application/json;charset=UTF-8
+
+{
+  "type": "DISCUSSION",
+  "accessType": "COMMUNITY_ALL_MEMBER",
+  "name": "name",
+  "discussionTopic": "discussionTopic",
+  "content": "content",
+  "relatedUrlList": [
+    {
+        "title": "title",
+        "url": "url"
+    }
+    ,{
+        "title": "title",
+        "url": "url"
+    }
+    ,{
+        "title": "title",
+        "url": "url"
+    }
+  ],
+  "depotId": "depotId",
+  "communityId": "communityId",
+  "menuId": "menuId",
+  "commentFeedbackId": "commentFeedbackId",
+  "order": 4
+}
+
+### 커뮤니티: 메뉴: 목록 조회
+GET http://{{host}}/{{communityId}}/menus
+
+### 커뮤니티: 메뉴: 상세 조회
+GET http://{{host}}/post/menu/{{menuId}}
+
+### 커뮤니티: 메뉴: 수정
+PUT http://{{host}}/{{communityId}}/menus/flow/v2/04388800-36fc-4f4e-8abc-a735ab51d725
+# PUT http://{{host}}/{{communityId}}/menus/flow/v2/{{menuId}}
+audienceId: r57s-r@ne1-m2-c2
+cineroomUsid: SKCC
+cineroomRoles: User
+dramaRoles: User
+Content-Type: application/json;charset=UTF-8
+
+{
+  "type": "DISCUSSION",
+  "accessType": "COMMUNITY_ALL_MEMBER",
+  "name": "토론 메뉴",
+  "discussionTopic": "토론 주제",
+  "content": "토론 내용",
+  "relatedUrlList": [
+    {
+        "title": "title",
+        "url": "url"
+    }
+    ,{
+        "title": "title",
+        "url": "url"
+    }
+    ,{
+        "title": "title",
+        "url": "url"
+    }
+  ],
+  "depotId": "depotId"
+}
+

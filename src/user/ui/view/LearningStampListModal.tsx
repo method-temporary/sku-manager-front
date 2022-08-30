@@ -1,0 +1,78 @@
+import * as React from 'react';
+import { Table, Modal, Form, Pagination, Button } from 'semantic-ui-react';
+import { observer } from 'mobx-react';
+import { reactAutobind } from '@nara.platform/accent';
+
+interface Props {
+  open: boolean;
+  handleClose: () => void;
+}
+
+@observer
+@reactAutobind
+class LearningStampListModal extends React.Component<Props> {
+  render() {
+    const { open, handleClose } = this.props;
+    return (
+      <React.Fragment>
+        <Modal size="large" open={open} onClose={handleClose}>
+          <Modal.Header>Stamp 정보</Modal.Header>
+          <Modal.Content>
+            총 50개 Stamp 획득
+            <Form>
+              <Table celled>
+                <colgroup>
+                  <col width="8%" />
+                  <col width="35%" />
+                  <col width="15%" />
+                  <col width="15%" />
+                  <col width="15%" />
+                  <col width="12%" />
+                </colgroup>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell textAlign="center">No</Table.HeaderCell>
+                    <Table.HeaderCell>코스명</Table.HeaderCell>
+                    <Table.HeaderCell>학습유형</Table.HeaderCell>
+                    <Table.HeaderCell>대표 카테고리</Table.HeaderCell>
+                    <Table.HeaderCell>획득일자</Table.HeaderCell>
+                    <Table.HeaderCell>생성자</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                  <Table.Row>
+                    <Table.Cell textAlign="center">20</Table.Cell>
+                    <Table.Cell>AI와 Block chain과의 상관관계는 어떻게 되는가?</Table.Cell>
+                    <Table.Cell>Classroom</Table.Cell>
+                    <Table.Cell>college &gt; Channel</Table.Cell>
+                    <Table.Cell>2019.10.18</Table.Cell>
+                    <Table.Cell>홍길동</Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              </Table>
+            </Form>
+            <div className="center">
+              <Pagination
+                boundaryRange={0}
+                defaultActivePage={1}
+                ellipsisItem={null}
+                firstItem={null}
+                lastItem={null}
+                siblingRange={1}
+                totalPages={10}
+              />
+            </div>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button onClick={handleClose} type="button">
+              Close
+            </Button>
+          </Modal.Actions>
+        </Modal>
+      </React.Fragment>
+    );
+  }
+}
+
+export default LearningStampListModal;

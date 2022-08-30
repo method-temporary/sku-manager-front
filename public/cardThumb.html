@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+ </head>
+
+ <body>
+    <select id="colleges">
+    </select>
+ 	
+ 	<button onclick="getCardList()">
+ 		카드리스트 가져오기
+ 	</button>
+
+    <p/>
+    <p/>
+
+    <div>
+        <table border="1" style="border: 1px;" id="dynamicTable">
+            <thead>
+                <tr>
+                <th>카드ID</th>
+                <th>카드명</th>
+                <th>Type</th>
+                <th>College명</th>
+                <th>큐브ID</th>
+                <th>큐브명</th>
+                <th>첫번째 동영상 이미지</th>
+                <th>등록된 썸네일 이미지</th>
+                </tr>
+            </thead>
+            <tbody id="dynamicTbody">
+                
+            </tbody>
+
+    </div>
+
+ </body>
+ 
+
+<script type="text/javascript">
+
+
+function showCardList(data) {
+
+var html = '';
+
+for(key in data){
+    html += '<tr>';
+    html += '<td>'+data[key].cardId+'</td>';
+    html += '<td>'+data[key].cardName+'</td>';
+    html += '<td>'+data[key].type+'</td>';
+    html += '<td>'+data[key].collegeName+'</td>';
+    html += '<td>'+data[key].cubeId+'</td>';
+    html += '<td>'+data[key].cubeName+'</td>';
+    html += '<td>';
+    if (data[key].panoptoSessionId != null && data[key].panoptoSessionId !== "") {
+        html += '<img src="https://sku.ap.panopto.com/Panopto/Services/FrameGrabber.svc/FrameRedirect?objectId='+data[key].panoptoSessionId+'&mode=Delivery&random=0.855699771948019&usePng=False" width="250px"/>';
+    }
+    html += '</td>';
+    html += '<td>';
+    if (data[key].thumbnailImagePath != null && data[key].thumbnailImagePath !== "") {
+        html += '<img src="https://image.mysuni.sk.com/suni-asset'+data[key].thumbnailImagePath+'" width="250px"/>';
+    }
+    html += '</td>';
+    html += '</tr>';
+}
+
+$("#dynamicTbody").empty();
+$("#dynamicTbody").append(html);
+
+
+}
+
+
+$(function() {
+    
+    const token = localStorage.getItem("nara.token");
+    const cineroomId = localStorage.getItem("nara.cineroomId");
+    var audienceId;
+
+    const work = JSON.parse(localStorage.getItem("nara.workspaces"))
+    work.cineroomWorkspaces.forEach(
+        function(w) { 
+            if(w.id === cineroomId) {
+              audienceId = w.tenantId; 
+            }
+        });
+
+
+    $.ajax({
+        url: "/api/college/colleges",
+        method: 'GET',
+        async: false,
+        success: function (data) {
+            data.forEach(function(data) {
+                var option = $("<option value=\""+data.id+"\">"+data.name.ko+"</option>");
+                $('#colleges').append(option);
+
+                //console.log(data.id + " : " + data.name.ko);
+            });
+
+        },
+        error: function (xhr, textStatus, errorThrown) {
+        },
+        beforeSend: function (xhr, settings) {
+            xhr.setRequestHeader("Authorization", "Bearer " + token);
+            xhr.setRequestHeader("audienceId", audienceId);
+        }
+    });
+
+});
+
+
+function getCardList() {
+
+	const token = localStorage.getItem("nara.token");
+	const cineroomId = localStorage.getItem("nara.cineroomId");
+	var audienceId;
+
+	const work = JSON.parse(localStorage.getItem("nara.workspaces"))
+	work.cineroomWorkspaces.forEach(
+        function(w) { 
+            if(w.id === cineroomId) {
+		      audienceId = w.tenantId; 
+            }
+        });
+
+    var collegeId = $("#colleges").val();
+
+
+    $.ajax({
+        url: "/api/data-search/card/sessionids?collegeId="+collegeId,
+        method: 'GET',
+        async: false,
+        success: function (data) {
+            showCardList(data) ;
+
+        },
+        error: function (xhr, textStatus, errorThrown) {
+        },
+        beforeSend: function (xhr, settings) {
+            xhr.setRequestHeader("Authorization", "Bearer " + token);
+            xhr.setRequestHeader("audienceId", audienceId);
+        }
+    });
+
+}
+
+</script>
+ </html>

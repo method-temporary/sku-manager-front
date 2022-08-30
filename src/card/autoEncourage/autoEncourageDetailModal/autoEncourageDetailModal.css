@@ -1,0 +1,10 @@
+.email-contents > p {
+  font-size: 13px !important;
+  color: black !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+ul {
+  list-style: none;
+}

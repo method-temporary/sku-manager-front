@@ -1,0 +1,542 @@
+/* header mySUNI 아이콘 변경 */
+i.icon.sk-university::before {
+  width: 90px;
+  height: 38px;
+  background: url('https://image.mysuni.sk.com/suni-asset/public/images/all/header-logo.svg') no-repeat 0 0/ 100% 100% !important;
+}
+
+.select-none {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                   supported by Chrome, Opera and Firefox */
+}
+
+.org i.icon.search:before {
+  content: '\f002' !important;
+  background: none !important;
+}
+
+.ui.modal.org .org-header > div {
+  vertical-align: middle;
+}
+
+.ui.modal.org .select-group {
+  height: 2rem;
+}
+
+.ui.modal.org .select-group .dropdown.selection {
+  height: 1rem;
+  line-height: 2.25rem !important;
+}
+
+.ui.modal.org .select-group .dropdown.selection .menu > .item {
+  height: 2.5rem;
+  line-height: 2.5;
+}
+
+/* approval 추가 후 create -> content 부분 높이 줄어 든 오류 수정 */
+/*#root section.bg-white {*/
+/*  height : auto;*/
+/*}*/
+
+/* mySUNI introduction 탭메뉴 깨짐 수정 */
+#root section.content .tab-menu-inner .ui.menu {
+  width: 75rem !important;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .channel-change .table-css .row.head .cell.v-middle .right .clear i.icon.reset::before {
+    position: absolute;
+    left: 30px;
+  }
+  .ui.segment.full
+    .recommend-detail
+    .channel-of-interest
+    .table-css
+    .row
+    .cell.vtop
+    .tit-set
+    .ui.button.icon.img-icon
+    i.icon.setting17 {
+    position: absolute;
+    top: -1px;
+    left: 0;
+  }
+  .ui.accordion.channel .title i::before {
+    height: 1.7rem;
+  }
+}
+
+/* 20200330 */
+#root section.content.f-channel {
+  padding-bottom: 0;
+  background-color: #fff;
+}
+.f-channel .header.res {
+  height: auto !important;
+  padding: 1.125rem 0;
+  line-height: inherit;
+  border-bottom: 1px solid #d6deed;
+  font-weight: 700;
+}
+.f-channel .header.res .sub.f12 {
+  font-size: 0.75rem;
+  display: block;
+  margin: 0.625rem 0 0 0;
+  font-weight: 400;
+  letter-spacing: -0.01625rem;
+  color: #6c788f;
+}
+.f-channel .cell .h30 input:focus {
+  border-color: #85b7d9 !important;
+}
+.f-channel .actions {
+  text-align: center;
+  border-top: 1px solid rgba(34, 36, 38, 0.15);
+  padding: 0.9375rem 0 !important;
+}
+.f-channel .actions > .button {
+  margin-left: 0.75rem;
+}
+
+/* 20200414 video modal style */
+.video-class .video {
+  position: relative;
+  width: 100%;
+  height: 562px;
+  max-height: 70vh;
+}
+.video-class .video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/* 20200417 site-map */
+.site-map > ul:first-of-type > li:first-of-type ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 256px;
+  width: 100% !important;
+}
+.site-map > ul:first-of-type > li:first-of-type ul li {
+  width: 50%;
+}
+/*
+.g-info { position: absolute; right: 0; top: 0; width: 12.4375rem; height: 100%; border-left: 0.0625rem solid #eee; }
+.g-info .balloon-pop { display: none; position: absolute; right: -2px; bottom: -5.4375rem; width: 8.75rem; height: 6.6875rem; background: url("./media/GNB_menu_logout.png") 0 0 no-repeat; background-size: 100% 100%; z-index: 100; }
+.g-info .balloon-pop ul { padding: 1.625rem 1.25rem 0; }
+.g-info .balloon-pop ul li { margin-bottom: 12px; }
+.g-info .balloon-pop ul li a, body > .header .group .g-info .balloon-pop ul li button { display: block; }
+.g-info .balloon-pop ul li a span, .g-info .balloon-pop ul li button span { display: inline-block; margin-left: 0.25rem; line-height: 22px; vertical-align: top; font-size: 0.875rem; color: #222; height: 24px; }
+.g-info .balloon-pop.show { display: block; }
+i.icon.balloon { width: 1.5rem; height: 1.5rem; vertical-align: top; }
+i.icon.balloon.mypage::before { content: ''; display: block; width: 100%; height: 100%; background: url("./media/icon-balloon-mypage.svg") 0 0 no-repeat !important; background-size: 100% auto; }
+i.icon.balloon.logout::before { content: ''; display: block; width: 100%; height: 100%; background: url("./media/icon-balloon-logout.svg") 0 0 no-repeat !important; background-size: 100% auto; }
+*/
+
+.g-info {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 12.4375rem;
+  height: 100%;
+  border-left: 0.0625rem solid #eee;
+}
+.g-info .balloon-pop {
+  display: none;
+  position: absolute;
+  right: -2px;
+  bottom: -5.4375rem;
+  width: 8.75rem;
+  height: 6.6875rem;
+  background: url('./media/GNB_menu_logout.png') 0 0 no-repeat;
+  background-size: 100% 100%;
+  z-index: 100;
+}
+.g-info .balloon-pop ul {
+  padding: 1.625rem 1.25rem 0;
+}
+.g-info .balloon-pop ul li {
+  margin-bottom: 12px;
+}
+.g-info .balloon-pop ul li a,
+.g-info .balloon-pop ul li button {
+  display: block;
+}
+.g-info .balloon-pop ul li a span,
+.g-info .balloon-pop ul li button span {
+  display: inline-block;
+  margin-left: 0.25rem;
+  line-height: 22px;
+  vertical-align: top;
+  font-size: 0.875rem;
+  color: #222;
+  height: 24px;
+}
+.g-info .balloon-pop.show {
+  display: block;
+}
+i.icon.balloon {
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: top;
+}
+i.icon.balloon.mypage::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url('./media/icon-balloon-mypage.svg') 0 0 no-repeat !important;
+  background-size: 100% auto;
+}
+i.icon.balloon.logout::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url('./media/icon-balloon-logout.svg') 0 0 no-repeat !important;
+  background-size: 100% auto;
+}
+/* 20200427 정답 UI 추가 */
+.test-modal .content .ol-title.exact-answer::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 8.25rem;
+  height: 8.25rem;
+  top: -3.425rem;
+  left: -2.825rem;
+  z-index: 0;
+  background: url('./media/img_correct.png') center no-repeat;
+  background-size: 100% auto;
+}
+.test-modal .content .ol-title.wrong-answer::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 8.25rem;
+  height: 8.25rem;
+  top: -3.425rem;
+  left: -2.825rem;
+  z-index: 0;
+  background: url('./media/img_incorrect.png') center no-repeat;
+  background-size: 100% auto;
+}
+/* 20200625 scrolling-80vh 가 css 에 적용되지 않아서 IE 에서 깨짐 수정 */
+.scrolling-80vh {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+/* 20200508 feedback 이미지 뷰어 컴포넌트 스타일 추가 - TODO 향후 수정 필요 */
+.single-image-view-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.single-image-view-modal .modal-content {
+  position: relative;
+  margin: auto;
+}
+.single-image-view-modal .caption {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+}
+.single-image-view-modal .modal-content,
+.single-image-view-modal .caption {
+  -webkit-animation-name: zoom;
+  animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-duration: 0.6s;
+}
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.single-image-view-modal .close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.single-image-view-modal .close:hover,
+.single-image-view-modal .close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+.single-image-view-modal .image-wrapper {
+  padding: 20px;
+}
+.single-image-view-modal .modal-content img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 2020.06.10 kwpark 조직도 header css로 인한 td width 깨짐 보정 */
+.ui.modal.org .org-body .right-area .chart .ui.table.float-header {
+  border: 0;
+}
+
+/* badge 미리보기 iframe css */
+.ui.modal .content iframe {
+  border: none;
+  height: 370px;
+  overflow: hidden;
+}
+
+/* react-simple-tree-menu */
+.rstm-tree-item--active {
+  color: #000 !important;
+}
+
+/*min-height*/
+.min-height-600 {
+  min-height: 600px !important;
+}
+
+/*tree-delete-button*/
+.ui .list .small-delete {
+  padding: 3px !important;
+}
+
+.margin-0 {
+  margin: 0 !important;
+}
+
+/* No boarder Important */
+.no-boarder {
+  border: none !important;
+}
+
+/*survey date picker*/
+.survey-modify {
+  width: auto !important;
+}
+.survey-modify input {
+  height: 38px !important;
+  margin: 0;
+  max-width: 100%;
+  flex: 1 0 auto;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  text-align: left;
+  line-height: 1.21428571em;
+  font-family: notosanskr, Helvetica Neue, Arial, Helvetica, sans-serif;
+  padding: 0.67857143em 1em;
+  background: #fff;
+  border: 1px solid #7f7f7f !important;
+  color: #434343;
+  border-radius: 0.28571429rem;
+  box-shadow: none;
+  border: none !important;
+}
+
+/*tree menu 2depth min height remove*/
+.min-height-0 {
+  min-height: unset !important;
+}
+
+.hover-button-default .ui.basic.button:focus,
+.ui.basic.button:hover,
+.ui.basic.buttons .button:focus,
+.ui.basic.buttons .button:hover {
+  color: initial !important;
+}
+
+.tab-wrap {
+  width: 100%;
+  position: relative;
+}
+
+.tab-text {
+  position: absolute;
+  top: 0.99rem;
+  right: 0;
+  font-size: 0.9rem;
+}
+
+.menu-input {
+  border: none !important;
+  border-bottom: 1px solid #7f7f7f !important;
+  border-radius: 0;
+  outline: none;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.ui.modal .content .ql-editor p {
+  text-align: left;
+}
+
+.ui.legacy.page.dimmer > .ui.scrolling.modal,
+.ui.page.dimmer > .ui.legacy.scrolling.modal {
+  transform: translateX(-50%) !important;
+}
+
+.ui.modal .ui.form .inline.fields .field:not(.wide) .ui.input {
+  width: auto;
+  vertical-align: middle;
+  max-width: 250px;
+}
+
+.input-file-button {
+  font-size: 0.9rem;
+  box-shadow: 0 0 0 1px #6684b6 inset !important;
+  background: #fff;
+  color: #6684b6;
+  margin: 0 0.5em 0 0;
+  cursor: pointer;
+  display: inline-block;
+  min-height: 1em;
+  outline: none;
+  font-family: notosanskr, Helvetica Neue, Arial, Helvetica, sans-serif;
+  padding: 0.78571429em 1.5em;
+  box-sizing: content-box;
+  text-transform: none;
+  text-shadow: none;
+  font-weight: 700;
+  line-height: 1em;
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.28571429rem;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ui.celled.table tr td.pop-editor textarea {
+  height: 85px;
+}
+.ui.celled.table tr td.pop-editor .quill .ql-toolbar + .ql-container {
+  height: 85px !important;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cell-span {
+  margin: 0 1em 0;
+}
+
+.no-clickable {
+  cursor: default !important;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.channel-change .list .item.active .segment {
+  background: #3e7fe3;
+}
+
+.scrolling-contents {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.scrolling-table-student {
+  min-width: 1250px;
+}
+
+.report_title {
+  background: #999;
+  text-align: center;
+  color: black;
+  padding: 10px 10px;
+  font-weight: 800;
+  font-size: 24px;
+  padding: 20px;
+}
+.report_sub,
+.report_sub > label {
+  padding: 10px 0;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+}
+.listTable,
+.writeTable {
+  width: 100%;
+  border-top: 2px solid #000;
+}
+.listTable th {
+  padding: 10px 0;
+  background: #f5f5f5;
+  border: 1px solid #e1e1e1;
+  font-weight: 600;
+  letter-spacing: -1px;
+  color: #000;
+  text-align: center;
+}
+.listTable td {
+  padding: 10px 15px;
+  border: 1px solid #e1e1e1;
+  text-align: center;
+}
+.confirmation-wrap {
+  margin-top: 60px;
+}
+
+.confirmation-wrap .txt-box,
+.confirmation-wrap .txt-box p {
+  text-align: center;
+  color: #333;
+}
+
+.confirmation-wrap .txt {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.confirmation-wrap .date {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.confirmation-wrap .img-box {
+  padding: 20px;
+}
+
+.confirmation-wrap .img-box img {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+}

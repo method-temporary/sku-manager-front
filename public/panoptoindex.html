@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>File Upload Sample</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./assets/css/reset.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+  <link href="./assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+  <link href="./assets/css/upload_style_single.css" rel="stylesheet">
+  <!-- <link href="./assets/css/upload_style_single.css" rel="stylesheet"> -->
+
+  <script src="./assets/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div id="drop" style="padding:15px 30px;">
+  <p><i class="fa fa-upload" aria-hidden="true"></i> 여기로 파일을 올려주세요.</p>
+  <div id="thumbnails">
+    <progress id="progressBar" value="0" max="100" style="width:100%"></progress>
+  </div>
+  <div class="bottom">
+    <input type="button" class="btn btn-default" id="btnSubmit" value="업로드"/>
+  </div>
+</div>
+<script>
+    /*
+     * isSingleUpload : true -> 단일업로드만 가능, false -> 멀티업로드 가능
+     *                  단일업로드 인 경우 upload_style_multi.css 링크 설정
+     *                  멀티업로드 인 경우 upload_style_multi.css 링크 설정
+     * folderId : 업로드 될 폴더 UUID
+     * externalId : folderId가 없고 아이디로 내폴더 검색을 원하는 경우
+     *              folderId는 빈값으로 넣고 아이디 입력해야 합니다.
+     * uploadUrl : 업로드 주소를 설정
+     * cookie : sso 인증 후 생성 된 쿠키 값
+     * uploadResult : 업로드 완료 후 받는 결과 값
+     */
+    var isSingleUpload = true;
+    var folderId = getCookie('folderId');
+    // var folderId = window.opener.localStorage.getItem('folderId');
+    var externalId = "";
+    var uploadUrl = "https://panopto.mysuni.sk.com/pt/s3_upload_once";
+    var cookie = "";
+    var uploadResult = [];
+
+    var uploadFiles = [];
+    var sessionNames = [];
+    var ing = false;
+    var $drop = $("#drop");
+    $drop.on("dragenter", function(e) { //드래그 요소가 들어왔을떄
+        $(this).addClass('drag-over');
+    }).on("dragleave", function(e) { //드래그 요소가 나갔을때
+        $(this).removeClass('drag-over');
+    }).on("dragover", function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }).on('drop', function(e) {
+        e.preventDefault();
+        $(this).removeClass('drag-over');
+        var files = e.originalEvent.dataTransfer.files;
+        var len = files.length;
+        if(isSingleUpload) len = 1;
+        for(var i = 0; i < len; i++) {
+            var file = files[i];
+            if(isSingleUpload) uploadFiles = [];
+            var size = uploadFiles.push(file);
+            preview(file, size - 1);
+        }
+    });
+    function preview(file, idx) {
+        var reader = new FileReader();
+        reader.onload = (function(f, idx) {
+            return function(e) {
+                var $div = $('<div class="thumb"> \
+     세션명:<input type="text" name="sessionNames" value="" placeholder="세션명"> <p class="file_name">파일명: ' + f.name + ' </p>\
+     <a class="close" data-idx="' + idx + '">x</a> \
+     <progress value="0" max="100" ></progress> \
+     </div>');
+                if(isSingleUpload) $("#thumbnails").html("");
+                $("#thumbnails").append($div);
+                f.target = $div;
+            };
+        })(file, idx);
+        reader.readAsDataURL(file);
+    }
+    var uploadStatus = {
+        total : 0,
+        count : 0
+    };
+    $("#btnSubmit").on("click", function(e) {
+        if(!ing) {
+            sessionNames = [];
+            var nextStep = true;
+            $("input[name=sessionNames]").each(function(i, item){
+                if(item.value=="") {
+                    alert("세션명을 입력해주세요.");
+                    nextStep = false;
+                } else {
+                    sessionNames.push(item.value);
+                }
+            });
+            if(nextStep) {
+                ing = true;
+                this.value = "파일을 올리고 있습니다.";
+
+                $.each(uploadFiles, function(i, file) {
+                    if(file.upload != 'disable')
+                        uploadStatus.total++;
+                });
+                eachUpload();
+            }
+        } else {
+            return;
+        }
+    });
+    //개별 파일 업로드
+    function eachUpload() {
+        var file = uploadFiles.shift();
+        var sessionName = sessionNames.shift();
+        if(file==undefined) {
+            setTimeout(function() {
+                /* #############################
+                *###############################
+                *###############################
+                *###### 완료 후 콜백 함수 넣는 곳. #####
+                */
+
+                /*
+                *###############################
+                *###############################
+                ###############################*/
+                alert("업로드가 완료되었습니다.");
+                // iframe 인 경우 parent.함수명 호출
+                // local broswer 인 경우 내장 함수명 바로 호출
+                $('.thumb').remove();
+                ing = false;
+                $('#btnSubmit').val("업로드");
+                setProgress(0);
+                uploadResult = [];
+            }, 300);
+            return;
+        }
+        if(file.upload == 'disable') {
+            eachUpload();
+            return;
+        }
+        var formData = new FormData();
+        formData.append('uploadfile', file, file.name);
+        formData.append('sessionNames', sessionName);
+        formData.append('folderId', folderId);
+        formData.append('externalId', externalId);
+        formData.append('cookie', cookie);
+        var $selfProgress = file.target.find("progress"); //File 객체에 저장해둔 프리뷰 DOM의 progress 요소를 찾는다.
+        $.ajax({
+            url: uploadUrl,
+            data : formData,
+            type : 'post',
+            contentType : false,
+            processData: false,
+            xhr: function() { //XMLHttpRequest 재정의 가능
+                var xhr = $.ajaxSettings.xhr();
+                xhr.upload.onprogress = function(e) { //progress 이벤트 리스너 추가
+                    var percent = e.loaded * 100 / e.total;
+                    $selfProgress.val(percent); //개별 파일의 프로그레스바 진행
+                };
+                return xhr;
+            },
+            success : function(ret) {
+                uploadStatus.count++;
+                setProgress(uploadStatus.count / uploadStatus.total * 100); //전체 프로그레스바 진행
+                setTimeout(eachUpload, 500); //다음 파일 업로드
+                opener.postMessage(ret);
+                if(ret.boolResult) uploadResult.push(ret.obj.list);
+            },
+            timeout: 1800000
+        });
+    }
+    var $progressBar = $("#progressBar");
+    function setProgress(per) {
+        $progressBar.val(per);
+    }
+    $("#thumbnails").on("click", ".close", function(e) {
+        var $target = $(e.target);
+        var idx = $target.attr('data-idx');
+        uploadFiles[idx].onChangeQuestionImage = 'disable';
+        $target.parent().remove();
+    });
+
+    function getCookie(name) {
+        name += '=';
+        const cookieData = document.cookie;
+        let start = cookieData.indexOf(name);
+        let cookieValue = '';
+        if (start !== -1) {
+            start += name.length;
+            let end = cookieData.indexOf(';', start);
+            if (end === -1) end = cookieData.length;
+            cookieValue = cookieData.substring(start, end);
+        }
+        return unescape(cookieValue);
+    }
+</script>
+</body>
+</html>

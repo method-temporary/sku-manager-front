@@ -1,0 +1,1 @@
+export type ShuffleType = 'every' | 'group' | 'select';

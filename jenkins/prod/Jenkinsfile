@@ -1,0 +1,51 @@
+@Library('retort-lib') _
+def label = "jenkins-${UUID.randomUUID().toString()}"
+
+def ZCP_USERID='deployserviceaccount'
+def DOCKER_IMAGE='sk-university/manager-front'
+def K8S_NAMESPACE='gdi-skuniv-app-prod'
+
+timestamps {
+    podTemplate(label:label,
+        serviceAccount: "zcp-system-sa-${ZCP_USERID}",
+        containers: [
+            //containerTemplate(name: 'node', image: 'node:10.16.3', ttyEnabled: true, command: 'cat'),
+            containerTemplate(name: 'node', image: 'node:10.16.3', ttyEnabled: true, command: 'cat'
+                , resourceLimitCpu: '3', resourceLimitMemory: '7Gi'),
+            containerTemplate(name: 'docker', image: 'docker:17-dind', ttyEnabled: true, command: 'dockerd-entrypoint.sh', privileged: true),
+            containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl', ttyEnabled: true, command: 'cat')
+        ],
+        volumes: [
+            persistentVolumeClaim(mountPath: '/root/.m2', claimName: 'zcp-jenkins-mvn-repo')
+        ]) {
+
+        node(label) {
+            stage('SOURCE CHECKOUT') {
+                def repo = checkout scm
+            }
+
+            stage('BUILD') {
+                container('node') {
+                    sh 'npm install'
+                    sh 'npm run build_app'
+                }
+            }
+
+            stage('BUILD DOCKER IMAGE') {
+                container('docker') {
+                    dockerCmd.build tag: "${HARBOR_REGISTRY}/${DOCKER_IMAGE}:${BUILD_NUMBER}", options: "--build-arg SPRING_PROFILES_ACTIVE=prod"
+                    dockerCmd.push registry: HARBOR_REGISTRY, imageName: DOCKER_IMAGE, imageVersion: BUILD_NUMBER, credentialsId: "HARBOR_CREDENTIALS"
+                }
+            }
+
+            stage('DEPLOY') {
+                container('kubectl') {
+                    kubeCmd.apply file: 'k8s/service.yaml', namespace: K8S_NAMESPACE
+                    yaml.update file: 'k8s/deploy-prod.yaml', update: ['.spec.template.spec.containers[0].image': "${HARBOR_REGISTRY}/${DOCKER_IMAGE}:${BUILD_NUMBER}"]
+
+                    kubeCmd.apply file: 'k8s/deploy-prod.yaml', wait: 300, recoverOnFail: false, namespace: K8S_NAMESPACE
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+export type StudentCountType =
+  | 'WAITING'
+  | 'NEW_WAITING'
+  | 'PROPOSAL_STATE'
+  | 'LEARNING_STATE'
+  | 'PROPOSAL_AND_LEARNING_STATE'
+  | 'EVERY'
+  | 'MYLEARNING_STATE';

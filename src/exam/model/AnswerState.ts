@@ -1,0 +1,1 @@
+export type AnswerState = 'SAVE' | 'SUBMIT' | 'PASS' | 'FAIL';

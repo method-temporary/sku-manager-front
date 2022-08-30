@@ -1,0 +1,115 @@
+html, body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, span, form, fieldset, input, select, label, textarea, table, caption, thead, tfoot, tbody, tr, th, td, pre
+{margin:0;padding:0;font:14px/1.5 '맑은고딕','Malgun Gothic','나눔고딕','nanumgothic',굴림,Gulim,돋움,Dotum,Sans-serif;color:#666;}
+b, span, strong, input, a, button{font-size:inherit;font-family:inherit;color:inherit}
+article, aside, dialog, footer, header, section, footer, nav, figure, hgroup, details, summary, figure, figcaption {display: block;}
+html, body {height:100%;}
+body {margin:0px; padding: 10px;}
+table{
+  border-collapse:collapse;
+  table-layout:fixed;
+  display: table;
+  box-sizing: border-box;
+  text-indent: initial;
+  white-space: normal;
+  line-height: normal;
+  font-weight: normal;
+  font-size: medium;
+  font-style: normal;
+  text-align: start;
+  border-spacing: 2px;
+  border-color: grey;
+  font-variant: normal;
+}
+
+.fieldset {
+  display: block;
+  margin-inline-start: 2px;
+  margin-inline-end: 2px;
+  padding-block-start: 0.35em;
+  padding-inline-start: 0.75em;
+  padding-inline-end: 0.75em;
+  padding-block-end: 0.625em;
+  min-inline-size: min-content;
+  border-width: 2px;
+  border-style: groove;
+  border-color: threedface;
+  border-image: initial;
+}
+
+.report_form {
+  margin-top: 0em;
+  margin-block-end: 1em;
+  padding: 0;
+}
+
+.report_title {
+  background: #999;
+  text-align: center;
+  color: black;
+  padding: 10px 10px;
+  font-weight: 800;
+  font-size: 24px;
+  padding: 20px;
+}
+
+.report_table {
+  margin:0;
+  padding:0;
+  font:14px/1.5 '맑은고딕','Malgun Gothic','나눔고딕','nanumgothic',굴림,Gulim,돋움,Dotum,Sans-serif;color:#666;
+  border-collapse:collapse;
+  table-layout:fixed;
+  width: 100%;
+}
+
+.report_sub, .report_sub > label {
+  padding: 10px 0;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+}
+.listTable, .writeTable {
+  width: 100%;
+  border-top: 2px solid #000;
+}
+.listTable th {
+  padding: 10px 0;
+  background: #f5f5f5;
+  border: 1px solid #e1e1e1;
+  font-weight: 600;
+  letter-spacing: -1px;
+  color: #000;
+  text-align: center;
+}
+.listTable td{
+  padding:10px 15px;
+  border:1px solid #e1e1e1;
+  text-align:center;
+}
+.confirmation-wrap {
+  margin-top: 60px;
+}
+
+.confirmation-wrap .txt-box, .confirmation-wrap .txt-box p {
+  text-align: center;
+  color: #333;
+}
+
+.confirmation-wrap .txt {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.confirmation-wrap .date {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.confirmation-wrap .img-box {
+  padding: 20px;
+}
+
+.confirmation-wrap .img-box img {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+}

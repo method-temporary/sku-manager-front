@@ -1,0 +1,79 @@
+@hostname = localhost
+@port = 8092
+@host = {{hostname}}:{{port}}
+
+### 코스: 토론 메뉴: 생성
+POST http://{{host}}/feedback/discussion
+audienceId: r57s-r@ne1-m2-c2
+cineroomUsid: SKCC
+cineroomRoles: User
+dramaRoles: User
+Content-Type: application/json;charset=UTF-8
+
+{
+  "title": "string",
+  "content": "string",
+  "depotId": "string",
+  "relatedUrlList": [
+    {
+      "title": "string",
+      "url": "string"
+    }
+  ],
+  "sourceEntity": {
+    "id": "string",
+    "name": "string"
+  }
+}
+
+### 코스: 토론 메뉴: 수정
+PUT http://{{host}}/feedback/{{feedbackId}}/discussion
+Content-Type: application/json;charset=UTF-8
+
+{
+  "title": "update title",
+  "content": "update content",
+  "depotId": "string",
+  "relatedUrlList": [
+    {
+      "title": "string",
+      "url": "string"
+    }
+  ],
+  "sourceEntity": {
+    "id": "string",
+    "name": "string"
+  }
+}
+
+
+
+
+
+
+
+
+###
+
+
+### GET Courses from Community
+POST http://university.sk.com/api/feedback/feedback/discussion
+audienceId: r57s-r@ne1-m2-c2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRpdGlvbmFsSW5mb3JtYXRpb24iOnsiY29tcGFueUNvZGUiOiJTS0NDIiwiZW1wbG95ZWVJZCI6IjA1NTI2In0sImxvZ2luSWQiOiJzcy5wYXJrQHNrLmNvbSIsInVzZXJfbmFtZSI6InNzLnBhcmtAc2suY29tIiwiZGlzcGxheU5hbWUiOiLrsJXshLHsiJgiLCJzY29wZSI6WyJjbGllbnQiXSwid29ya3NwYWNlcyI6eyJzdGF0aW9uV29ya3NwYWNlcyI6bnVsbCwic3F1YXJlV29ya3NwYWNlcyI6bnVsbCwicGF2aWxpb25Xb3Jrc3BhY2VzIjpudWxsLCJjaW5lcm9vbVdvcmtzcGFjZXMiOlt7ImlkIjoibmUxLW0yLWMxNyIsIm5hbWUiOiJTSyjso7wpQyZDIiwidGVuYW50SWQiOiJyNTdzLXJAbmUxLW0yLWMxNyIsInJvbGVzIjpbIlVzZXIiXX0seyJpZCI6Im5lMS1tMi1jMyIsIm5hbWUiOiJTS-ydtOuFuOuyoOydtOyFmCIsInRlbmFudElkIjoicjU3cy1yQG5lMS1tMi1jMyIsInJvbGVzIjpbIlVzZXIiLCJDb21wYW55TWFuYWdlciJdfSx7ImlkIjoibmUxLW0yLWMxMCIsIm5hbWUiOiJTS-qxtOyEpCIsInRlbmFudElkIjoicjU3cy1yQG5lMS1tMi1jMTAiLCJyb2xlcyI6WyJVc2VyIiwiQ29tcGFueU1hbmFnZXIiXX0seyJpZCI6Im5lMS1tMi1jMTQiLCJuYW1lIjoiU0vsooXtlantmZTtlZkiLCJ0ZW5hbnRJZCI6InI1N3MtckBuZTEtbTItYzE0Iiwicm9sZXMiOlsiVXNlciIsIkNvbXBhbnlNYW5hZ2VyIl19LHsiaWQiOiJuZTEtbTItYzQwIiwibmFtZSI6IuydtOuFuOuyoOydtOyFmCDqs7XthrUiLCJ0ZW5hbnRJZCI6InI1N3MtckBuZTEtbTItYzQwIiwicm9sZXMiOlsiVXNlciJdfSx7ImlkIjoibmUxLW0yLWMyIiwibmFtZSI6IlNLIFVuaXZlcnNpdHkiLCJ0ZW5hbnRJZCI6InI1N3MtckBuZTEtbTItYzIiLCJyb2xlcyI6WyJVc2VyIiwiQ29sbGVnZU1hbmFnZXIiLCJTdXBlck1hbmFnZXIiXX0seyJpZCI6Im5lMS1tMi1jNDIiLCJuYW1lIjoi7Jq47IKw7KeA7ZS87JeQ7IqkIiwidGVuYW50SWQiOiJyNTdzLXJAbmUxLW0yLWM0MiIsInJvbGVzIjpbIlVzZXIiLCJDb21wYW55TWFuYWdlciJdfV0sInN0dWRpb1dvcmtzcGFjZSI6bnVsbH0sImV4cCI6MTYxNzc3ODE0MSwiYXV0aG9yaXRpZXMiOlsiVXNlciJdLCJqdGkiOiI3ZThlNWIwYi1lZjBjLTQ3OWItYTg3NS02YTAwM2Y1ZjIwYWEiLCJjbGllbnRfaWQiOiJuYXJhIn0.RoEdTmbY8pDh7VXEFJP2MMrLo-ilBl77BBRawHy6REc
+Content-Type: application/json;charset=UTF-8
+
+{
+  "title": "string",
+  "content": "string",
+  "depotId": "string",
+  "relatedUrlList": [
+    {
+      "title": "string",
+      "url": "string"
+    }
+  ],
+  "sourceEntity": {
+    "id": "string",
+    "name": "string"
+  }
+}

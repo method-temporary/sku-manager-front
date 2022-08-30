@@ -1,0 +1,47 @@
+.privew-modal-header {
+  margin-bottom: 1.875rem;
+  padding-bottom: 1.875rem;
+  border-bottom: 0.063rem solid #d6deed;
+}
+
+.privew-modal-header span {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.privew-modal-header strong {
+  margin-left: 0.375rem;
+  color: #444;
+}
+
+.privew-modal-header span:not(:last-child)::after {
+  position: relative;
+  bottom: 0.063rem;
+  display: inline-block;
+  content: '';
+  margin-right: 0.625rem;
+  margin-left: 0.625rem;
+  width: 0.063rem;
+  height: 0.375rem;
+  background: #d8d8d8;
+  vertical-align: middle;
+}
+
+.problem-box {
+  padding-bottom: 3.72rem;
+}
+
+.problem-title {
+  font-size: 1.15rem !important;
+  letter-spacing: -0.4px !important;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #323232 !important;
+  position: relative;
+  display: flex;
+  padding: 0 !important;
+}
+
+.problem-title span {
+  padding-right: 1rem;
+}

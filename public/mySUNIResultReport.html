@@ -1,0 +1,502 @@
+
+<!-- saved from url=(0103)http://mobile.skacademy.com/skmams/Statistics/STATS_Course_Edu_Report.asp?course_id=11111&chasu_val=301 -->
+<html lang="ko">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>mySUNI 교육 결과 리포트</title>
+
+	<style>
+		html, body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, span, form, fieldset, input, select, label, textarea, table, caption, thead, tfoot, tbody, tr, th, td, pre
+		{margin:0;padding:0;font:14px/1.5 '맑은고딕','Malgun Gothic','나눔고딕','nanumgothic',굴림,Gulim,돋움,Dotum,Sans-serif;color:#666;}
+		b, span, strong, input, a, button{font-size:inherit;font-family:inherit;color:inherit}
+		article, aside, dialog, footer, header, section, footer, nav, figure, hgroup, details, summary, figure, figcaption {display: block;}
+		html, body {height:100%;}
+		body {margin:0px;}
+		table{border-collapse:collapse;table-layout:fixed;}
+
+		.report_title {
+			background: #999;
+			text-align: center;
+			color: black;
+			padding: 10px 10px;
+			font-weight: 800;
+			font-size: 24px;
+			padding: 20px;
+		}
+		.report_sub, .report_sub > label {
+			padding: 10px 0;
+			color: black;
+			font-size: 18px;
+			font-weight: bold;
+		}
+		.listTable, .writeTable {
+			width: 100%;
+			border-top: 2px solid #000;
+		}
+		.listTable th {
+			padding: 10px 0;
+			background: #f5f5f5;
+			border: 1px solid #e1e1e1;
+			font-weight: 600;
+			letter-spacing: -1px;
+			color: #000;
+			text-align: center;
+		}
+		.listTable td{
+			padding:10px 15px;
+			border:1px solid #e1e1e1;
+			text-align:center;
+		}
+		.confirmation-wrap {
+			margin-top: 60px;
+		}
+
+		.confirmation-wrap .txt-box, .confirmation-wrap .txt-box p {
+			text-align: center;
+			color: #333;
+		}
+
+		.confirmation-wrap .txt {
+			font-size: 18px;
+			font-weight: bold;
+		}
+
+		.confirmation-wrap .date {
+			margin-top: 10px;
+			font-size: 16px;
+		}
+
+		.confirmation-wrap .img-box {
+			padding: 20px;
+		}
+
+		.confirmation-wrap .img-box img {
+			display: block;
+			margin: 0 auto;
+			width: 200px;
+		}
+
+		/* 기존 css hide */
+		/*.btn_r{text-align:right;padding-top:15px}
+		.btn_c a,
+		.btn_r a{
+			display:inline-block;box-sizing:border-box;min-width:90px;height:30px;line-height:30px;
+			padding:0 20px;
+			background:#000;
+			text-align:center;color:#fff;font-weight:600;vertical-align:top;font-size:13px
+		}
+		.btn_r+.pagination{padding:0}
+		.btn_c{text-align:center;padding-top:30px}
+		*/
+
+		</style>
+
+		<!--[if lt IE 9]>
+		<script src="/common/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<script src="./SK mobile Academy 관리자사이트_files/jquery-1.8.2.min.js.다운로드"></script>
+		<script src="./SK mobile Academy 관리자사이트_files/jquery-ui.min.js.다운로드"></script>
+		<script src="./SK mobile Academy 관리자사이트_files/pace.min.js.다운로드"></script>
+		<script src="./SK mobile Academy 관리자사이트_files/jquery.datetimepicker.full.min.js.다운로드"></script>
+		<script src="./SK mobile Academy 관리자사이트_files/moment.js.다운로드"></script>
+		<script src="./SK mobile Academy 관리자사이트_files/icheck.min.js.다운로드"></script>
+		<script src="./SK mobile Academy 관리자사이트_files/common.js.다운로드"></script>
+
+	</head>
+
+	<body style="padding:10px" class="pace-done">
+		<div class="pace pace-inactive">
+			<div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+	  			<div class="pace-progress-inner"></div>
+			</div>
+			<div class="pace-activity"></div>
+		</div>
+		<div id="dvData">
+			<h2 class="report_title">mySUNI 교육 결과 리포트</h2>
+			<fieldset id="search_box">
+				<form name="frmSearchCouseEdu" id="frmSearchCouseEdu" method="get">
+					<input type="hidden" id="page" name="page" value="1">
+					<input type="hidden" id="intRow" name="intRow" value="20">
+					<input type="hidden" name="course_id" id="course_id" value="11111">
+					<input type="hidden" name="chasu_val" id="chasu_val" value="301">
+
+					<input type="hidden" name="s_pass" id="s_pass" value="A">
+					<input type="hidden" name="s_st_prgrs" id="s_st_prgrs" value="">
+					<input type="hidden" name="s_end_prgrs" id="s_end_prgrs" value="">
+					<input type="hidden" name="s_answer" id="s_answer" value="">
+					<input type="hidden" name="s_survey" id="s_survey" value="">
+					<input type="hidden" name="s_keyword" id="s_keyword" value="NM">
+					<input type="hidden" name="s_text" id="s_text" value="">
+					<!-- table : 1st -->
+					<table width="100%">
+						<!-- <colgroup>
+							<col width="50%">
+							<col width="*">
+							<col width="20%">
+						</colgroup> -->
+						<tbody>
+							<tr>
+								<td class="report_sub"> ■ Channel : <label id="" name="/">AI > AI Trend Watch</label></td>
+							</tr>
+							<tr>
+								<td class="report_sub"> ■ 과정명 : <label id="course_title" name="course_title" width="/">[[MIT Tech. Review] 배달 플랫폼과 라이더의 전쟁</label></td>
+							</tr>
+							<tr>
+								<td class="report_sub"> ■ 교육기간 :  <label id="term_chasu" name="term_chasu">2021-10-21 - 2021-12-30</label></td>
+							</tr>
+							<tr>
+								<td class="report_sub"> ■ 대상인원</td>
+							</tr>
+							<tr>
+								<td>
+									<!-- table : 2nd -->
+									<table>
+										<!-- <colgroup>
+											<col width="14%">
+											<col width="*">
+											<col width="14%">
+											<col width="*">
+										</colgroup> -->
+										<tbody>
+											<tr>
+												<td id="conn_user_cnt" class="stat_number_val">
+
+													<!-- table(#listTable.listTable) -->
+													<table class="listTable" id="listTable">
+														<!-- <colgroup>
+															<col width="80px">
+															<col width="80px">
+															<col width="80px">
+															<col width="80px">
+															<col width="100px">
+														</colgroup> -->
+														<thead>
+															<tr>
+																<th style="border-right: 1px solid #dadada;">수강인원</th>
+																<th style="border-right: 1px solid #dadada;">이수인원</th>
+																<th style="border-right: 1px solid #dadada;">이수율(%)</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<th style="border-right: 1px solid #dadada;"><label id="CONFIRM_CNT" name="CONFIRM_CNT">30</label></th>
+																<th style="border-right: 1px solid #dadada;"><label id="FINCNT" name="FINCNT">30</label></th>
+																<th style="border-right: 1px solid #dadada;"><label id="FIN_PROGRESS" name="FIN_PROGRESS">100</label></th>
+															</tr>
+														</tbody>
+													</table>
+													<!-- /table(#listTable.listTable) -->
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<!-- /table : 2nd -->
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- /table : 1st -->
+				</form>
+				</fieldset>
+
+				<p class="report_sub"> ■ 개인별 결과 </p>
+				<!-- table : 1st -->
+				<table>
+					<colgroup>
+						<col width="14%">
+						<col width="*">
+						<col width="14%">
+						<col width="*">
+					</colgroup>
+					<tbody>
+						<tr>
+							<td colspan="8" id="conn_user_cnt" class="stat_number_val">
+								<!-- table: 2nd -->
+								<table class="listTable" id="lstList">
+									<colgroup>
+										<col width="50px">
+										<col width="150px">
+										<col width="150px">
+										<col width="80px">
+										<col width="80px">
+										<col width="150px">
+										<col width="80px">
+										<col width="150px">
+										<col width="100px">
+									</colgroup>
+									<thead>
+										<tr>
+											<th style="border-right: 1px solid #dadada;">No.</th>
+											<th style="border-right: 1px solid #dadada;">소속사</th>
+											<th style="border-right: 1px solid #dadada;">소속조직(팀)</th>
+											<th style="border-right: 1px solid #dadada;">성명</th>
+											<th style="border-right: 1px solid #dadada;">직책</th>
+											<th style="border-right: 1px solid #dadada;">E-mail</th>
+											<th style="border-right: 1px solid #dadada;">이수여부</th>
+											<th style="border-right: 1px solid #dadada;">이수일</th>
+											<th style="border-right: 1px solid #dadada;">이수번호</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>285</td>
+											<td>SK주식회사 C&C</td>
+											<td>CV Digital그룹</td>
+											<td>홍길동</td>
+											<td>팀리더</td>
+											<td>ss.park@sk.com</td>
+											<td>이수</td>
+											<td>YYYY-MM-DD HH:MM</td>
+											<td>40310</td>
+										</tr>
+										<tr>
+											<td>284</td>
+											<td>SK주식회사 C&C</td>
+											<td>CV Digital그룹</td>
+											<td>이써니</td>
+											<td>팀원</td>
+											<td>lee@sk.com</td>
+											<td>이수</td>
+											<td>YYYY-MM-DD HH:MM</td>
+											<td>40316</td>
+										</tr>
+										<tr>
+											<td>283</td>
+											<td>SK주식회사 C&C</td>
+											<td>CV Digital그룹</td>
+											<td>김써니</td>
+											<td>팀원</td>
+											<td>kim@sk.com</td>
+											<td>미이수</td>
+											<td>YYYY-MM-DD HH:MM</td>
+											<td>-</td>
+										</tr>
+										<tr>
+											<td>282</td>
+											<td>SK주식회사 C&C</td>
+											<td>CV Digital그룹</td>
+											<td>이써니</td>
+											<td>팀원</td>
+											<td>lee@sk.com</td>
+											<td>이수</td>
+											<td>YYYY-MM-DD HH:MM</td>
+											<td>40316</td>
+										</tr>
+										<tr>
+											<td>281</td>
+											<td>SK주식회사 C&C</td>
+											<td>CV Digital그룹</td>
+											<td>이써니</td>
+											<td>팀원</td>
+											<td>lee@sk.com</td>
+											<td>이수</td>
+											<td>YYYY-MM-DD HH:MM</td>
+											<td>40316</td>
+										</tr>
+										<tr>
+											<td>280</td>
+											<td>SK주식회사 C&C</td>
+											<td>CV Digital그룹</td>
+											<td>이써니</td>
+											<td>팀원</td>
+											<td>lee@sk.com</td>
+											<td>이수</td>
+											<td>YYYY-MM-DD HH:MM</td>
+											<td>40316</td>
+										</tr>
+									</tbody>
+								</table>
+								<!-- /table : 2nd -->
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+				<!-- /table : 1st -->
+			</div>
+			<div class="confirmation-wrap">
+				<div class="txt-box">
+					<p class="txt">위와 같이 온라인 교육 과정을 이수 하였음을 확인합니다.</p>
+					<p class="date">YYYY-MM-DD</p>
+				</div>
+				<div class="img-box">
+					<img src="./images/logo_print.png">
+				</div>
+			</div>
+
+			<!-- 기존 script hide -->
+<!-- 	<script type="text/javascript">
+		var temp = "";
+		var today_date = ""
+		var auth_yn = "Y"
+
+		$(function() {
+			//버튼 클릭
+			$("[id^=btn]").click(function() {
+				switch (this.id) {
+					case "btnPrint":	window.print(); break;
+					case "btnExcel":	fnExcelReport('dvData', 'SK 모바일 아카데미 교육 결과 보고서'); break;
+					case "btnExcel2":	fnExcelReport('dvData', 'SK 모바일 아카데미 교육 결과 보고서'); break;
+				}
+				return false;
+			});
+			f_start();
+		});
+
+		function f_start(){
+			setTimeout(" getCourseEduList()",1000*2);
+		 }
+
+		function getCourseEduList() {
+			$(".big_loading").show();
+			if ($("#frmSearchCouseEdu").validForm()) {
+				console.log($("#frmSearchCouseEdu").serialize());
+				AjaxGet("/skmams/_ajax/Statistics/Stat_Course_Edu_S_Report_json.asp", $("#frmSearchCouseEdu").serialize(), function(data) {
+					console.log(data);
+					$(".big_loading").hide();
+					$("#lstList tbody").empty().html(function() {
+						var arr = new Array();
+						var PASSYN_TEXT = "";
+						if (data.courseEdu_Info.length == 0) {
+							arr.push("<tr><td colspan=\"" + $(this).parent().find("th").length + "\">" + Message.Common.NoData + "</td></tr>");
+						}
+						else {
+
+							$.each(data.courseEdu_Info, function() {
+
+								var html = "";
+								html = html + "<tr style='cursor: pointer;' data-id=\"" + this.UID+ "\"> ";
+								html = html + "<td>" + this.NUM + "</td>";
+								html = html + "<td style=\"mso-number-format:'\@'\">" + this.EMPNO+ " </td>";
+								html = html + "<td>" + this.HNAME+ "</td>";
+								html = html + "<td>" + this.CAL_POINT+ "</td>";
+								if (this.PASSYN=="Y") {
+									PASS_TEXT = "이수"
+								} else {
+									PASS_TEXT = "미이수"
+								}
+								html = html + "<td>" + PASS_TEXT + "</td>";
+								html = html + "<td>" + this.UNPASSREASON + "</td>";
+								html = html + "<td>" + this.PASSNO + "</td>";
+								html = html + "<td>" + this.REMARKS + "</td>";
+								html = html + "</tr>";
+
+								arr.push(html);
+
+								// 20180131 수정 : 500명까지만 보여주기
+								if (this.Row >= 500)
+								{
+									//1.#btnPrint : 500명이상되면 안보임
+									$("#btnPrint").css("display","none");
+									//2.알럿창
+									alert("해당 인원이 많습니다. 엑셀로 다운 받아주세요");
+									//3.500명에서 중지
+									return false;
+								}
+
+							});
+						}
+						return arr.join("");
+
+					});
+				});
+
+				AjaxGet("/skmams/_ajax/Statistics/Stat_Course_Edu_Data_json.asp", $("#frmSearchCouseEdu").serialize(), function(data) {
+						if (data.courseEdu_Data.length == 0) {
+						}
+						else {
+							console.log(data.courseEdu_Data);
+							$.each(data.courseEdu_Data, function() {
+
+								$('[id$=course_title]').text(this.COURSE_TITLE);
+
+								var term_chasu = moment(this.ST_DT).format("YYYY-MM-DD") +"~ "+moment(this.END_DT).format("YYYY-MM-DD") + " ( " + this.CHASU + " 차 )";
+								$('[id$=term_chasu]').text(term_chasu);
+
+								$('[id$=company_name]').text(this.COMPANY_NAME);
+
+								$('[id$=CONFIRM_CNT]').text(this.CONFIRM_CNT);
+								$('[id$=FINCNT]').text(this.FINCNT);
+								$('[id$=FIN_PROGRESS]').text(this.FIN_PROGRESS);
+
+
+
+								$('[id$=PayByOne]').text(numberWithCommas(this.EDU_COST));
+
+								$('[id$=PayTotal]').text(numberWithCommas(this.CONFIRM_CNT*this.EDU_COST));
+
+							});
+						}
+				});
+
+			}
+
+		}
+
+	function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
+		function fnExcelReport(id, name) {
+			console.log("not chrome")
+			var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
+			tab_text = tab_text + '<head><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>';
+			tab_text = tab_text + '<x:Name>Test Sheet</x:Name>';
+			tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
+			tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+			tab_text = tab_text + "<table border='1px'>";
+			var exportTable = $('#' + id).clone();
+			exportTable.find('input').each(function (index, elem) { $(elem).remove(); });
+			tab_text = tab_text + exportTable.html();
+			tab_text = tab_text + '</table></body></html>';
+			var data_type = 'data:application/vnd.ms-excel';
+			var ua = window.navigator.userAgent;
+			var msie = ua.indexOf("MSIE ");
+
+			var date = new Date();
+			var year  = date.getFullYear();
+			var month = date.getMonth() + 1;
+			var day   = date.getDate();
+			var nowDay = year+'-'+month+'-'+day;
+
+			var fileName = name + '_' + nowDay + '_' + parseInt(Math.random() * 1000) + '.xls';
+			if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+				if (window.navigator.msSaveBlob) {
+					var blob = new Blob([tab_text], {
+						type: "application/csv;charset=utf-8;"
+					});
+					navigator.msSaveBlob(blob, fileName);
+				}
+			} else {
+				$('#btnExcel').attr('href', data_type + ', ' + encodeURIComponent(tab_text));
+				$('#btnExcel').attr('download', fileName);
+				a.click();
+			}
+		}
+
+
+	$("#btnExport").click(function (e) {
+		window.open('data:application/vnd.ms-excel,' + $('#dvData').html());
+		e.preventDefault();
+	});
+
+	function getCourseEduExcel(){
+		if ($("#frmSearchCouseEdu").validForm()) {
+			getExcelDownloadUrl("/skmams/_ajax/Statistics/Stat_Course_Edu_S_Excel.asp", $("#frmSearchCouseEdu").serializeJson());
+		}
+	}
+
+	</script> -->
+
+	<!-- 기존 css, 알 수 없는 태그 hide -->
+	<!-- <style>
+	.big_loading { width: 100%; height: 100%; top: 0px; left: 0px; position: fixed; display: none;
+	 opacity: 0.7; background-color: #fff; z-index: 1001; text-align: center; }
+	.big_loading-image { position: absolute; top: 50%; left: 50%; z-index: 100; }
+	</style>
+	<div id="big_loading" class="big_loading" style="display: none;"><img class="big_loading-image" src="./SK mobile Academy 관리자사이트_files/loading.gif" alt="Loading..."></div> -->
+	</body>
+</html>

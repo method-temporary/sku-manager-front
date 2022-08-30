@@ -1,0 +1,26 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Windows-style : crlf
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = true
+
+# Indentation override for all Java
+[*.{xml,java}]
+indent_style = space
+indent_size = 4
+
+# json, yml, web indentation
+[*.{json,yml,js,jsx,ts,tsx,html,css,sass,scss,less}]
+indent_style = space
+indent_size = 2
+
+# markdown
+[*.md]
+indent_style = space
+indent_size = 2

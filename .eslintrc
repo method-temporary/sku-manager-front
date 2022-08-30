@@ -1,0 +1,26 @@
+{
+  "extends": ["react-app"],
+  "rules": {
+    "no-nested-ternary": 0,
+    "indent": "off",
+    "operator-linebreak": "off",
+    "semi": "off",
+    "babel/semi": "off",
+    "quotes": "off",
+    "import/no-duplicates": "off",
+    "import/order": "off",
+    "no-lonely-if": "off",
+    "no-mixed-operators": "off",
+    "no-unused-expressions": "off",
+    "no-undef": "off",
+    "curly": "off",
+    "no-confusing-arrow": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "react/jsx-closing-tag-location": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-indent": "off",
+    "react/sort-comp": "off",
+    "react/jsx-curly-brace-presence": "off",
+    "consistent-return": "off"
+  }
+}

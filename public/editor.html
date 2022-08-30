@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="ko" lang="ko">
+
+<head>
+  <title>Namo CrossEditor</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+  <script type="text/javascript" src="http://localhost:8080/js/namo_scripteditor.js"></script>
+
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/javascript">
+    const e = React.createElement;
+
+    class ReactEditor extends React.Component {
+
+      componentDidMount() {
+        var CE = this.CrossEditor = new NamoSE('editor');
+        var me = this;
+
+        var params = {
+          Width: 700,
+          Height: 700,
+          UserLang: "auto",
+          IconColor: "default",
+          FullScreen: false,
+          ParentEditor: document.getElementById('root'),
+          // 에디터를 실행하기 전, 에디터의 웹 경로를 지정 해야만 필수 파일 import 및 서버 로직 처리가 가능합니다.
+          // (개발/운영환경간 상이한 도메인에 대한 수정 처리가 필요한 부분)
+          EditorBaseURL: 'http://localhost:8080/',
+          event: {
+            OnInitCompleted: function (e) {
+              me.update()
+            }
+          }
+        };
+
+        CE.params = params;
+        CE.EditorStart();
+      }
+
+      render() {
+        return e(
+          'textarea',
+          { id: 'editor' }
+        )
+      }
+    }
+
+    const root = document.getElementById('root')
+    ReactDOM.render(e(ReactEditor), root)
+
+  </script>
+</body>
+
+</html>

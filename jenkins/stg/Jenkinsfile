@@ -1,0 +1,87 @@
+@Library('retort-lib') _
+def label = "jenkins-${UUID.randomUUID().toString()}"
+
+def ZCP_USERID='yswon'
+def DOCKER_IMAGE='sk-university/manager-front'
+def K8S_NAMESPACE='gdi-skuniv-app-stg'
+def VERSION = ''
+def REPLICAS = 1
+def podTemplateYaml = """
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    jenkins: slave
+spec:
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - preference:
+          matchExpressions:
+          - key: project
+            operator: In
+            values:
+            - manager
+        weight: 100
+  containers:
+  - command:
+    - cat
+    name: node
+    image: node:16.14.0
+    tty: true
+  - command:
+    - cat
+    image: lachlanevenson/k8s-kubectl
+    name: kubectl
+    tty: true
+  - command:
+    - dockerd-entrypoint.sh
+    image: docker:17-dind
+    name: docker
+    securityContext:
+      privileged: true
+    tty: true
+  tolerations:
+  - effect: NoSchedule
+    key: manager
+    operator: Equal
+    value: "true"
+"""
+
+timestamps {
+    podTemplate(label:label,
+        serviceAccount: "zcp-system-sa-${ZCP_USERID}",
+        yaml: podTemplateYaml,
+        volumes: [
+            persistentVolumeClaim(mountPath: '/root/.m2', claimName: 'zcp-jenkins-mvn-repo')
+        ]) {
+
+        node(label) {
+            stage('SOURCE CHECKOUT') {
+                def repo = checkout scm
+            }
+
+            stage('BUILD') {
+                container('node') {
+                    sh 'npm install'
+                    sh 'npm run build_app'
+                }
+            }
+
+            stage('BUILD DOCKER IMAGE') {
+                container('docker') {
+                    dockerCmd.build tag: "${HARBOR_REGISTRY}/${DOCKER_IMAGE}:stg-${BUILD_NUMBER}", options: "--build-arg SPRING_PROFILES_ACTIVE=dev"
+                    dockerCmd.push registry: HARBOR_REGISTRY, imageName: DOCKER_IMAGE, imageVersion: "stg-${BUILD_NUMBER}", credentialsId: "HARBOR_CREDENTIALS"
+                }
+            }
+
+            stage('DEPLOY') {
+                container('kubectl') {
+                    kubeCmd.apply file: 'k8s/service.yaml', namespace: K8S_NAMESPACE
+                    yaml.update file: 'k8s/deploy-stg.yaml', update: ['.spec.template.spec.containers[0].image': "${HARBOR_REGISTRY}/${DOCKER_IMAGE}:stg-${BUILD_NUMBER}"]
+                    kubeCmd.apply file: 'k8s/deploy-stg.yaml', wait: 300, recoverOnFail: false, namespace: K8S_NAMESPACE
+                }
+            }
+        }
+    }
+}

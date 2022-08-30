@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: manager-front
+  labels:
+    app: manager-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: manager-front
+  template:
+    metadata:
+      labels:
+        app: manager-front
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              preference:
+                matchExpressions:
+                  - key: beta.kubernetes.io/arch
+                    operator: In
+                    values:
+                      - "amd64"
+                  - key: project
+                    operator: In
+                    values:
+                      - "manager"
+      hostAliases:
+        - ip: "10.178.66.100"
+          hostnames:
+            - "proxy-panopto.api.mysuni.sk.com"
+      containers:
+        - name: manager-front
+          image: dev03/manager:0.0.1
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+#          resources:
+#            requests:
+#              cpu: "100m"
+#              memory: "1Gi"
+#            limits:
+#              cpu: "1"
+#              memory: "2Gi"
+          livenessProbe:
+            failureThreshold: 20
+            httpGet:
+              path: /healthCheck
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 3
+          readinessProbe:
+            failureThreshold: 20
+            httpGet:
+              path: /healthCheck
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 3
+          volumeMounts:
+            - mountPath: /etc/localtime
+              name: timezone-config
+      volumes:
+        - hostPath:
+            path: /usr/share/zoneinfo/Asia/Seoul
+          name: timezone-config
+      imagePullSecrets:
+      - name: manager-secret
+      tolerations:
+        - key: manager
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+  strategy:
+    type: RollingUpdate

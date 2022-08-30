@@ -1,0 +1,12 @@
+.problem-list-item {
+  margin-left: 2rem;
+}
+
+.problem-list-item-radio {
+  display: block;
+  margin: 0.1rem 0;
+}
+
+.check-radio {
+  margin-bottom: 0 !important;
+}

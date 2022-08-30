@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: manager-front
+  labels:
+    app: manager-front
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: manager-front
+  template:
+    metadata:
+      labels:
+        app: manager-front
+    spec:
+      hostAliases:
+        - ip: "10.178.150.147"
+          hostnames:
+            - "proxy-panopto.api.mysuni.sk.com"
+      containers:
+        - name: manager-front
+          image: dev03/manager:0.0.1
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 20
+            httpGet:
+              path: /healthCheck
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 3
+          readinessProbe:
+            failureThreshold: 20
+            httpGet:
+              path: /healthCheck
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 3
+          resources:
+            requests:
+              cpu: "300m"
+              memory: "256Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+          volumeMounts:
+            - mountPath: /etc/localtime
+              name: timezone-config
+      volumes:
+        - hostPath:
+            path: /usr/share/zoneinfo/Asia/Seoul
+          name: timezone-config
+      imagePullSecrets:
+        - name: manager-secret
+  strategy:
+    type: RollingUpdate

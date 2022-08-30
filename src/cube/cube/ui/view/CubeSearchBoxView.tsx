@@ -1,0 +1,100 @@
+import React from 'react';
+import { observer } from 'mobx-react';
+
+import { reactAutobind, ReactComponent } from '@nara.platform/accent';
+
+import { SelectType, SelectTypeModel } from 'shared/model';
+import { SearchBox } from 'shared/components';
+import { addSelectTypeBoxAllOption } from 'shared/helper';
+
+import { CubeQueryModel } from '../../model/CubeQueryModel';
+
+interface Props {
+  findAllCubes: () => void;
+  onChangeCubeQueryProps: (name: string, value: any) => void;
+  clearCubeQuery: () => void;
+  selectChannel: () => SelectTypeModel[];
+  onChangeCollege: (value: string) => void;
+  onSelectSharedOnly: (value: boolean) => void;
+  cubeQuery: CubeQueryModel;
+  contentsProviders: [];
+  paginationKey: string;
+  collegesSelect: SelectTypeModel[];
+  searchBoxQueryModel: any;
+}
+
+@observer
+@reactAutobind
+class CubeSearchBoxView extends ReactComponent<Props, {}> {
+  //
+  componentDidMount() {}
+
+  render() {
+    //
+    const { findAllCubes, onChangeCubeQueryProps, selectChannel, onChangeCollege, onSelectSharedOnly } = this.props;
+    const { cubeQuery, contentsProviders, paginationKey, collegesSelect, searchBoxQueryModel } = this.props;
+    const collegeSelectTypes = addSelectTypeBoxAllOption(collegesSelect);
+    const channelSelectTypes = selectChannel();
+    const collegeDisableKey = 'sharedOnly';
+    const channelDisableKey = 'collegeId';
+    return (
+      <>
+        <SearchBox
+          onSearch={findAllCubes}
+          changeProps={onChangeCubeQueryProps}
+          queryModel={cubeQuery}
+          name={paginationKey}
+        >
+          <SearchBox.Group name="등록일자">
+            <SearchBox.CubeDatePicker
+              startFieldName="period.startDateMoment"
+              endFieldName="period.endDateMoment"
+              searchButtons
+            />
+          </SearchBox.Group>
+          <SearchBox.Group name="Category/Channel">
+            <SearchBox.Select
+              disabled={searchBoxQueryModel[collegeDisableKey]}
+              fieldName="collegeId"
+              options={collegeSelectTypes}
+              placeholder="전체"
+              onChange={(event, data) => onChangeCollege(data.value)}
+            />
+            <SearchBox.Select
+              disabled={
+                searchBoxQueryModel[channelDisableKey] === '' || searchBoxQueryModel[channelDisableKey] === '전체'
+              }
+              fieldName="channelId"
+              options={channelSelectTypes}
+              placeholder="전체"
+            />
+            <SearchBox.Select
+              name="교육형태"
+              fieldName="cubeType"
+              options={SelectType.learningTypeForEnum2}
+              placeholder="전체"
+            />
+          </SearchBox.Group>
+          <SearchBox.Group>
+            <SearchBox.Select name="교육기관" fieldName="organizerId" options={contentsProviders} search={true} />
+            {/*<SearchBox.Select name="사용여부" fieldName="enabled" options={SelectType.openTypeBoolean} />*/}
+          </SearchBox.Group>
+          <SearchBox.Group name="공유된 Cube만 보기">
+            <SearchBox.CheckBox fieldName="sharedOnly" onChange={(event, data) => onSelectSharedOnly(data.checked)} />
+          </SearchBox.Group>
+          <SearchBox.Group name="검색어">
+            <SearchBox.Select fieldName="searchPart" options={SelectType.searchPartForCubeNotAll} />
+            <SearchBox.Input fieldName="searchWord" placeholder="검색어를 입력해주세요." />
+          </SearchBox.Group>
+          {/*<SearchBox.BasicSearch*/}
+          {/*  options={SelectType.searchPartForCubeNotAll}*/}
+          {/*  searchWordDisabledKey="searchPart"*/}
+          {/*  searchWordDisabledValues={['과정명', '과정명']}*/}
+          {/*/>*/}
+        </SearchBox>
+      </>
+    );
+  }
+}
+
+export default CubeSearchBoxView;
