@@ -1,9 +1,15 @@
 export class CubeXlsxModel {
   //
   No: string = '';
-  'Cube명(Ko)': string = '';
-  'Cube명(En)': string = '';
-  'Cube명(Zh)': string = '';
+  'Cube명(Kor)': string = '';
+  'Cube명(Eng)': string = '';
+  'Cube명(China)': string = '';
+  'Cube명(Frans)': string = '';
+  'Cube명(Mgz)': string = '';
+  'Cube명(Esp)': string = '';
+  'Cube명(Poc)': string = '';
+  'Cube명(Pol)': string = '';
+  'Cube명(일본어)': string = '';
   '교육형태': string = '';
   Channel: string = '';
   '교육기관'?: string = '';

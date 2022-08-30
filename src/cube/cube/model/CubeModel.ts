@@ -150,9 +150,15 @@ export class CubeModel extends DramaEntityObservableModel {
 
     return {
       No: String(index + 1),
-      'Cube명(Ko)': cubeWithReactive.name.getValue(Language.Ko) || '-',
-      'Cube명(En)': cubeWithReactive.name.getValue(Language.En) || '-',
-      'Cube명(Zh)': cubeWithReactive.name.getValue(Language.Zh) || '-',
+      'Cube명(Kor)': cubeWithReactive.name.getValue(Language.Ko) || '-',
+      'Cube명(Eng)': cubeWithReactive.name.getValue(Language.En) || '-',
+      'Cube명(China)': cubeWithReactive.name.getValue(Language.Zh) || '-',
+      'Cube명(Frans)': cubeWithReactive.name.getValue(Language.Zh) || '-',
+      'Cube명(Mgz)': cubeWithReactive.name.getValue(Language.Zh) || '-',
+      'Cube명(Esp)': cubeWithReactive.name.getValue(Language.Zh) || '-',
+      'Cube명(Poc)': cubeWithReactive.name.getValue(Language.Zh) || '-',
+      'Cube명(Pol)': cubeWithReactive.name.getValue(Language.Zh) || '-',
+      'Cube명(일본어)': cubeWithReactive.name.getValue(Language.Zh) || '-',
       교육형태: EnumUtil.getEnumValue(CubeTypeView, cubeWithReactive.type).get(cubeWithReactive.type) || '-',
       Channel: collegeName + ' -> ' + channelName || '-',
       //별점: '★' + Math.floor(cubeWithReactive.starCount * 10) / 10,

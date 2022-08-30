@@ -412,17 +412,13 @@ class CubeListContainer extends ReactComponent<Props, States, Injected> {
           <Grid className="list-info">
             <Grid.Row>
               <Grid.Column width={8}>
-                <SubActions.Count number={count} text="개 학습 등록" />
+                <SubActions.Count number={count} text="건" />
               </Grid.Column>
               <Grid.Column width={8}>
                 <div className="right">
-                  <Button className="button" onClick={() => this.onChangeOpen()}>
-                    Bulk Upload
-                  </Button>
-                  <Pagination.SortFilter options={SelectType.sortFilterForCube} />
-                  <Pagination.LimitSelect allViewable />
+                  <SubActions.CreateButton onClick={this.routeToCreateCute}>Cube 등록</SubActions.CreateButton>
                   <SubActions.ExcelButton download useDownloadHistory={false} onClick={this.findAllCubesExcel} />
-                  <SubActions.CreateButton onClick={this.routeToCreateCute}>Create</SubActions.CreateButton>
+                  <Pagination.LimitSelect allViewable />
                 </div>
               </Grid.Column>
             </Grid.Row>

@@ -17,7 +17,7 @@ class LearningSideBarLayout extends ReactComponent {
     return (
       <SidebarLayout header="Learning 관리" baseUrl={learningManagementUrl} render={children}>
         <SidebarLayout.Section header="과정관리">
-          <SidebarLayout.Item text="Cube 관리" url="cubes/cube-list" activeUrl="cubes/cube" />
+          <SidebarLayout.Item text="Cube 조회" url="cubes/cube-list" activeUrl="cubes/cube" />
           <SidebarLayout.Item text="Card 관리" url="cards/card-list" activeUrl="cards/card" />
         </SidebarLayout.Section>
 

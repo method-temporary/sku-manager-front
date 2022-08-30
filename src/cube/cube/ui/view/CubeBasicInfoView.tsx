@@ -113,12 +113,12 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
               <Table.HeaderCell colSpan={4} className="title-header">
                 <Grid className="list-info">
                   <Grid.Row className="padding-0px">
-                    <Grid.Column width={8} style={{ color: 'white' }}>
-                      기본정보
-                    </Grid.Column>
+                    <Grid.Column width={8} style={{ color: 'white' }}></Grid.Column>
                     <Grid.Column width={8}>
                       {!readonly && (
                         <div className="right">
+                          <CubeListIgnoreAccessiblityModal onClickOk={onClickCubeImport} />
+                          <CubeListIgnoreAccessiblityModal onClickOk={onClickCubeImport} />
                           <CubeListIgnoreAccessiblityModal onClickOk={onClickCubeImport} />
                         </div>
                       )}
@@ -131,16 +131,10 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
           <Table.Body>
             <Table.Row>
               <Table.Cell className="tb-header">
-                지원 언어 <span className="required"> *</span>
+                편집 중인 언어 <span className="required"> *</span>
               </Table.Cell>
               <Table.Cell>
                 <Polyglot.Languages onChangeProps={onChangeCubeProps} readOnly={readonly} />
-              </Table.Cell>
-              <Table.Cell className="tb-header">
-                기본 언어 <span className="required"> *</span>
-              </Table.Cell>
-              <Table.Cell>
-                <Polyglot.Default onChangeProps={onChangeCubeProps} readOnly={readonly} />
               </Table.Cell>
             </Table.Row>
             <Table.Row>
@@ -161,9 +155,6 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
                         onChangeCubeProps('type', data.value);
                       }}
                     />
-                    <span className="span-information">
-                      Classroom, E-learning 유형은 수강신청형 카드 생성 화면에서 생성합니다.
-                    </span>
                   </>
                 )}
               </Table.Cell>

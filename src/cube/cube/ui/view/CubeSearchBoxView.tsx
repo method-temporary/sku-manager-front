@@ -46,28 +46,17 @@ class CubeSearchBoxView extends ReactComponent<Props, {}> {
           name={paginationKey}
         >
           <SearchBox.Group name="등록일자">
-            <SearchBox.CubeDatePicker
-              startFieldName="period.startDateMoment"
-              endFieldName="period.endDateMoment"
-              searchButtons
-            />
+            <SearchBox.CubeDatePicker startFieldName="period.startDateMoment" endFieldName="period.endDateMoment" />
           </SearchBox.Group>
-          <SearchBox.Group name="Category/Channel">
+          <SearchBox.Group name="공개범위">
             <SearchBox.Select
               disabled={searchBoxQueryModel[collegeDisableKey]}
               fieldName="collegeId"
               options={collegeSelectTypes}
-              placeholder="전체"
+              placeholder="공개범위"
               onChange={(event, data) => onChangeCollege(data.value)}
             />
-            <SearchBox.Select
-              disabled={
-                searchBoxQueryModel[channelDisableKey] === '' || searchBoxQueryModel[channelDisableKey] === '전체'
-              }
-              fieldName="channelId"
-              options={channelSelectTypes}
-              placeholder="전체"
-            />
+
             <SearchBox.Select
               name="교육형태"
               fieldName="cubeType"
@@ -75,16 +64,10 @@ class CubeSearchBoxView extends ReactComponent<Props, {}> {
               placeholder="전체"
             />
           </SearchBox.Group>
-          <SearchBox.Group>
-            <SearchBox.Select name="교육기관" fieldName="organizerId" options={contentsProviders} search={true} />
-            {/*<SearchBox.Select name="사용여부" fieldName="enabled" options={SelectType.openTypeBoolean} />*/}
-          </SearchBox.Group>
-          <SearchBox.Group name="공유된 Cube만 보기">
-            <SearchBox.CheckBox fieldName="sharedOnly" onChange={(event, data) => onSelectSharedOnly(data.checked)} />
-          </SearchBox.Group>
-          <SearchBox.Group name="검색어">
+
+          <SearchBox.Group name="검색">
             <SearchBox.Select fieldName="searchPart" options={SelectType.searchPartForCubeNotAll} />
-            <SearchBox.Input fieldName="searchWord" placeholder="검색어를 입력해주세요." />
+            <SearchBox.Input fieldName="searchWord" placeholder="검색어를 입력하세요." />
           </SearchBox.Group>
           {/*<SearchBox.BasicSearch*/}
           {/*  options={SelectType.searchPartForCubeNotAll}*/}
