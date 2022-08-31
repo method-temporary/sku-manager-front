@@ -194,7 +194,7 @@ class CubeListIgnoreAccessiblityModal extends ReactComponent<Props, States, Inje
         size="large"
         trigger={
           <Button type="button" onClick={this.onMount}>
-            Cube 불러오기
+            Cube 1
           </Button>
         }
       >

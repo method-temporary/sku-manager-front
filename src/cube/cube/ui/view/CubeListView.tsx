@@ -38,15 +38,15 @@ class CubeListView extends ReactComponent<Props, {}> {
           <col width="9%" />
           <col />
           <col width="12%" />
-          <col width="12%" />
-          <col width="12%" />
-          <col width="12%" />
           {/*<col width="4%" />*/}
+          <col width="12%" />
+          <col width="12%" />
+          <col width="12%" />
         </colgroup>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell textAlign="center">No</Table.HeaderCell>
-            <Table.HeaderCell textAlign="center">Cube명</Table.HeaderCell>
+            <Table.HeaderCell textAlign="center">Cube 명</Table.HeaderCell>
             <Table.HeaderCell textAlign="center">교육형태</Table.HeaderCell>
             {/*<Table.HeaderCell textAlign="center">별점</Table.HeaderCell>*/}
             <Table.HeaderCell textAlign="center">등록일자</Table.HeaderCell>
@@ -76,12 +76,9 @@ class CubeListView extends ReactComponent<Props, {}> {
                   <Table.Cell textAlign="center">{startNo - index}</Table.Cell>
                   <Table.Cell>{getPolyglotToAnyString(cube.name)}</Table.Cell>
                   <Table.Cell>{this.getType(cube.type)}</Table.Cell>
-
-                  {/*<Table.Cell textAlign="center">★{Math.floor(cube.starCount * 10) / 10}</Table.Cell>*/}
                   <Table.Cell textAlign="center">
                     {moment(cube.registeredTime).format('YYYY.MM.DD  HH:mm:ss')}
                   </Table.Cell>
-
                   <Table.Cell textAlign="center">{getPolyglotToAnyString(cube.registrantName)}</Table.Cell>
                   <Table.Cell textAlign="center"></Table.Cell>
                 </Table.Row>

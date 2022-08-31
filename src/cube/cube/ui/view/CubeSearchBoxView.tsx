@@ -60,7 +60,7 @@ class CubeSearchBoxView extends ReactComponent<Props, {}> {
             <SearchBox.Select
               name="교육형태"
               fieldName="cubeType"
-              options={SelectType.learningTypeForEnum2}
+              options={SelectType.learningTypeForEnum3}
               placeholder="전체"
             />
           </SearchBox.Group>

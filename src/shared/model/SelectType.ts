@@ -68,6 +68,14 @@ export default {
     // { key: '10', text: 'Community', value: CubeType.Community },
   ],
 
+  learningTypeForEnum3: [
+    { key: '0', text: '전체', value: 'ALL' },
+    { key: '1', text: 'Video', value: 'Video' },
+    { key: '2', text: 'WebPageLink', value: 'WebPageLink' },
+    { key: '3', text: 'WebPageEmbed', value: 'WebPageEmbed' },
+    { key: '4', text: 'Document', value: 'Document' },
+  ],
+
   cubeOrCourse: [
     { key: '0', text: '전체', value: '전체' },
     { key: '1', text: 'Cube', value: 'Cube' },
