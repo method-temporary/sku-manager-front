@@ -653,7 +653,7 @@ class CardResultManagementContainer extends ReactComponent<Props, States, Inject
               searchButtons
             />
           </SearchBox.Group>
-          <SearchBox.Group name="Report, Test 채점상태">
+          <SearchBox.Group name="Test 채점 결과">
             <SearchBox.Select
               fieldName="scoringState"
               options={paperId === '' && !isReport ? SelectType.nullState : SelectType.scoringState}
@@ -666,7 +666,7 @@ class CardResultManagementContainer extends ReactComponent<Props, States, Inject
               options={paperId === '' && !isReport ? SelectType.nullState : SelectType.testFrequency}
               placeholder="전체"
             />
-            <>
+            {/* <>
               <label>완료여부</label>
               <div style={{ height: '39px' }}>
                 <Form.Field
@@ -675,7 +675,7 @@ class CardResultManagementContainer extends ReactComponent<Props, States, Inject
                   onClick={(e: any, data: any) => searchBoxService.changePropsFn('phaseCompleteState', data.checked)}
                 />
               </div>
-            </>
+            </> */}
           </SearchBox.Group>
           <SearchBox.Group name="Survey 완료여부">
             <SearchBox.Select fieldName="surveyCompleted" options={SelectType.surveyCompleted} placeholder="전체" />
@@ -693,11 +693,9 @@ class CardResultManagementContainer extends ReactComponent<Props, States, Inject
           <SubActions>
             <SubActions.Left>
               <SubActions.Count>
-                <strong>{studentCount.totalStudentCount}</strong>명 | 결과처리대기
-                <strong>{learningStateCount.resultWaitingCount}</strong>명<span className="dash">|</span>
+                <strong>{studentCount.totalStudentCount}</strong>명<span className="dash">|</span>
                 이수 <strong>{learningStateCount.passedCount}</strong>명 <span className="dash">|</span>
-                미이수 <strong>{learningStateCount.missedCount}</strong>명 <span className="dash">|</span>
-                불참 <strong>{learningStateCount.noShowCount}</strong>명
+                미이수 <strong>{learningStateCount.missedCount}</strong>명
               </SubActions.Count>
             </SubActions.Left>
             <SubActions.Right>

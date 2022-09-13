@@ -11,19 +11,19 @@ export const ALL_LANGUAGES = [
 const LanguageTypes: LanguageType[] = [
   {
     indexingId: 0,
-    value: new LangSupport({ defaultLang: false, lang: Language.Ko }),
+    value: new LangSupport({ defaultLang: false, lang: Language.Korean }),
     text: 'KO',
     key: 'Korean',
   },
   {
     indexingId: 1,
-    value: new LangSupport({ defaultLang: false, lang: Language.En }),
+    value: new LangSupport({ defaultLang: false, lang: Language.English }),
     text: 'EN',
     key: 'English',
   },
   {
     indexingId: 2,
-    value: new LangSupport({ defaultLang: false, lang: Language.Zh }),
+    value: new LangSupport({ defaultLang: false, lang: Language.Chinese }),
     text: 'ZH',
     key: 'Chinese',
   },

@@ -65,13 +65,13 @@ class CreateCourseSetInfoContainer extends ReactComponent<Props, {}, Injected> {
 
     return (
       <>
-        <FormTable title="Mapping Card 정보">
+        {/* <FormTable title="Mapping Card 정보">
           <CourseSetInfoForApprovalView
             findCollegeName={this.findCollegeName}
             findChannelName={this.findChannelName}
             cards={cards}
           />
-        </FormTable>
+        </FormTable> */}
         {/*<DiscussionModal*/}
         {/*  discussionModalOpen={this.state.open}*/}
         {/*  closeDiscussionPopup={this.closeDiscussionPopup}*/}

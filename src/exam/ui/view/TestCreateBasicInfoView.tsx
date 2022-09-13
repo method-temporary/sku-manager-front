@@ -79,7 +79,7 @@ export function TestCreateBasicInfoView({
             </Table.Row>
             <Table.Row>
               <Table.Cell className="tb-header">
-                Test 이름 <span className="required">*</span>
+                제목 <span className="required">*</span>
               </Table.Cell>
               <Table.Cell colSpan={5}>
                 <div className={title.length >= 80 ? 'ui right-top-count input error' : 'ui right-top-count input'}>
@@ -98,7 +98,7 @@ export function TestCreateBasicInfoView({
                 </div>
               </Table.Cell>
             </Table.Row>
-            <Table.Row>
+            {/* <Table.Row>
               <Table.Cell className="tb-header">
                 Test 설명 <span className="required">*</span>
               </Table.Cell>
@@ -142,7 +142,7 @@ export function TestCreateBasicInfoView({
               <Table.Cell>{authorName}</Table.Cell>
               <Table.Cell className="tb-header">출제자 E-mail</Table.Cell>
               <Table.Cell>{email}</Table.Cell>
-            </Table.Row>
+            </Table.Row> */}
           </Table.Body>
         </Table>
       </Form>

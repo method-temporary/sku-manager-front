@@ -24,26 +24,26 @@ export function TestListView({
   return (
     <Table celled selectable className="table-fixed">
       <colgroup>
-        <col width="5%" />
-        <col width="5%" />
-        <col width="9%" />
-        <col width="31%" />
-        <col width="9%" />
-        <col width="9%" />
-        <col width="9%" />
-        <col width="9%" />
-        <col width="9%" />
+        <col width="7%" />
+        {/* <col width="5%" />
+        <col width="9%" /> */}
+        <col width="%" />
+        {/* <col width="9%" />
+        <col width="9%" /> */}
+        <col width="12%" />
+        <col width="12%" />
+        <col width="12%" />
       </colgroup>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell textAlign="center">No</Table.HeaderCell>
-          <Table.HeaderCell textAlign="center">Language</Table.HeaderCell>
-          <Table.HeaderCell textAlign="center">멤버사</Table.HeaderCell>
-          <Table.HeaderCell textAlign="center">시험 이름</Table.HeaderCell>
-          <Table.HeaderCell textAlign="center">출제 방식</Table.HeaderCell>
-          <Table.HeaderCell textAlign="center">최종본 여부</Table.HeaderCell>
+          {/* <Table.HeaderCell textAlign="center">Language</Table.HeaderCell>
+          <Table.HeaderCell textAlign="center">멤버사</Table.HeaderCell> */}
+          <Table.HeaderCell textAlign="center">test 제목</Table.HeaderCell>
+          {/* <Table.HeaderCell textAlign="center">출제 방식</Table.HeaderCell>
+          <Table.HeaderCell textAlign="center">최종본 여부</Table.HeaderCell> */}
           <Table.HeaderCell textAlign="center">등록자</Table.HeaderCell>
-          <Table.HeaderCell textAlign="center">등록일</Table.HeaderCell>
+          <Table.HeaderCell textAlign="center">등록일자</Table.HeaderCell>
           <Table.HeaderCell textAlign="center">시험지 복사</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
@@ -56,19 +56,19 @@ export function TestListView({
                 <Table.Cell onClick={() => onClickTestDetail(test.id, test.isFinalVersion)} textAlign="center">
                   {getTestNo(totalCount, pageNo, limit, index)}
                 </Table.Cell>
-                <Table.Cell onClick={() => onClickTestDetail(test.id, test.isFinalVersion)}>{test.language}</Table.Cell>
+                {/* <Table.Cell onClick={() => onClickTestDetail(test.id, test.isFinalVersion)}>{test.language}</Table.Cell>
                 <Table.Cell onClick={() => onClickTestDetail(test.id, test.isFinalVersion)} textAlign="center">
                   {workspaces.find(
                     (item) => item.value === test?.patronKey?.keyString.slice(test.patronKey.keyString.indexOf('@') + 1)
                   )?.text || ''}
-                </Table.Cell>
+                </Table.Cell> */}
                 <Table.Cell onClick={() => onClickTestDetail(test.id, test.isFinalVersion)}>{test.title}</Table.Cell>
-                <Table.Cell onClick={() => onClickTestDetail(test.id, test.isFinalVersion)} textAlign="center">
+                {/* <Table.Cell onClick={() => onClickTestDetail(test.id, test.isFinalVersion)} textAlign="center">
                   {test.questionSelectionTypeText}
                 </Table.Cell>
                 <Table.Cell onClick={() => onClickTestDetail(test.id, test.isFinalVersion)} textAlign="center">
                   {(test.isFinalVersion && '최종본') || '수정가능본'}
-                </Table.Cell>
+                </Table.Cell> */}
                 <Table.Cell onClick={() => onClickTestDetail(test.id, test.isFinalVersion)} textAlign="center">
                   {test.creatorName}
                 </Table.Cell>

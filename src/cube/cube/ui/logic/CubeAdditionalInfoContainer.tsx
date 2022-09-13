@@ -204,7 +204,7 @@ class CubeAdditionalInfoContainer extends ReactComponent<Props, State, Injected>
 
     return (
       <FormTable title="추가정보">
-        <FormTable.Row name="Report 출제">
+        {/* <FormTable.Row name="Report 출제">
           {!readonly && (
             <ReportModal
               onOk={this.onReportOk}
@@ -231,7 +231,7 @@ class CubeAdditionalInfoContainer extends ReactComponent<Props, State, Injected>
               readonly={readonly}
             />
           )}
-        </FormTable.Row>
+        </FormTable.Row> */}
         {!readonly ? (
           <FormTable.Row
             name="Test 추가"

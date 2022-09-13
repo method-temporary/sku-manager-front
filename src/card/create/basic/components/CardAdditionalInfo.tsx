@@ -14,6 +14,12 @@ import { onChangeCardCreatePolyglot } from '../../CardCreate.util';
 import RelatedCard from './RelatedCard';
 import CommunityList from './CommunityList';
 
+import { ExamPaperModel } from 'exam/model/ExamPaperModel';
+import { TestWithViewInfo } from '../model/TestWithViewInfo';
+import TestList from './TestLIst';
+import { convertExamPaper, getReportFileBox, resetSurvey, setReportFileBox, setSurvey } from '../../CardCreate.util';
+import TestModal from '../../../shared/components/testModal/TestModal';
+
 interface Props {
   //
   readonly?: boolean;
@@ -33,8 +39,8 @@ const CardAdditionalInfo = observer(({ readonly }: Props) => {
   } = CardCreateStore.instance;
 
   return (
-    <FormTable title="부가 정보">
-      <FormTable.Row name="교육자료">
+    <FormTable title="">
+      {/* <FormTable.Row name="교육자료">
         <>
           <FileBox
             options={{ readonly }}
@@ -69,7 +75,8 @@ const CardAdditionalInfo = observer(({ readonly }: Props) => {
           )}
         </>
       </FormTable.Row>
-      <RelatedCard readonly={readonly} />
+      <RelatedCard readonly={readonly} /> */}
+
       <FormTable.Row name="서약 진행">
         <Form.Field
           control={Checkbox}
@@ -104,7 +111,7 @@ const CardAdditionalInfo = observer(({ readonly }: Props) => {
           />
         )}
       </FormTable.Row>
-      <FormTable.Row name="Community">
+      {/* <FormTable.Row name="Community">
         {!readonly && (
           <CommunityListModal
             type="card"
@@ -117,7 +124,7 @@ const CardAdditionalInfo = observer(({ readonly }: Props) => {
           />
         )}
         <CommunityList readonly={readonly} />
-      </FormTable.Row>
+      </FormTable.Row> */}
     </FormTable>
   );
 });

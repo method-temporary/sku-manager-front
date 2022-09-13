@@ -15,6 +15,7 @@ export function TestListHeaderView({ testLimit, onChangeLimit, onClickCreate }: 
         <Grid.Column width={8}></Grid.Column>
         <Grid.Column width={8}>
           <div className="right">
+            <Button onClick={onClickCreate}>+ Test 등록</Button>
             <Select
               className="ui small-border dropdown m0"
               control={Select}
@@ -22,7 +23,6 @@ export function TestListHeaderView({ testLimit, onChangeLimit, onClickCreate }: 
               value={testLimit}
               onChange={onChangeLimit}
             />
-            <Button onClick={onClickCreate}>시험지 등록</Button>
           </div>
         </Grid.Column>
       </Grid.Row>

@@ -41,7 +41,7 @@ export const CardStudentResultPage = observer(() => {
       <CardStudentResultSearchBox />
       <CardStudentResultTopSubActions />
       <CardStudentResultList />
-      <CardStudentResultBottomSubActions />
+      {/* <CardStudentResultBottomSubActions /> */}
       <CardStudentResultPagination />
       <ResultManagementModalContainer />
     </Container>

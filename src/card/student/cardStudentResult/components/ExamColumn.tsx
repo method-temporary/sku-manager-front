@@ -95,7 +95,7 @@ export const ExamColumn = observer(({ student }) => {
     return (
       <>
         <Table.Cell textAlign="center" />
-        <Table.Cell textAlign="center">0</Table.Cell>
+        {/* <Table.Cell textAlign="center">0</Table.Cell> */}
         <Table.Cell textAlign="center">미응시</Table.Cell>
       </>
     );
@@ -106,7 +106,7 @@ export const ExamColumn = observer(({ student }) => {
     return (
       <>
         <Table.Cell textAlign="center">-</Table.Cell>
-        <Table.Cell textAlign="center">-</Table.Cell>
+        {/* <Table.Cell textAlign="center">-</Table.Cell> */}
         <Table.Cell textAlign="center">-</Table.Cell>
       </>
     );

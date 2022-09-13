@@ -13,6 +13,7 @@ import {
   cardSearchPart,
   cardStatus,
   cardTypeOptions,
+  cardTypeOptions1,
   stampOptions,
 } from '../../shared/model/CardSelectOptions';
 import CardListStore from '../CardList.store';
@@ -92,10 +93,10 @@ const CardSearchBox = observer(({ onSearch }: Props) => {
           endFieldName="endDate"
           onChangeStartDate={(date) => setStartDate(dayjs(date).valueOf())}
           onChangeEndDate={(date) => setEndDate(dayjs(date).valueOf())}
-          searchButtons
+          // searchButtons
         />
       </TempSearchBox.Group>
-      <TempSearchBox.Group name="Category / Channel">
+      {/* <TempSearchBox.Group name="Category / Channel">
         <TempSearchBox.Select
           value={collegeId}
           options={collegeOptions}
@@ -118,51 +119,58 @@ const CardSearchBox = observer(({ onSearch }: Props) => {
           fieldName="mainCategoryOnly"
           onChange={(_e, data) => setMainCategoryOnly(!data.checked)}
         />
-      </TempSearchBox.Group>
-      <TempSearchBox.Group name="과정 유형">
-        <TempSearchBox.Select
+      </TempSearchBox.Group> */}
+      <TempSearchBox.Group name="Card형태">
+        {/* <TempSearchBox.Select
           options={cardLearningTypeOptions}
           fieldName="studentEnrollmentType"
           value={studentEnrollmentType}
           onChange={(_e, data) => setStudentEnrollmentType(data.value)}
-        />
+        /> */}
         <TempSearchBox.Select
-          name="카드 유형"
-          options={cardTypeOptions}
+          options={cardTypeOptions1}
           fieldName="cardType"
           value={cardType}
           onChange={(_e, data) => setCardType(data.value)}
         />
         <TempSearchBox.Select
-          name="Stamp 획득 여부"
-          value={hasStamp}
-          fieldName="hasStamp"
-          options={stampOptions}
-          onChange={(_e, data) => setHasStamp(data.value)}
-        />
-      </TempSearchBox.Group>
-      <TempSearchBox.Group name="제공상태">
-        <TempSearchBox.Select
+          name="승인상태"
           value={cardState}
           options={cardStatus}
           fieldName="cardState"
           onChange={(_e, data) => setCardState(data.value)}
         />
+      </TempSearchBox.Group>
+      {/* <TempSearchBox.Select
+          name="Stamp 획득 여부"
+          value={hasStamp}
+          fieldName="hasStamp"
+          options={stampOptions}
+          onChange={(_e, data) => setHasStamp(data.value)}
+        /> */}
+
+      {/* <TempSearchBox.Group name="승인상태">
         <TempSearchBox.Select
+          value={cardState}
+          options={cardStatus}
+          fieldName="cardState"
+          onChange={(_e, data) => setCardState(data.value)}
+        /> */}
+      {/* <TempSearchBox.Select
           name="공개여부"
           value={searchable}
           options={cardOpenType}
           fieldName="searchSearchable"
           onChange={(_e, data) => setSearchable(data.value)}
-        />
-      </TempSearchBox.Group>
-      <TempSearchBox.Group name="공유된 Card만 보기">
+        /> */}
+      {/* </TempSearchBox.Group> */}
+      {/* <TempSearchBox.Group name="공유된 Card만 보기">
         <TempSearchBox.CheckBox
           value={sharedOnly}
           fieldName="sharedOnly"
           onChange={(e, data) => onChangeSharedOnly(data.checked)}
         />
-      </TempSearchBox.Group>
+      </TempSearchBox.Group> */}
       <TempSearchBox.BasicSearch
         disabledKey=""
         options={cardSearchPart}
@@ -170,7 +178,7 @@ const CardSearchBox = observer(({ onSearch }: Props) => {
         onSelectChange={(_e, data) => onChangeBasicSearchSelect(data.value)}
         onChange={(_e, data) => setSearchWord(data.value)}
       />
-      <TempSearchBox.UserGroup fieldName="userGroupSequences" onChange={setUserGroupSequences} />
+      {/* <TempSearchBox.UserGroup fieldName="userGroupSequences" onChange={setUserGroupSequences} /> */}
     </TempSearchBox>
   );
 });

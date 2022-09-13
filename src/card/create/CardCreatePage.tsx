@@ -94,23 +94,24 @@ const CardCreatePage = observer(() => {
 
     return [
       {
-        menuItem: 'Card 정보',
+        // menuItem: 'Card 정보',
         render: () => (
-          <Tab.Pane attached={false}>
-            <Polyglot languages={langSupports}>
-              <CardBasicInfo />
-              <CardExposureInfo />
+          // <Tab.Pane attached={false}>
+          <Polyglot languages={langSupports}>
+            <CardBasicInfo />
+            {/* <CardExposureInfo />
               <AccessRuleSettings
                 multiple={false}
                 onChange={onChangeAccessRule}
                 defaultGroupBasedAccessRule={groupBasedAccessRule}
               />
-              {hasPrerequisite === 'Yes' && <PreRequisiteCard />}
-              <CardAdditionalInfo />
-              <CardMoreInfo />
-              <TestSheetModalContainer />
+              {hasPrerequisite === 'Yes' && <PreRequisiteCard />} */}
 
-              <SubActions form>
+            <CardAdditionalInfo />
+            <CardMoreInfo />
+            <TestSheetModalContainer />
+
+            {/* <SubActions form>
                 <SubActions.Right>
                   <Button basic onClick={onClickMoveToCardList}>
                     목록
@@ -119,31 +120,31 @@ const CardCreatePage = observer(() => {
                     저장
                   </Button>
                 </SubActions.Right>
-              </SubActions>
-            </Polyglot>
-          </Tab.Pane>
+              </SubActions> */}
+          </Polyglot>
+          // </Tab.Pane>
         ),
       },
-      {
-        menuItem: '학습 정보',
-        render: () => (
-          <Tab.Pane attached={false}>
-            <Polyglot languages={langSupports}>
-              <LearningPeriodInfo />
-              {studentEnrollmentType === 'Enrollment' && <RoundInfo />}
-              <LearningPlan />
-            </Polyglot>
+      // {
+      //   menuItem: '학습 정보',
+      //   render: () => (
+      //     <Tab.Pane attached={false}>
+      //       <Polyglot languages={langSupports}>
+      //         <LearningPeriodInfo />
+      //         {studentEnrollmentType === 'Enrollment' && <RoundInfo />}
+      //         <LearningPlan />
+      //       </Polyglot>
 
-            <SubActions form>
-              <SubActions.Right>
-                <Button primary onClick={onClickSave}>
-                  저장
-                </Button>
-              </SubActions.Right>
-            </SubActions>
-          </Tab.Pane>
-        ),
-      },
+      //       <SubActions form>
+      //         <SubActions.Right>
+      //           <Button primary onClick={onClickSave}>
+      //             저장
+      //           </Button>
+      //         </SubActions.Right>
+      //       </SubActions>
+      //     </Tab.Pane>
+      //   ),
+      // },
     ];
   };
 
@@ -151,20 +152,20 @@ const CardCreatePage = observer(() => {
     <>
       <Container fluid>
         <PageTitle breadcrumb={cardBreadcrumb}>
-          Card 관리{' '}
-          <Button primary as="a" download href={baseUrl + 'resources/[mySUNI]_Card관리_가이드.pdf'}>
+          Card 등록/수정{' '}
+          {/* <Button primary as="a" download href={baseUrl + 'resources/[mySUNI]_Card관리_가이드.pdf'}>
             Card 관리 가이드
-          </Button>
+          </Button> */}
         </PageTitle>
 
         <DimmerLoader active={createLoading} page />
         <Form>
           <Tab
             panes={getOpenedTab()}
-            menu={{ secondary: true, pointing: true }}
-            activeIndex={activeIndex}
-            className="styled-tab tab-wrap"
-            onTabChange={onClickTab}
+            // menu={{ secondary: true, pointing: true }}
+            // activeIndex={activeIndex}
+            // className="styled-tab tab-wrap"
+            // onTabChange={onClickTab}
           />
         </Form>
       </Container>

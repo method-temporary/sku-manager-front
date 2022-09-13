@@ -25,6 +25,14 @@ export const cardTypeOptions = [
   { key: '11', text: 'Course', value: 'Course' },
 ];
 
+export const cardTypeOptions1 = [
+  { key: '0', text: '전체', value: 'ALL' },
+  { key: '1', text: 'Video', value: 'Video' },
+  { key: '2', text: 'WebPage - Link', value: 'WebPageLink' },
+  { key: '3', text: 'WebPage - Embed', value: 'WebPageEmbed' },
+  { key: '4', text: 'Document', value: 'Document' },
+];
+
 export const cardStatus = [
   { key: '0', text: '전체', value: '' },
   { key: '1', text: '임시저장', value: 'Created' },
@@ -42,9 +50,15 @@ export const cardOpenType = [
 
 export const cardSearchPart = [
   { key: '0', text: '전체', value: '' },
-  { key: '1', text: '과정명', value: '과정명' },
+  { key: '1', text: 'Card명', value: '과정명' },
   { key: '2', text: '생성자', value: '생성자' },
 ];
+
+// export const cardSearchPart = [
+//   { key: '0', text: '전체', value: '' },
+//   { key: '1', text: '과정명', value: '과정명' },
+//   { key: '2', text: '생성자', value: '생성자' },
+// ];
 
 export const cardApprovalStatus = [
   { key: '0', text: '전체', value: '전체' },

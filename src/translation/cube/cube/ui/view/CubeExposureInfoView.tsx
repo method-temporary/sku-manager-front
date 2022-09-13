@@ -14,13 +14,8 @@ interface Props {
 @observer
 @reactAutobind
 class CubeExposureInfoView extends ReactComponent<Props, {}> {
-
   render() {
-    const {
-      cube,
-      onChangeCubeProps,
-      readonly,
-    } = this.props;
+    const { cube, onChangeCubeProps, readonly } = this.props;
 
     return (
       <FormTable title="노출 정보">

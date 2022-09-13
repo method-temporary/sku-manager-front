@@ -182,10 +182,10 @@ const CardDetailPage = observer(() => {
     <>
       <Container fluid>
         <PageTitle breadcrumb={cardBreadcrumb}>
-          Card 관리{' '}
-          <Button primary as="a" download href={baseUrl + 'resources/[mySUNI]_Card관리_가이드.pdf'}>
-            Card 관리 가이드
-          </Button>
+          Card 상세{' '}
+          {/* <Button primary as="a" download href={baseUrl + 'resources/[mySUNI]_Card관리_가이드.pdf'}>
+              Card 관리 가이드
+            </Button> */}
         </PageTitle>
 
         <Form>

@@ -25,7 +25,7 @@ import { cardApprovalBreadcrumb } from '../../shared/utiles';
 import CardCreateStore from '../../create/CardCreate.store';
 import CardApprovalInfo from './components/CardApprovalInfo';
 import PreRequisiteCard from '../../create/basic/components/PreRequisiteCard';
-import CardBasicInfo from '../../create/basic/components/CardBasicInfo';
+import CardBaicInfoApprovalDetail from '../../create/basic/components/CardBaicInfoApprovalDetail';
 import CardExposureInfo from '../../create/basic/components/CardExposureInfo';
 import CardAdditionalInfo from '../../create/basic/components/CardAdditionalInfo';
 import CardMoreInfo from '../../create/basic/components/CardMoreInfo';
@@ -135,29 +135,33 @@ const CardApprovalDetailPage = observer(() => {
           <PageTitle breadcrumb={cardApprovalBreadcrumb} />
 
           <Header as="h3" className="learning-tit">
-            {getPolyglotToAnyString(name)}
+            학습정보
           </Header>
 
           <Polyglot languages={langSupports}>
             {/*승인 정보*/}
-            <DimmerLoader active={isApprovalDetailLoading}>
+            {/* <DimmerLoader active={isApprovalDetailLoading}>
               <CardApprovalInfo onClickOpen={onClickOpened} onClickReject={onClickRejected} />
-            </DimmerLoader>
+            </DimmerLoader> */}
 
             {/*기본 정보*/}
             <Accordion fluid>
-              <Accordion.Title active={activeIndex === 1} index={1} onClick={onClickAccordion}>
+              {/* <Accordion.Title active={activeIndex === 1} index={1} onClick={onClickAccordion}>
                 <Segment>
                   <Icon name="dropdown" />
                   기본 정보
                 </Segment>
-              </Accordion.Title>
+              </Accordion.Title> */}
               <Accordion.Content active={activeIndex === 1}>
-                <CardBasicInfo readonly />
+                <CardBaicInfoApprovalDetail readonly />
               </Accordion.Content>
 
+              <DimmerLoader active={isApprovalDetailLoading}>
+                <CardApprovalInfo onClickOpen={onClickOpened} onClickReject={onClickRejected} />
+              </DimmerLoader>
+
               {/*노출 정보*/}
-              <Accordion.Title active={activeIndex === 2} index={2} onClick={onClickAccordion}>
+              {/* <Accordion.Title active={activeIndex === 2} index={2} onClick={onClickAccordion}>
                 <Segment>
                   <Icon name="dropdown" />
                   노출 정보
@@ -165,10 +169,10 @@ const CardApprovalDetailPage = observer(() => {
               </Accordion.Title>
               <Accordion.Content active={activeIndex === 2}>
                 <CardExposureInfo readonly />
-              </Accordion.Content>
+              </Accordion.Content> */}
 
               {/*접근 제어*/}
-              <Accordion.Title active={activeIndex === 3} index={3} onClick={onClickAccordion}>
+              {/* <Accordion.Title active={activeIndex === 3} index={3} onClick={onClickAccordion}>
                 <Segment>
                   <Icon name="dropdown" />
                   접근 제어 정보
@@ -176,10 +180,10 @@ const CardApprovalDetailPage = observer(() => {
               </Accordion.Title>
               <Accordion.Content active={activeIndex === 3}>
                 <AccessRuleSettings readOnly multiple={false} />
-              </Accordion.Content>
+              </Accordion.Content> */}
 
               {/*선수 Card 정보*/}
-              {hasPrerequisite === 'Yes' && (
+              {/* {hasPrerequisite === 'Yes' && (
                 <>
                   <Accordion.Title active={activeIndex === 4} index={4} onClick={onClickAccordion}>
                     <Segment>
@@ -191,10 +195,10 @@ const CardApprovalDetailPage = observer(() => {
                     <PreRequisiteCard readonly />
                   </Accordion.Content>
                 </>
-              )}
+              )} */}
 
               {/*부가 정보*/}
-              <Accordion.Title active={activeIndex === 5} index={5} onClick={onClickAccordion}>
+              {/* <Accordion.Title active={activeIndex === 5} index={5} onClick={onClickAccordion}>
                 <Segment>
                   <Icon name="dropdown" />
                   부가 정보
@@ -202,10 +206,10 @@ const CardApprovalDetailPage = observer(() => {
               </Accordion.Title>
               <Accordion.Content active={activeIndex === 5}>
                 <CardAdditionalInfo readonly />
-              </Accordion.Content>
+              </Accordion.Content> */}
 
               {/*추가 정보*/}
-              <Accordion.Title active={activeIndex === 6} index={6} onClick={onClickAccordion}>
+              {/* <Accordion.Title active={activeIndex === 6} index={6} onClick={onClickAccordion}>
                 <Segment>
                   <Icon name="dropdown" />
                   Report/Survey/Test
@@ -213,10 +217,10 @@ const CardApprovalDetailPage = observer(() => {
               </Accordion.Title>
               <Accordion.Content active={activeIndex === 6}>
                 <CardMoreInfo readonly />
-              </Accordion.Content>
+              </Accordion.Content> */}
 
               {/*과정 기간 정보*/}
-              <Accordion.Title active={activeIndex === 7} index={7} onClick={onClickAccordion}>
+              {/* <Accordion.Title active={activeIndex === 7} index={7} onClick={onClickAccordion}>
                 <Segment>
                   <Icon name="dropdown" />
                   과정 기본 정보
@@ -224,10 +228,10 @@ const CardApprovalDetailPage = observer(() => {
               </Accordion.Title>
               <Accordion.Content active={activeIndex === 7}>
                 <LearningPeriodInfo readonly />
-              </Accordion.Content>
+              </Accordion.Content> */}
 
               {/*차수 운영 정보*/}
-              {studentEnrollmentType === 'Enrollment' && (
+              {/* {studentEnrollmentType === 'Enrollment' && (
                 <>
                   <Accordion.Title active={activeIndex === 8} index={8} onClick={onClickAccordion}>
                     <Segment>
@@ -239,10 +243,10 @@ const CardApprovalDetailPage = observer(() => {
                     <RoundInfo readonly />
                   </Accordion.Content>
                 </>
-              )}
+              )} */}
 
               {/*Chapter / Cube / Talk List 정보 정보*/}
-              <Accordion.Title active={activeIndex === 9} index={9} onClick={onClickAccordion}>
+              {/* <Accordion.Title active={activeIndex === 9} index={9} onClick={onClickAccordion}>
                 <Segment>
                   <Icon name="dropdown" />
                   Chapter / Cube / Talk List 정보
@@ -250,7 +254,7 @@ const CardApprovalDetailPage = observer(() => {
               </Accordion.Title>
               <Accordion.Content active={activeIndex === 9}>
                 <LearningPlan readonly />
-              </Accordion.Content>
+              </Accordion.Content> */}
             </Accordion>
           </Polyglot>
         </Form>

@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 
 import { GroupBasedAccessRuleModel, SelectType, YesNo } from 'shared/model';
 import { alert, AlertModel, confirm, ConfirmModel, Polyglot, RadioGroup } from 'shared/components';
-import { getPolyglotToAnyString } from 'shared/components/Polyglot';
+import { getPolyglotToAnyString, getPolyglotToString } from 'shared/components/Polyglot';
 import { AccessRuleService } from 'shared/present';
 
 import { DifficultyLevel } from '_data/lecture/cards/model/vo/DifficultyLevel';
@@ -34,6 +34,8 @@ import CardCreateStore from '../../CardCreate.store';
 
 import { CardCategoryWithInfo } from '../model/CardCategoryWithInfo';
 import { CardModel, CardService } from 'card/card';
+
+import { cardStateDisplay } from '../../../card/ui/logic/CardHelper';
 
 interface Props {
   //
@@ -200,7 +202,7 @@ const CardBasicInfo = observer(({ readonly }: Props) => {
         <col width="30%" />
       </colgroup>
 
-      <Table.Header>
+      {/* <Table.Header>
         <Table.Row>
           <Table.HeaderCell colSpan={4} className="title-header">
             <Grid className="list-info">
@@ -227,10 +229,20 @@ const CardBasicInfo = observer(({ readonly }: Props) => {
             </Grid>
           </Table.HeaderCell>
         </Table.Row>
-      </Table.Header>
+      </Table.Header> */}
       <Table.Body>
-        <Table.Row>
-          <Table.Cell className="tb-header">지원 언어</Table.Cell>
+        {!readonly && (
+          <>
+            <Table.Row>
+              <Table.Cell className="tb-header">편집 중인 언어</Table.Cell>
+              <Table.Cell>
+                <Polyglot.Languages onChangeProps={onChangeCardCreatePolyglot} readOnly={readonly} />
+              </Table.Cell>
+            </Table.Row>
+          </>
+        )}
+        {/* <Table.Row>
+          <Table.Cell className="tb-header">편집 중인 언어</Table.Cell>
           <Table.Cell>
             <Polyglot.Languages onChangeProps={onChangeCardCreatePolyglot} readOnly={readonly} />
           </Table.Cell>
@@ -238,8 +250,8 @@ const CardBasicInfo = observer(({ readonly }: Props) => {
           <Table.Cell>
             <Polyglot.Default onChangeProps={onChangeCardCreatePolyglot} readOnly={readonly} />
           </Table.Cell>
-        </Table.Row>
-        <Table.Row>
+        </Table.Row> */}
+        {/* <Table.Row>
           <Table.Cell className="tb-header">
             Card 공개 여부 설정 <span className="required"> *</span>
           </Table.Cell>
@@ -257,10 +269,47 @@ const CardBasicInfo = observer(({ readonly }: Props) => {
               <>{searchable === 'Yes' ? '공개' : '비공개'}</>
             )}
           </Table.Cell>
+        </Table.Row> */}
+
+        {readonly && (
+          <>
+            <Table.Row>
+              <Table.Cell className="tb-header">승인자</Table.Cell>
+              <Table.Cell colSpan={3}>{getPolyglotToString(registrantName)}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell className="tb-header">승인일자</Table.Cell>
+              <Table.Cell colSpan={3}>{`${dayjs(registeredTime).format('YYYY.MM.DD HH:mm:ss')}`}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell className="tb-header">승인여부</Table.Cell>
+              <Table.Cell colSpan={3}>{cardStateDisplay(cardState)}</Table.Cell>
+            </Table.Row>
+          </>
+        )}
+        <Table.Row>
+          <Table.Cell className="tb-header">
+            {/* qkrxogh */}
+            Card 형태 <span className="required"> *</span>
+          </Table.Cell>
+          <Table.Cell colSpan={3}>
+            {!readonly ? (
+              <Form.Group>
+                <RadioGroup
+                  value={searchable}
+                  values={['Yes', 'No']}
+                  labels={['일반형', '서약형']}
+                  onChange={(e: any, data: any) => setSearchable(data.value)}
+                />
+              </Form.Group>
+            ) : (
+              <>{searchable === 'Yes' ? '일반형' : '서약형'}</>
+            )}
+          </Table.Cell>
         </Table.Row>
         <Table.Row>
           <Table.Cell className="tb-header">
-            Card 명 <span className="required"> *</span>
+            제목 <span className="required"> *</span>
           </Table.Cell>
           <Table.Cell colSpan={3}>
             <Polyglot.Input
@@ -268,213 +317,213 @@ const CardBasicInfo = observer(({ readonly }: Props) => {
               languageStrings={name}
               name="name"
               onChangeProps={onChangeCardCreatePolyglot}
-              placeholder="과정명을 입력해주세요. (최대 200자까지 입력가능)"
+              placeholder="제목을 입력해주세요. (최대 200자까지 입력가능)"
               maxLength="200"
             />
           </Table.Cell>
         </Table.Row>
-        <Table.Row>
-          <Table.Cell className="tb-header">
-            Card 표시 문구 <span className="required"> *</span>
-          </Table.Cell>
-          <Table.Cell colSpan={3}>
-            <Polyglot.TextArea
-              readOnly={readonly}
-              name="simpleDescription"
-              onChangeProps={onChangeCardCreatePolyglot}
-              languageStrings={simpleDescription}
-              maxLength={200}
-              placeholder="Card 표시 문구를 입력해주세요. (최대 200자까지 입력가능)"
-            />
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell className="tb-header">
-            Card 소개 <span className="required"> *</span>
-          </Table.Cell>
-          <Table.Cell colSpan={3}>
-            <Polyglot.Editor
-              readOnly={readonly}
-              name="description"
-              languageStrings={description}
-              onChangeProps={onChangeCardCreatePolyglot}
-              maxLength={3000}
-              placeholder="Card 소개를 입력해주세요. (3,000자까지 입력가능)"
-            />
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell className="tb-header">
-            메인 채널 <span className="required"> *</span>
-          </Table.Cell>
-          <Table.Cell colSpan={3}>
-            <CollegeSelectedModal
-              readonly={readonly}
-              mainChannel={mainChannel}
-              subChannels={subChannels}
-              onOk={onOkChannel}
-            />
-            {mainCategory.channelId && displayChannelToTable(mainCategory, Colleges?.results || [])}
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell className="tb-header">서브 채널</Table.Cell>
-          <Table.Cell colSpan={3}>
-            <CollegeSelectedModal
-              readonly={readonly}
-              isSubChannel
-              mainChannel={mainChannel}
-              subChannels={subChannels}
-              onOk={onOkChannel}
-            />
+        {/* <Table.Row>
+            <Table.Cell className="tb-header">
+              Card 표시 문구 <span className="required"> *</span>
+            </Table.Cell>
+            <Table.Cell colSpan={3}>
+              <Polyglot.TextArea
+                readOnly={readonly}
+                name="simpleDescription"
+                onChangeProps={onChangeCardCreatePolyglot}
+                languageStrings={simpleDescription}
+                maxLength={200}
+                placeholder="Card 표시 문구를 입력해주세요. (최대 200자까지 입력가능)"
+              />
+            </Table.Cell>
+          </Table.Row> */}
+        {/* <Table.Row>
+            <Table.Cell className="tb-header">
+              Card 소개 <span className="required"> *</span>
+            </Table.Cell>
+            <Table.Cell colSpan={3}>
+              <Polyglot.Editor
+                readOnly={readonly}
+                name="description"
+                languageStrings={description}
+                onChangeProps={onChangeCardCreatePolyglot}
+                maxLength={3000}
+                placeholder="Card 소개를 입력해주세요. (3,000자까지 입력가능)"
+              />
+            </Table.Cell>
+          </Table.Row> */}
+        {/* <Table.Row>
+            <Table.Cell className="tb-header">
+              메인 채널 <span className="required"> *</span>
+            </Table.Cell>
+            <Table.Cell colSpan={3}>
+              <CollegeSelectedModal
+                readonly={readonly}
+                mainChannel={mainChannel}
+                subChannels={subChannels}
+                onOk={onOkChannel}
+              />
+              {mainCategory.channelId && displayChannelToTable(mainCategory, Colleges?.results || [])}
+            </Table.Cell>
+          </Table.Row> */}
+        {/* <Table.Row>
+            <Table.Cell className="tb-header">서브 채널</Table.Cell>
+            <Table.Cell colSpan={3}>
+              <CollegeSelectedModal
+                readonly={readonly}
+                isSubChannel
+                mainChannel={mainChannel}
+                subChannels={subChannels}
+                onOk={onOkChannel}
+              />
 
-            {makeSubCategoryDisplay(Colleges?.results || [])}
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell className="tb-header">
-            Stamp 발급여부 <span className="required"> *</span>
-          </Table.Cell>
-          <Table.Cell colSpan={3}>
-            {!readonly ? (
-              <Form.Group>
-                <Form.Field
-                  control={Select}
-                  placeholder="Select"
-                  options={stamp}
-                  value={hasStamp}
-                  onChange={(_: any, data: any) => {
-                    setHasStamp(data.value);
-                    data.value ? setStampCount(stampCount || 1) : setStampCount(0);
-                  }}
-                />
-                {hasStamp ? (
+              {makeSubCategoryDisplay(Colleges?.results || [])}
+            </Table.Cell>
+          </Table.Row> */}
+        {/* <Table.Row>
+            <Table.Cell className="tb-header">
+              Stamp 발급여부 <span className="required"> *</span>
+            </Table.Cell>
+            <Table.Cell colSpan={3}>
+              {!readonly ? (
+                <Form.Group>
                   <Form.Field
-                    control={Input}
-                    placeholder="Stamp 갯수"
-                    value={stampCount}
+                    control={Select}
+                    placeholder="Select"
+                    options={stamp}
+                    value={hasStamp}
                     onChange={(_: any, data: any) => {
-                      setStampCount(data.value || 1);
+                      setHasStamp(data.value);
+                      data.value ? setStampCount(stampCount || 1) : setStampCount(0);
                     }}
-                    type="number"
-                    min={1}
                   />
-                ) : null}
-              </Form.Group>
-            ) : (
-              <>{stampCount > 0 ? `Yes (${stampCount})` : 'No'}</>
-            )}
-          </Table.Cell>
-        </Table.Row>
-        {readonly && (
+                  {hasStamp ? (
+                    <Form.Field
+                      control={Input}
+                      placeholder="Stamp 갯수"
+                      value={stampCount}
+                      onChange={(_: any, data: any) => {
+                        setStampCount(data.value || 1);
+                      }}
+                      type="number"
+                      min={1}
+                    />
+                  ) : null}
+                </Form.Group>
+              ) : (
+                <>{stampCount > 0 ? `Yes (${stampCount})` : 'No'}</>
+              )}
+            </Table.Cell>
+          </Table.Row> */}
+        {/* {readonly && (
           <>
             <Table.Row>
               <Table.Cell className="tb-header">생성 정보</Table.Cell>
-              <Table.Cell colSpan={3}>
-                {`${dayjs(registeredTime).format('YYYY.MM.DD HH:mm:ss')} | ${getPolyglotToAnyString(registrantName)}`}
-              </Table.Cell>
+                <Table.Cell colSpan={3}>
+                  {`${dayjs(registeredTime).format('YYYY.MM.DD HH:mm:ss')} | ${getPolyglotToAnyString(registrantName)}`}
+                </Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell className="tb-header">승인 정보</Table.Cell>
               <Table.Cell colSpan={3}>{approvalInfo}</Table.Cell>
             </Table.Row>
           </>
-        )}
+        )} */}
 
-        <Table.Row>
-          <Table.Cell className="tb-header">
-            선수 Card 여부 <span className="required"> *</span>
-          </Table.Cell>
-          <Table.Cell colSpan={3}>
-            {!readonly ? (
-              <Form.Group>
-                <RadioGroup
-                  values={['Yes', 'No']}
-                  value={hasPrerequisite}
-                  onChange={(e: any, data: any) => onChangeHasPrerequisite(data.value)}
-                />
-              </Form.Group>
-            ) : (
-              hasPrerequisite
-            )}
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell className="tb-header">
-            담당자 <span className="required"> *</span>
-          </Table.Cell>
-          <Table.Cell colSpan={3}>
-            <ManagerListModal
-              readonly={readonly}
-              handleOk={onSelectOperator}
-              buttonName="담당자 선택"
-              multiSelect={false}
-            />
-
-            {cardOperator && cardOperator.id && (
-              <Table celled>
-                <colgroup>
-                  <col width="30%" />
-                  <col width="20%" />
-                  <col width="50%" />
-                </colgroup>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell textAlign="center">소속</Table.HeaderCell>
-                    <Table.HeaderCell textAlign="center">이름</Table.HeaderCell>
-                    <Table.HeaderCell textAlign="center">이메일</Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  <Table.Row>
-                    <Table.Cell>{getPolyglotToAnyString(cardOperator.companyName)}</Table.Cell>
-                    <Table.Cell>{getPolyglotToAnyString(cardOperator.name)}</Table.Cell>
-                    <Table.Cell>{cardOperator.email}</Table.Cell>
-                  </Table.Row>
-                </Table.Body>
-              </Table>
-            )}
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell className="tb-header">
-            난이도 <span className="required"> *</span>
-          </Table.Cell>
-          <Table.Cell colSpan={3}>
-            {!readonly ? (
-              <Form.Field
-                control={Select}
-                width={4}
-                placeholder="Select"
-                options={SelectType.difficulty}
-                value={difficultyLevel || ''}
-                onChange={(e: any, data: any) => setDifficultyLevel(data.value as DifficultyLevel)}
+        {/* <Table.Row>
+            <Table.Cell className="tb-header">
+              선수 Card 여부 <span className="required"> *</span>
+            </Table.Cell>
+            <Table.Cell colSpan={3}>
+              {!readonly ? (
+                <Form.Group>
+                  <RadioGroup
+                    values={['Yes', 'No']}
+                    value={hasPrerequisite}
+                    onChange={(e: any, data: any) => onChangeHasPrerequisite(data.value)}
+                  />
+                </Form.Group>
+              ) : (
+                hasPrerequisite
+              )}
+            </Table.Cell>
+          </Table.Row> */}
+        {/* <Table.Row>
+            <Table.Cell className="tb-header">
+              담당자 <span className="required"> *</span>
+            </Table.Cell>
+            <Table.Cell colSpan={3}>
+              <ManagerListModal
+                readonly={readonly}
+                handleOk={onSelectOperator}
+                buttonName="담당자 선택"
+                multiSelect={false}
               />
-            ) : (
-              difficultyLevel
-            )}
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell className="tb-header">
-            법정 의무 교육 여부 <span className="required"> *</span>
-          </Table.Cell>
-          <Table.Cell colSpan={3}>
-            {!readonly ? (
-              <Form.Group>
-                <RadioGroup
-                  value={mandatory ? 'Yes' : 'No'}
-                  values={['Yes', 'No']}
-                  onChange={(e: any, data: any) => setMandatory(data.value === 'Yes' ? true : false)}
+
+              {cardOperator && cardOperator.id && (
+                <Table celled>
+                  <colgroup>
+                    <col width="30%" />
+                    <col width="20%" />
+                    <col width="50%" />
+                  </colgroup>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.HeaderCell textAlign="center">소속</Table.HeaderCell>
+                      <Table.HeaderCell textAlign="center">이름</Table.HeaderCell>
+                      <Table.HeaderCell textAlign="center">이메일</Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
+                  <Table.Body>
+                    <Table.Row>
+                      <Table.Cell>{getPolyglotToAnyString(cardOperator.companyName)}</Table.Cell>
+                      <Table.Cell>{getPolyglotToAnyString(cardOperator.name)}</Table.Cell>
+                      <Table.Cell>{cardOperator.email}</Table.Cell>
+                    </Table.Row>
+                  </Table.Body>
+                </Table>
+              )}
+            </Table.Cell>
+          </Table.Row> */}
+        {/* <Table.Row>
+            <Table.Cell className="tb-header">
+              난이도 <span className="required"> *</span>
+            </Table.Cell>
+            <Table.Cell colSpan={3}>
+              {!readonly ? (
+                <Form.Field
+                  control={Select}
+                  width={4}
+                  placeholder="Select"
+                  options={SelectType.difficulty}
+                  value={difficultyLevel || ''}
+                  onChange={(e: any, data: any) => setDifficultyLevel(data.value as DifficultyLevel)}
                 />
-              </Form.Group>
-            ) : mandatory ? (
-              'Yes'
-            ) : (
-              'No'
-            )}
-          </Table.Cell>
-        </Table.Row>
+              ) : (
+                difficultyLevel
+              )}
+            </Table.Cell>
+          </Table.Row> */}
+        {/* <Table.Row>
+            <Table.Cell className="tb-header">
+              법정 의무 교육 여부 <span className="required"> *</span>
+            </Table.Cell>
+            <Table.Cell colSpan={3}>
+              {!readonly ? (
+                <Form.Group>
+                  <RadioGroup
+                    value={mandatory ? 'Yes' : 'No'}
+                    values={['Yes', 'No']}
+                    onChange={(e: any, data: any) => setMandatory(data.value === 'Yes' ? true : false)}
+                  />
+                </Form.Group>
+              ) : mandatory ? (
+                'Yes'
+              ) : (
+                'No'
+              )}
+            </Table.Cell>
+          </Table.Row> */}
       </Table.Body>
     </Table>
   );

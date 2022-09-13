@@ -21,7 +21,7 @@ export const SearchPartSearchField = observer(() => {
   return (
     <Grid.Column width={16}>
       <Form.Group inline>
-        <label>검색어</label>
+        <label>검색</label>
         <Form.Field
           control={Select}
           value={cardStudentResultQuery.searchOption}

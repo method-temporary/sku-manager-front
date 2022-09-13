@@ -183,24 +183,24 @@ class CardContentsInfoView extends React.Component<Props> {
             style={{ color: '#FF0000' }}
           >{` * 참여 기간 설정 시, 학습 시작일로부터 설정된 일정 내에만 학습에 참여할 수 있습니다.`}</p>
         </FormTable.Row>
-        <FormTable.Row name="총 학습 시간">{getLearningTimeText()}</FormTable.Row>
-        <FormTable.Row name="추가 학습 시간">
-          {isUpdatable ? (
-            <Form.Group>
-              <Form.Field
-                width={3}
-                control={Input}
-                type="number"
-                min={0}
-                value={cardQuery.additionalLearningTime}
-                onChange={(e: any, data: any) => onChangeNumber('additionalLearningTime', data.value, false)}
-              />
-              <span className="label">분</span>
-            </Form.Group>
-          ) : (
-            `${cardQuery.additionalLearningTime || 0} 분`
-          )}
-        </FormTable.Row>
+        {/* <FormTable.Row name="총 학습 시간">{getLearningTimeText()}</FormTable.Row>
+          <FormTable.Row name="추가 학습 시간">
+            {isUpdatable ? (
+              <Form.Group>
+                <Form.Field
+                  width={3}
+                  control={Input}
+                  type="number"
+                  min={0}
+                  value={cardQuery.additionalLearningTime}
+                  onChange={(e: any, data: any) => onChangeNumber('additionalLearningTime', data.value, false)}
+                />
+                <span className="label">분</span>
+              </Form.Group>
+            ) : (
+              `${cardQuery.additionalLearningTime || 0} 분`
+            )}
+          </FormTable.Row> */}
         <FormTable.Row name="Card 표시 문구" required>
           {/*{isUpdatable ? (*/}
           {/*  <Form.Field*/}

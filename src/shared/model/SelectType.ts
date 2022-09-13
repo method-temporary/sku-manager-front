@@ -69,17 +69,24 @@ export default {
   ],
 
   learningTypeForEnum3: [
-    { key: '0', text: '전체', value: 'ALL' },
-    { key: '1', text: 'Video', value: 'Video' },
-    { key: '2', text: 'WebPageLink', value: 'WebPageLink' },
-    { key: '3', text: 'WebPageEmbed', value: 'WebPageEmbed' },
-    { key: '4', text: 'Document', value: 'Document' },
+    { key: '0', text: '전체', value: '전체' },
+    { key: '1', text: 'Video', value: CubeType.Video },
+    { key: '2', text: 'WebPage - Link', value: CubeType.WebPageLink },
+    { key: '3', text: 'WebPage - Embed', value: CubeType.WebPageEmbed },
+    { key: '4', text: 'Document', value: CubeType.Document },
   ],
 
   cubeOrCourse: [
     { key: '0', text: '전체', value: '전체' },
     { key: '1', text: 'Cube', value: 'Cube' },
     { key: '2', text: 'Course', value: 'Course' },
+  ],
+
+  publicScope: [
+    { key: '0', text: '공개범위', value: 'ALL' },
+    { key: '1', text: '전체', value: 'ALL' },
+    { key: '2', text: '내부', value: 'Internal' },
+    { key: '3', text: 'BP', value: 'BP' },
   ],
 
   limit: [
@@ -653,7 +660,8 @@ export default {
   ],
 
   searchPartForCubeNotAll: [
-    { key: '1', text: '과정명', value: '과정명' },
+    { key: '0', text: '전체', value: '전체' },
+    { key: '1', text: 'Cube 명', value: 'Cube 명' },
     { key: '2', text: '생성자', value: '생성자' },
   ],
 

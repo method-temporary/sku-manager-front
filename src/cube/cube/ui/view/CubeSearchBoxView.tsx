@@ -52,7 +52,7 @@ class CubeSearchBoxView extends ReactComponent<Props, {}> {
             <SearchBox.Select
               disabled={searchBoxQueryModel[collegeDisableKey]}
               fieldName="collegeId"
-              options={collegeSelectTypes}
+              options={SelectType.publicScope}
               placeholder="공개범위"
               onChange={(event, data) => onChangeCollege(data.value)}
             />
@@ -66,7 +66,7 @@ class CubeSearchBoxView extends ReactComponent<Props, {}> {
           </SearchBox.Group>
 
           <SearchBox.Group name="검색">
-            <SearchBox.Select fieldName="searchPart" options={SelectType.searchPartForCubeNotAll} />
+            <SearchBox.Select fieldName="searchPart" options={SelectType.searchPartForCubeNotAll} placeholder="전체" />
             <SearchBox.Input fieldName="searchWord" placeholder="검색어를 입력하세요." />
           </SearchBox.Group>
           {/*<SearchBox.BasicSearch*/}

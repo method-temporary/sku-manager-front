@@ -50,10 +50,9 @@ const CardApprovalSearchBox = observer(({ onSearch }: Props) => {
           endFieldName="endDate"
           onChangeStartDate={(date) => setStartDate(dayjs(date).valueOf())}
           onChangeEndDate={(date) => setEndDate(dayjs(date).valueOf())}
-          searchButtons
         />
       </TempSearchBox.Group>
-      <TempSearchBox.Group name="Category / Channel">
+      <TempSearchBox.Group name="Card형태">
         <TempSearchBox.Select
           value={collegeId}
           options={collegeOptions}
@@ -70,7 +69,7 @@ const CardApprovalSearchBox = observer(({ onSearch }: Props) => {
           sub
         />
         <TempSearchBox.Select
-          name="제공상태"
+          name="승인상태"
           value={cardState}
           options={cardApprovalStatus}
           fieldName="cardState"

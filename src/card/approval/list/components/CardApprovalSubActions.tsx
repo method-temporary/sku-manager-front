@@ -27,9 +27,12 @@ const CardApprovalSubActions = observer(() => {
     <SubActions>
       <SubActions.Left>
         <SubActions.Count>
+          <strong style={{ color: 'black' }}>{totalCardCount}</strong> 건
+        </SubActions.Count>
+        {/* <SubActions.Count>
           <strong>{totalCardCount}</strong> 개 | 승인요청 <strong>{cardStateCount.openApprovalCount}</strong>개 / 승인
           <strong>{cardStateCount.openedCount}</strong> 개 / 반려 <strong>{cardStateCount.rejectedCount}</strong>개
-        </SubActions.Count>
+        </SubActions.Count> */}
       </SubActions.Left>
       <SubActions.Right>
         <LimitSelect limit={limit} onChange={onChangeLimit} />

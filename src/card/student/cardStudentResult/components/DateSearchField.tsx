@@ -55,7 +55,7 @@ export const DateSearchField = observer(() => {
             </div>
           </Form.Field>
         </>
-        <>
+        {/* <>
           <SearchBox.FieldButton size="tiny" onClick={() => onChangeTimeFromButton('today')}>
             오늘
           </SearchBox.FieldButton>
@@ -71,7 +71,7 @@ export const DateSearchField = observer(() => {
           <SearchBox.FieldButton size="tiny" onClick={() => onChangeTimeFromButton('total')}>
             전체
           </SearchBox.FieldButton>
-        </>
+        </> */}
       </Form.Group>
     </Grid.Column>
   );

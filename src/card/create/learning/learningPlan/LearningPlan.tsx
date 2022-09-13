@@ -28,9 +28,9 @@ export const LearningPlan = observer(({ readonly }: props) => {
       </Table.Header>
       <Table.Body>
         <LearningContents readonly={readonly} />
-        <LearningPlanOrderRow readonly={readonly} />
+        {/* <LearningPlanOrderRow readonly={readonly} />
         <CardInstructorListRow readonly={readonly} />
-        <LearningTimeRow readonly={readonly} />
+        <LearningTimeRow readonly={readonly} /> */}
       </Table.Body>
     </Table>
   );

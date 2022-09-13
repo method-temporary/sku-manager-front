@@ -54,9 +54,9 @@ export function CreateQuestionListView({
       {!finalCopy && (
         <SubActions>
           <SubActions.Right>
-            <Button type="button" onClick={() => onRemoveQuestion(questionIndex)}>
+            {/* <Button type="button" onClick={() => onRemoveQuestion(questionIndex)}>
               삭제
-            </Button>
+            </Button> */}
             <Button type="button" onClick={() => onCopyQuestion(newQuestion)}>
               문항 복사
             </Button>
@@ -82,10 +82,13 @@ export function CreateQuestionListView({
 
         <Table.Body>
           <Table.Row>
-            <Table.Cell className="tb-header" colSpan={2}>
-              문항
+            <Table.Cell rowSpan={3} className="tb-header" colSpan={2}>
+              문항 {newQuestion.sequence}{' '}
+              <Button type="button" onClick={() => onRemoveQuestion(questionIndex)}>
+                삭제
+              </Button>
             </Table.Cell>
-            <Table.Cell colSpan={2}>{newQuestion.sequence}</Table.Cell>
+            {/* <Table.Cell colSpan={2}>{newQuestion.sequence}</Table.Cell>
             <Table.Cell className="tb-header" colSpan={2}>
               옵션
             </Table.Cell>
@@ -104,9 +107,9 @@ export function CreateQuestionListView({
                   />
                 </FormGroup>
               </Grid.Column>
-            </Table.Cell>
+            </Table.Cell> */}
             <Table.Cell className="tb-header" colSpan={2}>
-              유형
+              형태
             </Table.Cell>
             <Table.Cell colSpan={questionSelectionType !== QuestionSelectionType.ALL ? 4 : 1}>
               <Form.Field
@@ -150,7 +153,7 @@ export function CreateQuestionListView({
                   value={newQuestion.question}
                   onChange={(event, data) => onChangeQuestion(newQuestion.sequence, data)}
                 />
-                <Button
+                {/* <Button
                   size="mini"
                   className="file-select-btn"
                   content="파일 선택"
@@ -169,7 +172,7 @@ export function CreateQuestionListView({
                     e.target.files && onChangeQuestionImage(newQuestion.sequence, e.target.files[0])
                   }
                   hidden
-                />
+                /> */}
 
                 {newQuestion && newQuestion.imagePath && (
                   <div>
@@ -182,7 +185,7 @@ export function CreateQuestionListView({
                   </div>
                 )}
 
-                <p className="info-text-gray">- JPG, PNG 파일을 등록하실 수 있습니다.</p>
+                {/* <p className="info-text-gray">- JPG, PNG 파일을 등록하실 수 있습니다.</p> */}
               </>
             </Table.Cell>
           </Table.Row>
@@ -211,8 +214,7 @@ export function CreateQuestionListView({
                   }
                 >
                   <span className="count">
-                    <span className="now">{newQuestion.description?.length}</span>/
-                    <span className="max">5000</span>
+                    <span className="now">{newQuestion.description?.length}</span>/<span className="max">5000</span>
                   </span>
                   <TextArea
                     placeholder="비고를 입력해주세요. (최대 5000자까지 입력가능)"
@@ -228,7 +230,7 @@ export function CreateQuestionListView({
             </Table.Row>
           )}
           {/* 서술형은 해설 없음 */}
-          {newQuestion.questionType !== QuestionType.Essay && (
+          {/* {newQuestion.questionType !== QuestionType.Essay && (
             <Table.Row>
               <Table.Cell colSpan={2} className="tb-header">
                 해설
@@ -257,7 +259,7 @@ export function CreateQuestionListView({
                 </div>
               </Table.Cell>
             </Table.Row>
-          )}
+          )} */}
         </Table.Body>
       </Table>
       <hr className="contour" />

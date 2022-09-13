@@ -38,7 +38,7 @@ export const CardStudentResultSearchBox = observer(() => {
               <Form.Group inline>
                 <SurveyCompletedSearchField />
                 <LearningStateSearchField />
-                <EmployedStateSearchField />
+                {/* <EmployedStateSearchField /> */}
               </Form.Group>
             </Grid.Column>
             <SearchPartSearchField />

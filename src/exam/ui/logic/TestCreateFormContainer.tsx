@@ -33,7 +33,7 @@ export function TestCreateFormContainer() {
   return (
     <>
       {/* 상단 메뉴 정보 */}
-      <PageTitle breadcrumb={breadcrumb}>{`Test ${testCreateForm?.id ? '수정' : '등록'}`}</PageTitle>
+      {/* <PageTitle breadcrumb={breadcrumb}>{`Test ${testCreateForm?.id ? '수정' : '등록'}`}</PageTitle>
       <Step.Group size="tiny">
         <Step active={testCreateForm?.stepIndex === 1} onClick={() => onClickStep(1)}>
           <Step.Content>
@@ -45,17 +45,19 @@ export function TestCreateFormContainer() {
             <Step.Title>출제방식 설정</Step.Title>
           </Step.Content>
         </Step>
-      </Step.Group>
+      </Step.Group> */}
 
       {/* 상단 버튼 */}
       <SubActions form>
         <SubActions.Right>
+          <Button>엑셀 다운로드</Button>
+          <Button>언어별 문항 추가</Button>
           {testCreateForm?.stepIndex === 1 && !testCreateForm?.finalCopy && (
             <Button type="button" onClick={onAddChoice}>
               문항 추가
             </Button>
           )}
-          <Button type="button" onClick={onClickPreview}>
+          {/* <Button type="button" onClick={onClickPreview}>
             미리보기
           </Button>
           {testCreateForm?.stepIndex === 2 && (
@@ -65,7 +67,7 @@ export function TestCreateFormContainer() {
           )}
           <Button type="button" onClick={onClickList}>
             목록
-          </Button>
+          </Button> */}
         </SubActions.Right>
       </SubActions>
 

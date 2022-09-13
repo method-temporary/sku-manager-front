@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import { Form, Grid, Input, Radio, Select, Table } from 'semantic-ui-react';
+import { Button, Form, Grid, Input, Radio, Select, Table } from 'semantic-ui-react';
 
 import { reactAutobind, ReactComponent } from '@nara.platform/accent';
 import { FileBox, PatronType, ValidationType } from '@nara.drama/depot';
@@ -93,7 +93,7 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
     const { cubeCommunity, cube, readonly, cubeId, board, cubeDiscussion, cubeInstructors, cubeOperator } = this.props;
     const { cubeService, collegeService } = this.props;
 
-    const discussionTitle = cube.type !== CubeType.Discussion ? 'Cube명' : 'Talk 제목';
+    const discussionTitle = cube.type !== CubeType.Discussion ? 'Cube 제목' : 'Talk 제목';
     const checkTaskUsingDate = moment(1621501200000);
     const checkTaskUsingAutomaticCompletion =
       cube.registeredTime !== 0 && moment(cube.registeredTime).diff(checkTaskUsingDate, 'days', true) < 0;
@@ -113,13 +113,17 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
               <Table.HeaderCell colSpan={4} className="title-header">
                 <Grid className="list-info">
                   <Grid.Row className="padding-0px">
-                    <Grid.Column width={8} style={{ color: 'white' }}>
-                      기본정보
-                    </Grid.Column>
+                    <Grid.Column width={8} style={{ color: 'white' }}></Grid.Column>
                     <Grid.Column width={8}>
+                      {/* <Grid.Column width={8} style={{ color: 'white' }}>
+                      기본정보
+                    </Grid.Column> */}
                       {!readonly && (
                         <div className="right">
-                          <CubeListIgnoreAccessiblityModal onClickOk={onClickCubeImport} />
+                          {/* <CubeListIgnoreAccessiblityModal onClickOk={onClickCubeImport} /> */}
+                          <Button>Cube 제목 언어별 등록 Template</Button>
+                          <Button>Cube 제목 언어별 등록 업로드</Button>
+                          <Button>Cube 제목 언어별 등록 다운로드</Button>
                         </div>
                       )}
                     </Grid.Column>
@@ -131,17 +135,17 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
           <Table.Body>
             <Table.Row>
               <Table.Cell className="tb-header">
-                지원 언어 <span className="required"> *</span>
+                편집 중인 언어 <span className="required"> *</span>
               </Table.Cell>
               <Table.Cell>
                 <Polyglot.Languages onChangeProps={onChangeCubeProps} readOnly={readonly} />
               </Table.Cell>
-              <Table.Cell className="tb-header">
+              {/* <Table.Cell className="tb-header">
                 기본 언어 <span className="required"> *</span>
               </Table.Cell>
               <Table.Cell>
                 <Polyglot.Default onChangeProps={onChangeCubeProps} readOnly={readonly} />
-              </Table.Cell>
+              </Table.Cell> */}
             </Table.Row>
             <Table.Row>
               <Table.Cell className="tb-header">
@@ -155,21 +159,22 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
                     <Form.Field
                       control={Select}
                       placeholder="교육형태를 선택해주세요."
-                      options={SelectType.learningTypeForEnum}
+                      options={SelectType.learningTypeForEnum3}
                       value={(cube && cube.type) || null}
                       onChange={(e: any, data: any) => {
                         onChangeCubeProps('type', data.value);
                       }}
                     />
-                    <span className="span-information">
+                    {/* <span className="span-information">
                       Classroom, E-learning 유형은 수강신청형 카드 생성 화면에서 생성합니다.
-                    </span>
+                    </span> */}
                   </>
                 )}
               </Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell className="tb-header">
+                {/* <Table.Cell className="tb-header">
                 메인 채널 <span className="required"> *</span>
               </Table.Cell>
               <Table.Cell colSpan={3}>
@@ -177,8 +182,7 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
                 {getMainCollegeAndChannelText(cubeService, collegeService)}
               </Table.Cell>
             </Table.Row>
-            <Table.Row>
-              <Table.Cell className="tb-header">
+            <Table.Row> */}
                 {discussionTitle} <span className="required"> *</span>
               </Table.Cell>
               <Table.Cell colSpan={3}>
@@ -203,7 +207,7 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
                 )}
               </Table.Cell>
             </Table.Row>
-            <Table.Row>
+            {/* <Table.Row>
               <Table.Cell className="tb-header">
                 교육목표 <span className="required"> *</span>
               </Table.Cell>
@@ -253,9 +257,9 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
               <Table.Cell colSpan={3}>
                 {cube.type === CubeType.Task && (
                   <FormTable title="" withoutHeader>
-                    <>
-                      {/* <Form.Group> */}
-                      <FormTable.Row name="이수처리">
+                    <> */}
+            {/* <Form.Group> */}
+            {/* <FormTable.Row name="이수처리">
                         {readonly ? (
                           <p>{board.automaticCompletion ? '자동이수' : '수동이수'}</p>
                         ) : (
@@ -274,13 +278,12 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
                                 control={Radio}
                                 label="수동이수"
                                 checked={!board.automaticCompletion}
-                                onChange={() =>
-                                  // console.log('Manual completion')
-                                  handleCubeBoardChange('automaticCompletion', !board.automaticCompletion)
-                                }
-                                disabled={checkTaskUsingAutomaticCompletion}
-                              />
-                            </Form.Group>
+                                onChange={() => */}
+            {/* // console.log('Manual completion') handleCubeBoardChange('automaticCompletion', !board.automaticCompletion) */}
+            {/* } */}
+            {/* disabled={checkTaskUsingAutomaticCompletion} */}
+            {/* /> */}
+            {/* </Form.Group>
                             {checkTaskUsingAutomaticCompletion && (
                               <p className="info-text-gray">
                                 <strong>
@@ -295,7 +298,6 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
                           </React.Fragment>
                         )}
                       </FormTable.Row>
-
                       {board.automaticCompletion && (
                         <React.Fragment>
                           <FormTable.Row name="Post">
@@ -341,13 +343,13 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
                       )}
                     </>
                   </FormTable>
-                )}
-                {/* <Form.Group> */}
-                {cube.type === CubeType.Discussion && (
+                )} */}
+            {/* <Form.Group> */}
+            {/* {cube.type === CubeType.Discussion && (
                   <FormTable title="" withoutHeader>
-                    <>
-                      {/* <Form.Group> */}
-                      <FormTable.Row name="이수처리">
+                    <> */}
+            {/* <Form.Group> */}
+            {/* <FormTable.Row name="이수처리">
                         {readonly ? (
                           <p>{cubeDiscussion.automaticCompletion ? '자동이수' : '수동이수'}</p>
                         ) : (
@@ -357,18 +359,18 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
                                 control={Radio}
                                 label="자동이수"
                                 checked={cubeDiscussion && cubeDiscussion.automaticCompletion}
-                                onChange={() =>
-                                  // console.log('자동이수')
-                                  handleCubeDiscussionChange('automaticCompletion', !cubeDiscussion.automaticCompletion)
+                                onChange={() => */}
+            {/* // console.log('자동이수') */}
+            {/* handleCubeDiscussionChange('automaticCompletion', !cubeDiscussion.automaticCompletion)
                                 }
                               />
                               <Form.Field
                                 control={Radio}
                                 label="수동이수"
                                 checked={cubeDiscussion && !cubeDiscussion.automaticCompletion}
-                                onChange={() =>
-                                  // console.log('Manual completion')
-                                  handleCubeDiscussionChange('automaticCompletion', !cubeDiscussion.automaticCompletion)
+                                onChange={() => */}
+            {/* // console.log('Manual completion') */}
+            {/* handleCubeDiscussionChange('automaticCompletion', !cubeDiscussion.automaticCompletion)
                                 }
                               />
                             </Form.Group>
@@ -378,9 +380,8 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
                             </p>
                           </React.Fragment>
                         )}
-                      </FormTable.Row>
-
-                      {cubeDiscussion && cubeDiscussion.automaticCompletion && (
+                      </FormTable.Row> */}
+            {/* {cubeDiscussion && cubeDiscussion.automaticCompletion && (
                         <React.Fragment>
                           <FormTable.Row name="Comment">
                             {readonly ? (
@@ -447,9 +448,9 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
                             </FormTable.Row>
                           )}
                         </React.Fragment>
-                      )}
-                      {/* </Form.Group> */}
-                    </>
+                      )} */}
+            {/* </Form.Group> */}
+            {/* </>
                   </FormTable>
                 )}
                 <Polyglot.TextArea
@@ -461,8 +462,8 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
                   readOnly={readonly}
                 />
               </Table.Cell>
-            </Table.Row>
-            <Table.Row>
+            </Table.Row> */}
+            {/* <Table.Row>
               <Table.Cell className="tb-header">기타안내</Table.Cell>
               <Table.Cell colSpan={3}>
                 <Polyglot.Editor
@@ -525,7 +526,6 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
                 </Table.Cell>
               </Table.Row>
             ) : null}
-
             <Table.Row>
               <Table.Cell className="tb-header">
                 교육시간 <span className="required"> *</span>
@@ -653,7 +653,7 @@ class CubeBasicInfoView extends ReactComponent<Props, States> {
                   'No'
                 )}
               </Table.Cell>
-            </Table.Row>
+            </Table.Row> */}
           </Table.Body>
         </Table>
 

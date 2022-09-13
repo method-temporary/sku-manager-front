@@ -10,4 +10,7 @@ export type CubeType =
   | 'Task'
   | 'Cohort'
   | 'Discussion'
+  | 'WebPageLink'
+  | 'WebPageEmbed'
+  | 'Document'
   | '';

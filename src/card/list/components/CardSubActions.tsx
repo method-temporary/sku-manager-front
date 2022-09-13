@@ -115,18 +115,21 @@ const CardSubActions = observer(({ onChangeOpen, setIsLoading }: Props) => {
       <SubActions>
         <SubActions.Left>
           <SubActions.Count>
+            <strong>{totalCardCount}</strong> 개
+          </SubActions.Count>
+          {/* <SubActions.Count>
             <strong>{totalCardCount}</strong> 개 Card 등록 | 공개 <strong>{cardSearchableCount.searchableCount}</strong>{' '}
             개 | 비공개 <strong>{cardSearchableCount.unsearchableCount}</strong> 개
-          </SubActions.Count>
+          </SubActions.Count> */}
         </SubActions.Left>
         <SubActions.Right>
-          <Button className="button" onClick={() => onChangeOpen()}>
+          {/* <Button className="button" onClick={() => onChangeOpen()}>
             Bulk Upload
-          </Button>
-          <SortSelect sortFilter={cardOrderBy} onChange={onChangeSort} options={sortFilterForCard} />
-          <LimitSelect limit={limit} onChange={onChangeLimit} />
+          </Button> */}
+          {/* <SortSelect sortFilter={cardOrderBy} onChange={onChangeSort} options={sortFilterForCard} /> */}
+          <SubActions.CreateButton onClick={routeToCreated}>Card 등록</SubActions.CreateButton>
           <SubActions.ExcelButton download useDownloadHistory={false} onClick={onClickExcelDown} />
-          <SubActions.CreateButton onClick={routeToCreated} />
+          <LimitSelect limit={limit} onChange={onChangeLimit} />
         </SubActions.Right>
       </SubActions>
     </DimmerLoader>

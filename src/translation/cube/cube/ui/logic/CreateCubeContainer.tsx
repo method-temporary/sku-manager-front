@@ -284,30 +284,28 @@ class CreateCubeContainer extends ReactComponent<Props, States, Injected> {
           {cubeId ? null : <PageTitle breadcrumb={SelectType.cubeSections} />}
           <div className="contents">
             <Form>
-              <Polyglot languages={cube.langSupports}>
-                {/* 기본정보 */}
-                <Loader name="info" disabled={loaderDisabled}>
-                  <CubeBasicInfoContainer readonly={!isUpdatable} cubeId={cubeId} />
-                </Loader>
+              {/* 기본정보 */}
+              <Loader name="info" disabled={loaderDisabled}>
+                <CubeBasicInfoContainer readonly={!isUpdatable} cubeId={cubeId} />
+              </Loader>
 
-                {/* 노출정보 */}
-                <Loader name="info" disabled={loaderDisabled}>
-                  <CubeExposureInfoContainer onChangeCubeProps={this.onChangeCubeProps} readonly={!isUpdatable} />
+              {/* 노출정보 */}
+              <Loader name="info" disabled={loaderDisabled}>
+                <CubeExposureInfoContainer onChangeCubeProps={this.onChangeCubeProps} readonly={!isUpdatable} />
+              </Loader>
+              {/* 교육정보 */}
+              <Loader name="description" disabled={loaderDisabled}>
+                <CubeDescriptionContainer readonly={!isUpdatable} />
+              </Loader>
+              {/* 추가 정보 */}
+              {cube.type === CubeType.ALL ||
+              cube.type === CubeType.ClassRoomLecture ||
+              cube.type === CubeType.Cohort ||
+              cube.type === CubeType.ELearning ? null : (
+                <Loader name="additional" disabled={loaderDisabled}>
+                  <CubeAdditionalInfoContainer readonly={!isUpdatable} />
                 </Loader>
-                {/* 교육정보 */}
-                <Loader name="description" disabled={loaderDisabled}>
-                  <CubeDescriptionContainer readonly={!isUpdatable} />
-                </Loader>
-                {/* 추가 정보 */}
-                {cube.type === CubeType.ALL ||
-                cube.type === CubeType.ClassRoomLecture ||
-                cube.type === CubeType.Cohort ||
-                cube.type === CubeType.ELearning ? null : (
-                  <Loader name="additional" disabled={loaderDisabled}>
-                    <CubeAdditionalInfoContainer readonly={!isUpdatable} />
-                  </Loader>
-                )}
-              </Polyglot>
+              )}
             </Form>
             <SubActions form>
               {cubeId && isOwner && (

@@ -53,18 +53,18 @@ class FirstCategoryModal extends ReactComponent<Props, States, Injected> {
     const { cubeService } = this.injected;
     const { cube, mainCategory } = cubeService;
 
-    if (this.validate()) {
-      cubeService.changeMainCategoryProps('mainCategory', true);
-      if (cube.categories.some((category) => category.mainCategory)) {
-        const categories = [mainCategory, ...cube.categories.filter((category) => !category.mainCategory)];
-        cubeService.changeCubeProps('categories', categories);
-      } else {
-        const categories = [mainCategory, ...cube.categories];
-        cubeService.changeCubeProps('categories', categories);
-      }
+    // if (this.validate()) {
+    //   cubeService.changeMainCategoryProps('mainCategory', true);
+    //   if (cube.categories.some((category) => category.mainCategory)) {
+    //     const categories = [mainCategory, ...cube.categories.filter((category) => !category.mainCategory)];
+    //     cubeService.changeCubeProps('categories', categories);
+    //   } else {
+    //     const categories = [mainCategory, ...cube.categories];
+    //     cubeService.changeCubeProps('categories', categories);
+    //   }
 
-      close();
-    }
+    //   close();
+    // }
   }
 
   validate() {

@@ -12,4 +12,8 @@ export enum CubeType {
   Cohort = 'Cohort',
   Discussion = 'Discussion',
   Empty = '',
+
+  Document = 'Documents',
+  WebPageLink = 'Experiential',
+  WebPageEmbed = 'WebPage',
 }

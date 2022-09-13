@@ -14,7 +14,7 @@ export const LearningPeriodInfo = observer(({ readonly }: props) => {
     <FormTable title="과정 기본 정보">
       <StudentEnrollmentTypeRow readonly={readonly} />
       <LearningPeriodRow readonly={readonly} />
-      <ValidLearningDateRow readonly={readonly} />
+      {/* <ValidLearningDateRow readonly={readonly} /> */}
     </FormTable>
   );
 });

@@ -15,11 +15,10 @@ interface Injected {
   cubeService: CubeService;
 }
 
-@inject('cubeService' )
+@inject('cubeService')
 @observer
 @reactAutobind
 class CubeBasicInfoContainer extends ReactComponent<Props, States, Injected> {
-  
   onChangeCubeProps(name: string, value: any) {
     //
     const { cubeService } = this.injected;
@@ -32,13 +31,7 @@ class CubeBasicInfoContainer extends ReactComponent<Props, States, Injected> {
     const { cube } = cubeService;
     const { readonly } = this.props;
 
-    return (
-      <CubeBasicInfoView
-        onChangeCubeProps={this.onChangeCubeProps}
-        cube={cube}
-        readonly={readonly}
-      />
-    );
+    return <CubeBasicInfoView onChangeCubeProps={this.onChangeCubeProps} cube={cube} readonly={readonly} />;
   }
 }
 

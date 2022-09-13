@@ -35,22 +35,26 @@ const CardApprovalList = observer(({ cards, startNo }: Props) => {
     <Table celled selectable>
       <colgroup>
         <col width="5%" />
-        <col width="30%" />
-        <col width="20%" />
+        <col width="25%" />
+        <col width="15%" />
+        <col width="10%" />
         <col width="15%" />
         <col width="10%" />
         <col width="10%" />
         <col width="10%" />
+        {/* <col width="10%" /> */}
       </colgroup>
       <Table.Header>
         <Table.Row textAlign="center">
           <Table.HeaderCell>No</Table.HeaderCell>
-          <Table.HeaderCell>카드명</Table.HeaderCell>
-          <Table.HeaderCell>Channel</Table.HeaderCell>
-          <Table.HeaderCell>승인요청일자</Table.HeaderCell>
+          <Table.HeaderCell>Card명</Table.HeaderCell>
+          <Table.HeaderCell>Card형태</Table.HeaderCell>
           <Table.HeaderCell>생성자</Table.HeaderCell>
-          <Table.HeaderCell>제공상태</Table.HeaderCell>
-          <Table.HeaderCell>공개여부</Table.HeaderCell>
+          <Table.HeaderCell>등록일자</Table.HeaderCell>
+          <Table.HeaderCell>승인일자</Table.HeaderCell>
+          <Table.HeaderCell>승인자</Table.HeaderCell>
+          <Table.HeaderCell>승인상태</Table.HeaderCell>
+          {/* <Table.HeaderCell>공개여부</Table.HeaderCell> */}
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -60,10 +64,12 @@ const CardApprovalList = observer(({ cards, startNo }: Props) => {
               <Table.Cell>{startNo - index}</Table.Cell>
               <Table.Cell textAlign="left">{getPolyglotToAnyString(card.name)}</Table.Cell>
               <Table.Cell>{displayChannel(card.mainCategory, Colleges?.results)}</Table.Cell>
-              <Table.Cell>{moment(card.cardStateModifiedTime).format('YYYY.MM.DD HH:mm:ss')}</Table.Cell>
               <Table.Cell>{getPolyglotToAnyString(cardContents.registrantName)}</Table.Cell>
+              <Table.Cell>{moment(card.cardStateModifiedTime).format('YYYY.MM.DD HH:mm:ss')}</Table.Cell>
+              <Table.Cell></Table.Cell>
+              <Table.Cell></Table.Cell>
               <Table.Cell>{cardStateDisplay(card.cardState)}</Table.Cell>
-              <Table.Cell>{card.searchable ? 'Yes' : 'No'}</Table.Cell>
+              {/* <Table.Cell>{card.searchable ? 'Yes' : 'No'}</Table.Cell> */}
             </Table.Row>
           ))
         ) : (

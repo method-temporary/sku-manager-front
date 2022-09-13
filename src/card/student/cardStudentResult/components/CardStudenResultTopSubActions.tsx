@@ -9,6 +9,7 @@ import { CardStudentResultEmailModal } from './CardStudentResultEmailModal';
 import { CardStudentResultPDFButton } from './CardStudentResultPDFButton';
 import { useParams } from 'react-router';
 import { useFindCardById } from '../../../list/CardList.hook';
+import { Button } from 'semantic-ui-react';
 
 export const CardStudentResultTopSubActions = observer(() => {
   //
@@ -22,10 +23,13 @@ export const CardStudentResultTopSubActions = observer(() => {
         <CardStudentResultCount />
       </SubActions.Left>
       <SubActions.Right>
-        <CardStudentResultLimitSelect />
+        {/* <CardStudentResultEmailModal />
+        <CardStudentResultPDFButton /> */}
+        <Button>삭제</Button>
+        <Button>샘플양식 다운로드</Button>
+        <Button>엑셀업로드</Button>
         <CardStudentResultExcelButton />
-        <CardStudentResultEmailModal />
-        <CardStudentResultPDFButton />
+        <CardStudentResultLimitSelect />
       </SubActions.Right>
     </SubActions>
   );

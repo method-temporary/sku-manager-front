@@ -133,7 +133,7 @@ class CubeDatePickerContainer extends ReactComponent<Props, {}, Injected> {
             </Form.Field>
           </>
         )}
-        {searchButtons && (
+        {/* {searchButtons && (
           <>
             <SearchBox.FieldButton size="tiny" onClick={() => this.onSetSearchDate('t')}>
               오늘
@@ -151,7 +151,7 @@ class CubeDatePickerContainer extends ReactComponent<Props, {}, Injected> {
               전체
             </SearchBox.FieldButton>
           </>
-        )}
+        )} */}
       </>
     );
   }

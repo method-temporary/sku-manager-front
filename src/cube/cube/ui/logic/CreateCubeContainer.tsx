@@ -450,14 +450,14 @@ class CreateCubeContainer extends ReactComponent<Props, States, Injected> {
                 </Loader>
 
                 {/* 노출정보 */}
-                <Loader name="info" disabled={loaderDisabled}>
+                {/* <Loader name="info" disabled={loaderDisabled}>
                   <CubeExposureInfoContainer
                     onChangeCubeProps={this.onChangeCubeProps}
                     addSharedCineroomId={this.addSharedCineroomId}
                     addAllSharedCineroomId={this.addAllSharedCineroomId}
                     readonly={!isUpdatable}
                   />
-                </Loader>
+                </Loader> */}
                 {/*/!* 교육정보 *!/*/}
                 {/*<Loader name="description" disabled={loaderDisabled}>*/}
                 {/*  <CubeDescriptionContainer readonly={!isUpdatable} />*/}

@@ -19,6 +19,8 @@ import { convertExamPaper, getReportFileBox, resetSurvey, setReportFileBox, setS
 import { TestWithViewInfo } from '../model/TestWithViewInfo';
 import TestList from './TestLIst';
 
+import CubeListIgnoreAccessiblityModal from '../../../../cube/cube/ui/logic/CubeListIgnoreAccessiblityModal';
+
 interface Props {
   readonly?: boolean;
 }
@@ -75,16 +77,16 @@ const CardMoreInfo = observer(({ readonly }: Props) => {
   return (
     <>
       <FormTable title="추가 정보">
-        <FormTable.Row name="Report 추가">
-          <ReportModal unVisible={readonly} onOk={onReportOk} reportFileBox={getReportFileBox()} report={report} />
-          {report && (
-            <ReportList
-              readonly={readonly}
-              reportFileBox={getReportFileBox()}
-              onDeleteReport={() => setReportFileBox(getInitReportFileBox())}
-            />
-          )}
-        </FormTable.Row>
+        {/* <FormTable.Row name="Report 추가">
+            <ReportModal unVisible={readonly} onOk={onReportOk} reportFileBox={getReportFileBox()} report={report} />
+            {report && (
+              <ReportList
+                readonly={readonly}
+                reportFileBox={getReportFileBox()}
+                onDeleteReport={() => setReportFileBox(getInitReportFileBox())}
+              />
+            )}
+          </FormTable.Row> */}
         <FormTable.Row name="Survey 추가">
           {!readonly && <SurveyListModal handleOk={onSurveyOk} type="card" />}
           {surveyId ? (

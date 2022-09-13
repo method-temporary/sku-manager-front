@@ -12,11 +12,10 @@ export const CardStudentResultCount = observer(() => {
 
   return (
     <SubActions.Count>
-      <strong>{students?.totalCount}</strong>명 | 결과처리대기
-      <strong>{studentCount?.learningStateCount.resultWaitingCount}</strong>명<span className="dash">|</span>
-      이수 <strong>{studentCount?.learningStateCount.passedCount}</strong>명 <span className="dash">|</span>
-      미이수 <strong>{studentCount?.learningStateCount.missedCount}</strong>명 <span className="dash">|</span>
-      불참 <strong>{studentCount?.learningStateCount.noShowCount}</strong>명
+      <strong style={{ color: 'black' }}>{students?.totalCount}</strong> 건 {'\u00a0\u00a0\u00a0\u00a0'} 이수
+      <strong style={{ color: 'blue' }}>{studentCount?.learningStateCount.passedCount}</strong> 건{' '}
+      {'\u00a0\u00a0\u00a0\u00a0'} 미이수
+      <strong color="red">{studentCount?.learningStateCount.missedCount}</strong> 건
     </SubActions.Count>
   );
 });

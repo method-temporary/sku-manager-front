@@ -32,12 +32,12 @@ export function TestSearchBoxContainer() {
                   onChangeEndDate={onChangeEndDate}
                   onClickDate={onClickDate}
                 />
-                <SearchStateTypeView
+                {/* <SearchStateTypeView
                   searchState={testSearchBox.versionState}
                   searchType={testSearchBox.questionSelectionType}
                   onChangeState={onChangeVersionState}
                   onChangeType={onChangeQuestionSelectionType}
-                />
+                /> */}
                 <SearchKeywordView
                   keyword={testSearchBox.keyword}
                   keywordType={testSearchBox.keywordType}

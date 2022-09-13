@@ -101,7 +101,7 @@ export const getCardDetailTabMenus = (
   const menuItems: { menuItem: string; render: () => JSX.Element }[] = [];
 
   menuItems.push({
-    menuItem: 'Card 정보',
+    menuItem: '학습정보',
     render: () => (
       <DimmerLoader active={isDetailLoading} page={loaderPage}>
         <Tab.Pane attached={false}>
@@ -109,17 +109,17 @@ export const getCardDetailTabMenus = (
             {/* 기본 정보 */}
             <CardBasicInfo readonly={readonly} />
             {/* 노출 정보 */}
-            <CardExposureInfo readonly={readonly} />
+            {/* <CardExposureInfo readonly={readonly} /> */}
             {/* 접근 제어 */}
-            <AccessRuleSettings
+            {/* <AccessRuleSettings
               multiple={false}
               onChange={onChangeAccessRule}
               readOnly={readonly}
               form={false}
               defaultGroupBasedAccessRule={groupBasedAccessRule}
-            />
+            /> */}
             {/* 선수 카드 */}
-            {hasPrerequisite === 'Yes' && <PreRequisiteCard readonly={readonly} />}
+            {/* {hasPrerequisite === 'Yes' && <PreRequisiteCard readonly={readonly} />} */}
             {/* 부가 정보 */}
             <CardAdditionalInfo readonly={readonly} />
             {/* 추가 정보 */}
@@ -153,61 +153,61 @@ export const getCardDetailTabMenus = (
     ),
   });
 
-  menuItems.push({
-    menuItem: '학습 정보',
-    render: () => (
-      <>
-        <p className="tab-text">{getPolyglotToAnyString(name)}</p>
-        <DimmerLoader active={isDetailLoading} page={loaderPage}>
-          <Tab.Pane attached={false}>
-            <Polyglot languages={langSupports}>
-              <LearningPeriodInfo readonly={readonly} />
-              {studentEnrollmentType === 'Enrollment' && <RoundInfo readonly={readonly} />}
-              <LearningPlan readonly={readonly} />
-            </Polyglot>
+  // menuItems.push({
+  //   menuItem: '학습 정보',
+  //   render: () => (
+  //     <>
+  //       <p className="tab-text">{getPolyglotToAnyString(name)}</p>
+  //       <DimmerLoader active={isDetailLoading} page={loaderPage}>
+  //         <Tab.Pane attached={false}>
+  //           <Polyglot languages={langSupports}>
+  //             <LearningPeriodInfo readonly={readonly} />
+  //             {studentEnrollmentType === 'Enrollment' && <RoundInfo readonly={readonly} />}
+  //             <LearningPlan readonly={readonly} />
+  //           </Polyglot>
 
-            <SubActions form>
-              <SubActions.Left>
-                <Button type="button" onClick={onClickUpdate}>
-                  {readonly ? '수정' : '취소'}
-                </Button>
-              </SubActions.Left>
-              <SubActions.Right>
-                {readonly ? (
-                  (cardState === CardStates.Created || cardState === CardStates.Rejected) && (
-                    <Button primary onClick={() => onClickApprovalCard()}>
-                      승인요청
-                    </Button>
-                  )
-                ) : (
-                  <Button primary onClick={onClickModifyButton}>
-                    저장
-                  </Button>
-                )}
-              </SubActions.Right>
-            </SubActions>
-          </Tab.Pane>
-        </DimmerLoader>
-      </>
-    ),
-  });
+  //           <SubActions form>
+  //             <SubActions.Left>
+  //               <Button type="button" onClick={onClickUpdate}>
+  //                 {readonly ? '수정' : '취소'}
+  //               </Button>
+  //             </SubActions.Left>
+  //             <SubActions.Right>
+  //               {readonly ? (
+  //                 (cardState === CardStates.Created || cardState === CardStates.Rejected) && (
+  //                   <Button primary onClick={() => onClickApprovalCard()}>
+  //                     승인요청
+  //                   </Button>
+  //                 )
+  //               ) : (
+  //                 <Button primary onClick={onClickModifyButton}>
+  //                   저장
+  //                 </Button>
+  //               )}
+  //             </SubActions.Right>
+  //           </SubActions>
+  //         </Tab.Pane>
+  //       </DimmerLoader>
+  //     </>
+  //   ),
+  // });
 
   readonly &&
     menuItems.push(
       ...[
+        // {
+        //   menuItem: '학습자',
+        //   render: () => (
+        //     <>
+        //       <p className="tab-text">{getPolyglotToAnyString(name)}</p>
+        //       <Tab.Pane attached={false}>
+        //         <CardStudentPage />
+        //       </Tab.Pane>
+        //     </>
+        //   ),
+        // },
         {
-          menuItem: '학습자',
-          render: () => (
-            <>
-              <p className="tab-text">{getPolyglotToAnyString(name)}</p>
-              <Tab.Pane attached={false}>
-                <CardStudentPage />
-              </Tab.Pane>
-            </>
-          ),
-        },
-        {
-          menuItem: '결과관리',
+          menuItem: '학습대상자',
           render: () => (
             <>
               <p className="tab-text">{getPolyglotToAnyString(name)}</p>
@@ -217,19 +217,19 @@ export const getCardDetailTabMenus = (
             </>
           ),
         },
-        {
-          menuItem: '설문',
-          render: () => <CardSurveyPage />,
-        },
-        {
-          menuItem: '자동독려',
-          render: () => (
-            <>
-              <p className="tab-text">{getPolyglotToAnyString(name)}</p>
-              <AutoEncourage />
-            </>
-          ),
-        },
+        // {
+        //   menuItem: '설문',
+        //   render: () => <CardSurveyPage />,
+        // },
+        // {
+        //   menuItem: '자동독려',
+        //   render: () => (
+        //     <>
+        //       <p className="tab-text">{getPolyglotToAnyString(name)}</p>
+        //       <AutoEncourage />
+        //     </>
+        //   ),
+        // },
       ]
     );
 

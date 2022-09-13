@@ -22,28 +22,28 @@ const DateFilterButton: FunctionComponent<Props> = function DateFilterButton({ n
   );
 };
 
-const ButtonList = [
-  {
-    name: '오늘',
-    value: 'day',
-  },
-  {
-    name: '최근 1주',
-    value: 'week',
-  },
-  {
-    name: '최근 1개월',
-    value: 'month',
-  },
-  {
-    name: '최근 1년',
-    value: 'year',
-  },
-  {
-    name: '전체',
-    value: 'all',
-  },
-];
+// const ButtonList = [
+//   {
+//     name: '오늘',
+//     value: 'day',
+//   },
+//   {
+//     name: '최근 1주',
+//     value: 'week',
+//   },
+//   {
+//     name: '최근 1개월',
+//     value: 'month',
+//   },
+//   {
+//     name: '최근 1년',
+//     value: 'year',
+//   },
+//   {
+//     name: '전체',
+//     value: 'all',
+//   },
+// ];
 
 interface CalendarViewProps {
   startDate: Date;
@@ -124,7 +124,7 @@ export function CalendarView({
           <Icon name="calendar alternate outline" />
         </div>
       </Form.Field>
-      {ButtonList.map((button, i) => (
+      {/* {ButtonList.map((button, i) => (
         <DateFilterButton
           key={i}
           name={button.name}
@@ -132,7 +132,7 @@ export function CalendarView({
           selectedDate={selectedDate}
           onClick={onClickDate}
         />
-      ))}
+      ))} */}
     </>
   );
 }

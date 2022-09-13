@@ -35,13 +35,6 @@ class AdditionalInfoForOfficeWebView extends React.Component<Props, States> {
           <col width="20%" />
           <col width="80%" />
         </colgroup>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell colSpan={2} className="title-header">
-              부가 정보
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
         <Table.Body>
           <Table.Row>
             <Table.Cell className="tb-header">
@@ -66,7 +59,7 @@ class AdditionalInfoForOfficeWebView extends React.Component<Props, States> {
               <p className="info-text-gray">- 최대 10MB 용량의 파일을 등록하실 수 있습니다.</p>
             </Table.Cell>
           </Table.Row>
-          <Table.Row>
+          {/* <Table.Row>
             <Table.Cell className="tb-header">
               교육자료(URL)
               {cubeType === CubeType.WebPage || cubeType === CubeType.Experiential || cubeType === CubeType.Cohort ? (
@@ -85,8 +78,9 @@ class AdditionalInfoForOfficeWebView extends React.Component<Props, States> {
                 />
               )}
             </Table.Cell>
-          </Table.Row>
-          {cubeType === CubeType.WebPage && (
+          </Table.Row> */}
+
+          {/* {cubeType === CubeType.WebPage && (
             <Table.Row>
               <Table.Cell className="tb-header">
                 임베디드 사용 유무 <span className="required">*</span>
@@ -179,7 +173,7 @@ class AdditionalInfoForOfficeWebView extends React.Component<Props, States> {
                 </Table.Cell>
               </Table.Row>
             </>
-          )}
+          )} */}
         </Table.Body>
       </Table>
     );

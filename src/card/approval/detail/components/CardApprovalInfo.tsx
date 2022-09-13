@@ -26,34 +26,31 @@ const CardApprovalInfo = observer(({ onClickOpen, onClickReject }: Props) => {
 
   return (
     <>
-      <FormTable title="승인 정보">
-        <FormTable.Row name="Card 승인 여부">
-          {cardState === CardStates.OpenApproval ? (
-            <>
-              <RejectEmailModal
-                onShow={() => true}
-                onChangeRemark={(name, value) => setNewRemark(value)}
-                onClickReject={onClickReject}
-                emailList={[email]}
-                nameList={[getPolyglotToAnyString(registrantName)]}
-                cubeTitles={[getPolyglotToAnyString(name, getDefaultLanguage(langSupports))]}
-                type="Course_reject"
-                isApprovalRoleOwner
-              />
-              <Button onClick={onClickOpen} primary>
-                승인
-              </Button>
-            </>
-          ) : (
-            approvalInfo
-          )}
-        </FormTable.Row>
-        {remark && (
-          <FormTable.Row name="반려 사유">
-            <HtmlEditor value={remark || ''} readOnly />
-          </FormTable.Row>
-        )}
-      </FormTable>
+      {cardState === CardStates.OpenApproval ? (
+        <>
+          <RejectEmailModal
+            onShow={() => true}
+            onChangeRemark={(name, value) => setNewRemark(value)}
+            onClickReject={onClickReject}
+            emailList={[email]}
+            nameList={[getPolyglotToAnyString(registrantName)]}
+            cubeTitles={[getPolyglotToAnyString(name, getDefaultLanguage(langSupports))]}
+            type="Course_reject"
+            isApprovalRoleOwner
+          />
+
+          <Button onClick={onClickOpen} primary>
+            승인
+          </Button>
+        </>
+      ) : (
+        approvalInfo
+      )}
+      {remark && (
+        <Button name="반려 사유">
+          <HtmlEditor value={remark || ''} readOnly />
+        </Button>
+      )}
     </>
   );
 });

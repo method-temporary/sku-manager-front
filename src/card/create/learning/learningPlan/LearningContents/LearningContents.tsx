@@ -78,7 +78,7 @@ const LearningContents = observer(({ readonly }: Props) => {
                 {/* Cube 선택 모달 */}
                 <CubeSelectedModal selectedCubes={selectedCubes} onOk={onOkSelect} />
                 {/* Talk 모달  */}
-                <DiscussionModal langSupports={langSupports} onOk={onOkDiscussion} />
+                {/* <DiscussionModal langSupports={langSupports} onOk={onOkDiscussion} /> */}
               </SubActions.Left>
               <SubActions.Right>
                 {learningContents.length !== 0 && (
