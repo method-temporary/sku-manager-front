@@ -48,7 +48,7 @@ const LearningContentList = observer(({ readonly }: Props) => {
     return (
       <>
         <LearningContentsCube learningContent={learningContent} />
-        {(selectedCubeId === learningContent.contentId && <EnrollmentCubeForm readonly={readonly} />) ||
+        {/* {(selectedCubeId === learningContent.contentId && <EnrollmentCubeForm readonly={readonly} />) ||
           ((learningContent.contentDetailType === 'ELearning' ||
             learningContent.contentDetailType === 'ClassRoomLecture') && (
             <SubActions form>
@@ -61,7 +61,7 @@ const LearningContentList = observer(({ readonly }: Props) => {
                 />
               </SubActions.Center>
             </SubActions>
-          ))}
+          ))} */}
       </>
     );
   };
@@ -112,7 +112,7 @@ const LearningContentList = observer(({ readonly }: Props) => {
                   index + 1
                 }`}</p>
               )}
-              {!readonly && (
+              {/* {!readonly && (
                 <div className="action-btn-group">
                   <Button
                     type="button"
@@ -138,9 +138,9 @@ const LearningContentList = observer(({ readonly }: Props) => {
                     disabled={index === 0}
                   />
                 </div>
-              )}
+              )} */}
             </Table.Cell>
-            <Table.Cell colSpan={3}>
+            <Table.Cell colSpan={7}>
               <>
                 {learningContent.learningContentType === 'Cube' && getCubeLearningTable(learningContent)}
                 {learningContent.learningContentType === 'Discussion' && learningContent.cardDiscussion && (

@@ -256,7 +256,7 @@ class SearchBox extends ReactComponent<Props, States, Injected> {
                       <Icon name="calendar alternate outline" />
                     </div>
                   </Form.Field>
-                  <Form.Button size="tiny" onClick={() => this.onSetSearchDate()} type="button">
+                  {/* <Form.Button size="tiny" onClick={() => this.onSetSearchDate()} type="button">
                     오늘
                   </Form.Button>
                   <Form.Button size="tiny" onClick={() => this.onSetSearchWeek(1)} type="button">
@@ -270,7 +270,7 @@ class SearchBox extends ReactComponent<Props, States, Injected> {
                   </Form.Button>
                   <Form.Button size="tiny" onClick={() => this.onSetSearchDateAll()} type="button">
                     전체
-                  </Form.Button>
+                  </Form.Button> */}
                 </Form.Group>
               </Grid.Column>
               {collegeAndChannel ? (

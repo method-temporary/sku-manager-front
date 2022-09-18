@@ -37,15 +37,14 @@ export function CreateQuestionItemView({
 
   return (
     <>
-      {index === 0 ? (
+      {/* {index === 0 ? (
         <Table.Cell rowSpan={itemCount} textAlign="center" className="tb-header">
           <span>보기 번호</span>
         </Table.Cell>
       ) : (
         <Table.Cell className="none" />
-      )}
-
-      <Table.Cell textAlign="center">
+      )} */}
+      {/* <Table.Cell textAlign="center">
         <Form.Field
           readOnly={finalCopy}
           control={questionType === QuestionType.SingleChoice ? Radio : Checkbox}
@@ -59,17 +58,38 @@ export function CreateQuestionItemView({
             )
           }
         />
+      </Table.Cell> */}
+      <Table.Cell textAlign="center" className="tb-header">
+        <span>
+          보기 <Table.Cell textAlign="center">{newQuestionItem.itemNo}</Table.Cell>
+        </span>
       </Table.Cell>
-
-      <Table.Cell textAlign="center">{newQuestionItem.itemNo}</Table.Cell>
-
       <Table.Cell colSpan={9}>
+        {!finalCopy && (
+          <>
+            <Button icon="minus" size="mini" basic onClick={() => onClickAddItem(questionNo, newQuestionItem.itemNo)}>
+              보기 추가
+            </Button>
+
+            {/* <Button icon="plus" size="mini" basic onClick={() => onClickAddItem(questionNo, newQuestionItem.itemNo)} /> */}
+            {itemCount !== 1 && (
+              <Button
+                icon="minus"
+                size="mini"
+                basic
+                onClick={() => onClickRemoveItem(questionNo, newQuestionItem.itemNo)}
+              >
+                삭제
+              </Button>
+            )}
+          </>
+        )}
         <Form.Field
           control={Input}
           value={newQuestionItem.itemText}
           onChange={(e: React.ChangeEvent) => onChangeItemText(e, questionNo, newQuestionItem.itemNo)}
         />
-        <Button
+        {/* <Button
           size="mini"
           className="file-select-btn only-margin-button"
           content="파일 선택"
@@ -80,7 +100,7 @@ export function CreateQuestionItemView({
               itemImgRef.current.click();
             }
           }}
-        />
+        /> */}
         <input
           type="file"
           ref={itemImgRef}
@@ -96,21 +116,24 @@ export function CreateQuestionItemView({
           </div>
         )}
       </Table.Cell>
-      <Table.Cell textAlign="center">
-        {!finalCopy && (
-          <>
-            <Button icon="plus" size="mini" basic onClick={() => onClickAddItem(questionNo, newQuestionItem.itemNo)} />
-            {itemCount !== 1 && (
-              <Button
-                icon="minus"
-                size="mini"
-                basic
-                onClick={() => onClickRemoveItem(questionNo, newQuestionItem.itemNo)}
-              />
-            )}
-          </>
-        )}
-      </Table.Cell>
+      <Table.Row>
+        <Table.Cell>
+          <Form.Field
+            readOnly={finalCopy}
+            control={questionType === QuestionType.SingleChoice ? Radio : Checkbox}
+            checked={questionAnswer.includes(newQuestionItem.itemNo)}
+            onChange={(e: React.ChangeEvent, data: InputOnChangeData) =>
+              onChangeChoiceAnswer(
+                questionType,
+                questionNo,
+                newQuestionItem.itemNo,
+                questionType === QuestionType.SingleChoice ? undefined : data.checked
+              )
+            }
+          />
+        </Table.Cell>
+        <Table.Cell>정답</Table.Cell>
+      </Table.Row>
     </>
   );
 }

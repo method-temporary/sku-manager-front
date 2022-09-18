@@ -292,10 +292,10 @@ export const testInfoValidationCheck = (testCreateForm: TestCreateFormViewModel)
   }
 
   // Test 설명
-  if (testCreateForm.description.trim() === '') {
-    alert(AlertModel.getRequiredInputAlert('Test 설명'));
-    return false;
-  }
+  // if (testCreateForm.description.trim() === '') {
+  //   alert(AlertModel.getRequiredInputAlert('Test 설명'));
+  //   return false;
+  // }
 
   // 테스트 문항이 0개 일 경우
   if (testCreateForm.newQuestions.length === 0) {

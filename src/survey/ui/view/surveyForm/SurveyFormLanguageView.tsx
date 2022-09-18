@@ -30,13 +30,13 @@ export default class SurveyFormLanguageView extends React.Component<Props> {
     const { readonly } = this.props;
 
     return (
-      <FormTable title="다국어 정보">
-        <FormTable.Row name="지원 언어">
+      <FormTable title="">
+        <FormTable.Row name="편집 중인 언어">
           <Polyglot.Languages onChangeProps={this.changeSurveyQueryProps} readOnly={readonly} />
         </FormTable.Row>
-        <FormTable.Row name="기본 언어">
+        {/* <FormTable.Row name="기본 언어">
           <Polyglot.Default onChangeProps={this.changeSurveyQueryProps} readOnly={readonly} />
-        </FormTable.Row>
+        </FormTable.Row> */}
       </FormTable>
     );
   }

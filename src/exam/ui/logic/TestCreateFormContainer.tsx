@@ -48,6 +48,7 @@ export function TestCreateFormContainer() {
       </Step.Group> */}
 
       {/* 상단 버튼 */}
+
       <SubActions form>
         <SubActions.Right>
           <Button>엑셀 다운로드</Button>
@@ -93,15 +94,16 @@ export function TestCreateFormContainer() {
             </Button>
           )}
         </SubActions.Left>
-        <SubActions.Right>
+        <SubActions.Center>
           {testCreateForm?.stepIndex === 1 ? (
             <>
-              <Button type="button" onClick={onClickSaveQuestions}>
-                문항 저장
-              </Button>
               <Button type="button" onClick={() => onClickStep(2)}>
-                출제방식 설정
+                등록
               </Button>
+              <Button type="button" onClick={onClickSaveQuestions}>
+                수정
+              </Button>
+
               <Button type="button" onClick={onClickList}>
                 목록
               </Button>
@@ -118,7 +120,7 @@ export function TestCreateFormContainer() {
               )}
             </>
           )}
-        </SubActions.Right>
+        </SubActions.Center>
       </SubActions>
     </>
   );

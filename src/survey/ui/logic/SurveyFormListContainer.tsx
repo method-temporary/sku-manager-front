@@ -135,13 +135,13 @@ class SurveyFormListContainer extends React.Component<Props, States> {
           collegeAndChannel={false}
           defaultPeriod={2}
         >
-          <SearchBoxFieldView
+          {/* <SearchBoxFieldView
             fieldTitle="상태"
             fieldOption={addSelectTypeBoxAllOption(SelectType.designState)}
             onChangeQueryProps={this.changeSurveyFormQueryProp}
             targetValue={(surveyFormQuery && surveyFormQuery.designState) || '전체'}
             queryFieldName="designState"
-          />
+          /> */}
         </SearchBox>
         <SurveyFormListView
           surveyFormsList={surveyFormsList}

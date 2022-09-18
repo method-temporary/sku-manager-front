@@ -40,13 +40,13 @@ export function TestCreateBasicInfoView({
             <col width="15%" />
           </colgroup>
 
-          <Table.Header>
+          {/* <Table.Header>
             <Table.Row>
               <Table.HeaderCell className="title-header" colSpan={6}>
                 Test 정보 설정
               </Table.HeaderCell>
             </Table.Row>
-          </Table.Header>
+          </Table.Header> */}
 
           <Table.Body>
             <Table.Row>
@@ -55,21 +55,21 @@ export function TestCreateBasicInfoView({
                 <Form.Group>
                   <Form.Field
                     key={'Korean'}
-                    label={'KO'}
+                    label={'한국어'}
                     control={Radio}
                     checked={language === 'Korean'}
                     onChange={() => onChangeLanguage('Korean')}
                   />
                   <Form.Field
                     key={'English'}
-                    label={'EN'}
+                    label={'English'}
                     control={Radio}
                     checked={language === 'English'}
                     onChange={() => onChangeLanguage('English')}
                   />
                   <Form.Field
                     key={'Chinese'}
-                    label={'ZH'}
+                    label={'中國語'}
                     control={Radio}
                     checked={language === 'Chinese'}
                     onChange={() => onChangeLanguage('Chinese')}

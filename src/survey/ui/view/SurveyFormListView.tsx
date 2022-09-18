@@ -36,7 +36,7 @@ class SurveyFormListView extends React.Component<Props> {
             <Grid.Column width={8}></Grid.Column>
             <Grid.Column width={8}>
               <div className="fl-right">
-                <Button onClick={() => onSelectSurveyForm('new')}>새 설문지 등록</Button>
+                <Button onClick={() => onSelectSurveyForm('new')}>+ Survey 등록</Button>
               </div>
             </Grid.Column>
           </Grid.Row>
@@ -46,18 +46,17 @@ class SurveyFormListView extends React.Component<Props> {
           <colgroup>
             <col width="5%" />
             <col width="50%" />
-            <col width="10%" />
-            <col width="10%" />
-            <col width="10%" />
-            <col width="10%" />
+            <col width="15%" />
+            <col width="15%" />
+            <col width="15%" />
           </colgroup>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell textAlign="center">No</Table.HeaderCell>
-              <Table.HeaderCell textAlign="center">제목</Table.HeaderCell>
-              <Table.HeaderCell textAlign="center">등록일</Table.HeaderCell>
+              <Table.HeaderCell textAlign="center">Survey 제목</Table.HeaderCell>
               <Table.HeaderCell textAlign="center">등록자</Table.HeaderCell>
-              <Table.HeaderCell textAlign="center">상태</Table.HeaderCell>
+              <Table.HeaderCell textAlign="center">등록일자</Table.HeaderCell>
+              {/* <Table.HeaderCell textAlign="center">상태</Table.HeaderCell> */}
               <Table.HeaderCell textAlign="center">설문지복사</Table.HeaderCell>
             </Table.Row>
             {(results &&
@@ -75,17 +74,18 @@ class SurveyFormListView extends React.Component<Props> {
                         surveyForm.titles.langStringMap.get(language)) ||
                         surveyForm.title}
                     </Table.Cell>
-                    <Table.Cell onClick={() => onSelectSurveyForm(surveyForm.id)} textAlign="center">
-                      {surveyForm.timeStr}
-                    </Table.Cell>
                     <Table.Cell onClick={() => onSelectSurveyForm(surveyForm.id)}>
                       {(surveyForm.formDesigner.names.langStringMap.get(language) &&
                         surveyForm.formDesigner.names.langStringMap.get(language)) ||
                         surveyForm.formDesignerName}
                     </Table.Cell>
                     <Table.Cell onClick={() => onSelectSurveyForm(surveyForm.id)} textAlign="center">
-                      {surveyForm.designStateName}
+                      {surveyForm.timeStr}
                     </Table.Cell>
+
+                    {/* <Table.Cell onClick={() => onSelectSurveyForm(surveyForm.id)} textAlign="center">
+                      {surveyForm.designStateName}
+                    </Table.Cell> */}
                     <Table.Cell textAlign="center">
                       <Button onClick={() => copySurveyModalShow(surveyForm.id)}>복사</Button>
                     </Table.Cell>

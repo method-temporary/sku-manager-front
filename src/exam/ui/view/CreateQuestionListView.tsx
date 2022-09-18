@@ -51,18 +51,18 @@ export function CreateQuestionListView({
 
   return (
     <>
-      {!finalCopy && (
+      {/* {!finalCopy && (
         <SubActions>
           <SubActions.Right>
-            {/* <Button type="button" onClick={() => onRemoveQuestion(questionIndex)}>
+            <Button type="button" onClick={() => onRemoveQuestion(questionIndex)}>
               삭제
-            </Button> */}
+            </Button>
             <Button type="button" onClick={() => onCopyQuestion(newQuestion)}>
               문항 복사
             </Button>
           </SubActions.Right>
         </SubActions>
-      )}
+      )} */}
       <Table celled>
         <colgroup>
           <col width="8%" />
@@ -71,18 +71,18 @@ export function CreateQuestionListView({
           <col width="8%" />
           <col width="5%" />
           <col width="8%" />
-          <col width="12%" />
+          <col width="11%" />
           <col width="5%" />
           <col width="8%" />
-          <col width="12%" />
+          <col width="11%" />
           <col width="5%" />
           <col width="8%" />
-          <col width="12%" />
+          <col width="14%" />
         </colgroup>
 
         <Table.Body>
           <Table.Row>
-            <Table.Cell rowSpan={3} className="tb-header" colSpan={2}>
+            <Table.Cell rowSpan={15} className="tb-header" colSpan={2}>
               문항 {newQuestion.sequence}{' '}
               <Button type="button" onClick={() => onRemoveQuestion(questionIndex)}>
                 삭제
@@ -200,7 +200,7 @@ export function CreateQuestionListView({
           {newQuestion.questionType === QuestionType.ShortAnswer && (
             <CreateShortAnswerView finalCopy={finalCopy} newQuestion={newQuestion} />
           )}
-          {newQuestion.description && (
+          {/* {newQuestion.description && (
             <Table.Row>
               <Table.Cell colSpan={2} className="tb-header">
                 비고
@@ -228,7 +228,7 @@ export function CreateQuestionListView({
                 </div>
               </Table.Cell>
             </Table.Row>
-          )}
+          )} */}
           {/* 서술형은 해설 없음 */}
           {/* {newQuestion.questionType !== QuestionType.Essay && (
             <Table.Row>
@@ -262,7 +262,7 @@ export function CreateQuestionListView({
           )} */}
         </Table.Body>
       </Table>
-      <hr className="contour" />
+      {/* <hr className="contour" /> */}
     </>
   );
 }

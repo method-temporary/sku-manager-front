@@ -338,21 +338,39 @@ const CardBaicInfoApprovalDetail = observer(({ readonly }: Props) => {
           <>
             <Table.Row>
               <Table.Cell className="tb-header">생성자</Table.Cell>
-              <Table.Cell colSpan={2}>{getPolyglotToAnyString(registrantName)}</Table.Cell>
+              <Table.Cell colSpan={2} className="tb-header">
+                {getPolyglotToAnyString(registrantName)}
+              </Table.Cell>
               <Table.Cell colSpan={2} className="tb-header">
                 생성(수정)일자
               </Table.Cell>
-              <Table.Cell colSpan={3}>{`${dayjs(registeredTime).format('YYYY.MM.DD')} `}</Table.Cell>
+              <Table.Cell colSpan={3} className="tb-header">{`${dayjs(registeredTime).format(
+                'YYYY.MM.DD'
+              )} `}</Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell className="tb-header">소속</Table.Cell>
-              <Table.Cell claSpan={1}> </Table.Cell>
-              <Table.Cell claSpan={1}>OC</Table.Cell>
-              <Table.Cell claSpan={1}> </Table.Cell>
-              <Table.Cell claSpan={1}>법인</Table.Cell>
-              <Table.Cell claSpan={1}> </Table.Cell>
-              <Table.Cell claSpan={1}>지사</Table.Cell>
-              <Table.Cell claSpan={1}> </Table.Cell>
+              <Table.Cell claSpan={1} className="tb-header">
+                {' '}
+              </Table.Cell>
+              <Table.Cell claSpan={1} className="tb-header">
+                OC
+              </Table.Cell>
+              <Table.Cell claSpan={1} className="tb-header">
+                {' '}
+              </Table.Cell>
+              <Table.Cell claSpan={1} className="tb-header">
+                법인
+              </Table.Cell>
+              <Table.Cell claSpan={1} className="tb-header">
+                {' '}
+              </Table.Cell>
+              <Table.Cell claSpan={1} className="tb-header">
+                지사
+              </Table.Cell>
+              <Table.Cell claSpan={1} className="tb-header">
+                {' '}
+              </Table.Cell>
             </Table.Row>
           </>
         )}
@@ -390,9 +408,14 @@ const CardBaicInfoApprovalDetail = observer(({ readonly }: Props) => {
               maxLength="200"
             />
           </Table.Cell>
-          <Table.Cell colSpan={2}>학습대상자수</Table.Cell>
-          <Table.Cell colSpan={3}>500명</Table.Cell>
+          <Table.Cell colSpan={2} className="tb-header">
+            학습대상자수
+          </Table.Cell>
+          <Table.Cell colSpan={3} className="tb-header">
+            500명
+          </Table.Cell>
         </Table.Row>
+
         <LearningContents readonly={readonly} />
 
         <FormTable.Row name="Test">
@@ -400,41 +423,46 @@ const CardBaicInfoApprovalDetail = observer(({ readonly }: Props) => {
           {tests.length > 0 && <TestList readonly={readonly} tests={tests} onTestDelete={onTestDelete} />}
         </FormTable.Row>
 
-        <FormTable.Row name="실천서약">
-          <Form.Field
-            colSpan={7}
-            control={Checkbox}
-            label="서약 진행 여부(Y/N)"
-            checked={pisAgreementRequired}
-            onChange={(_: any, data: any) => setPisAgreementRequired(data.checked)}
-            disabled={readonly}
-          />
-          {pisAgreementRequired && (
-            <Polyglot.PisAgreement
-              name="pisAgreementDepotId"
-              titleName="pisAgreementTitle"
-              onChangeProps={onChangeCardCreatePolyglot}
-              languageStrings={pisAgreementDepotId}
-              titleLanguageStrings={pisAgreementTitle}
-              validations={[
-                {
-                  type: ValidationType.Duplication,
-                  validator: DepotUtil.duplicationValidator,
-                },
-                {
-                  type: ValidationType.Extension,
-                  validator: DepotUtil.extensionValidatorPDF,
-                },
-                {
-                  type: ValidationType.Duplication,
-                  validator: DepotUtil.multiFileValidator,
-                },
-              ]}
-              desc={<p className="info-text-gray">- PDF 파일 1개 만 등록하실 수 있습니다.</p>}
-              readOnly={readonly}
+        <Table.Row>
+          <Table.Cell>
+            <span className="tb-header">실천서약</span>
+          </Table.Cell>
+          <Table.Cell>
+            <Form.Field
+              cloSpan={7}
+              control={Checkbox}
+              label="서약 진행 여부(Y/N)"
+              checked={pisAgreementRequired}
+              onChange={(_: any, data: any) => setPisAgreementRequired(data.checked)}
+              disabled={readonly}
             />
-          )}
-        </FormTable.Row>
+            {pisAgreementRequired && (
+              <Polyglot.PisAgreement
+                name="pisAgreementDepotId"
+                titleName="pisAgreementTitle"
+                onChangeProps={onChangeCardCreatePolyglot}
+                languageStrings={pisAgreementDepotId}
+                titleLanguageStrings={pisAgreementTitle}
+                validations={[
+                  {
+                    type: ValidationType.Duplication,
+                    validator: DepotUtil.duplicationValidator,
+                  },
+                  {
+                    type: ValidationType.Extension,
+                    validator: DepotUtil.extensionValidatorPDF,
+                  },
+                  {
+                    type: ValidationType.Duplication,
+                    validator: DepotUtil.multiFileValidator,
+                  },
+                ]}
+                desc={<p className="info-text-gray">- PDF 파일 1개 만 등록하실 수 있습니다.</p>}
+                readOnly={readonly}
+              />
+            )}
+          </Table.Cell>
+        </Table.Row>
 
         <FormTable.Row name="Survey 추가">
           {!readonly && <SurveyListModal handleOk={onSurveyOk} type="card" />}
@@ -443,12 +471,8 @@ const CardBaicInfoApprovalDetail = observer(({ readonly }: Props) => {
               <Table.Header>
                 <Table.Row>
                   {!readonly && <Table.HeaderCell textAlign="center" />}
-                  <Table.HeaderCell colSpan={5} textAlign="center">
-                    제목
-                  </Table.HeaderCell>
-                  <Table.HeaderCell colSpan={2} textAlign="center">
-                    작성자
-                  </Table.HeaderCell>
+                  <Table.HeaderCell textAlign="center">제목</Table.HeaderCell>
+                  <Table.HeaderCell textAlign="center">작성자</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <SurveyModal
@@ -471,21 +495,19 @@ const CardBaicInfoApprovalDetail = observer(({ readonly }: Props) => {
           ) : null}
         </FormTable.Row>
         <FormTable.Row name="서약">
-          {surveyId ? (
-            <Table celled>
-              <Table.Header>
-                <Table.Row>
-                  {!readonly && <Table.HeaderCell textAlign="center" />}
-                  <Table.HeaderCell colSpan={5} textAlign="center">
-                    제목
-                  </Table.HeaderCell>
-                  <Table.HeaderCell colSpan={2} textAlign="center">
-                    작성자
-                  </Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-            </Table>
-          ) : null}
+          <Table celled>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell textAlign="center" />
+                <Table.HeaderCell colSpan={5} textAlign="center">
+                  제목
+                </Table.HeaderCell>
+                <Table.HeaderCell colSpan={2} textAlign="center">
+                  작성자
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+          </Table>
         </FormTable.Row>
 
         <FormTable.Row name="학습 시작일">
